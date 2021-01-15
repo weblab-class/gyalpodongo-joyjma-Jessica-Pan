@@ -1,0 +1,27 @@
+.GoogleButton {
+    margin: 10px;
+}
+
+.IFeelSpan {
+    font-size: 72px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.textbox {
+    width: 288px;
+    height: 144px; 
+    margin-left: 20px;
+    border-radius: 20px;
+    font-style: "Catamaran", Sans-serif;
+    font-size: 72px;
+    border-color: black;
+    color: white;
+    background-color: #FF8C5A;
+}
+
+div {
+    background-color: #FF8C5A;
+}
