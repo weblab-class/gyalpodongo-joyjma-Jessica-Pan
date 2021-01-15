@@ -1,4 +1,16 @@
-# Project Skeleton
+# I feel ____ is now a website!!! 
+
+## Current functionality 
+
+I feel text box that accepts inputs, and submits when you press the enter key. It just puts those at the bottom of the screen.
+
+## Next Steps
+
+-Creating an avatar using feelings
+-Have example emotions scroll
+-Implement the main webpage 
+  -view your tags
+  -tag others 
 
 ## What we provide
 
@@ -8,15 +20,6 @@
   - Disclaimer: Socket isn't being taught until the second week.
 - User Model (auth.js & user.js)
 
-## What you need to change
-
-- Change the font in utilities.css
-- Change the Database SRV for Atlas (server.js)
-- Change the Database Name for MongoDB (server.js)
-- Add a favicon to your website at the path client/dist/favicon.ico
-- Update website title in client/dist/index.html
-- Update this README file ;)
-- Update the package.json file with your app name :) (line 2)
 
 ## Socket stuff
 Note: we'll be getting to this in lecture in week 2, so don't worry if you don't know it yet
