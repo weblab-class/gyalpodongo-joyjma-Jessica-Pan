@@ -32,7 +32,6 @@ const auth = require("./auth");
 const socketManager = require("./server-socket");
 
 // Server configuration below
-// TODO change connection URL after setting up your team database
 require('dotenv').config()
 
 const mongoConnectionURL = process.env.MONGO_URL;
