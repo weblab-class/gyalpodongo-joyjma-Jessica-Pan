@@ -19,6 +19,7 @@ class App extends Component {
     super(props);
     this.state = {
       userId: undefined,
+      feelings: undefined,
     };
   }
 
@@ -45,6 +46,10 @@ class App extends Component {
     post("/api/logout");
   };
 
+  setInputtedFeelings = (feelings) => {
+    this.setState({feelings: feelings});
+  }
+
   render() {
     return (
       <>
@@ -53,6 +58,7 @@ class App extends Component {
             path="/"
             handleLogin={this.handleLogin}
             handleLogout={this.handleLogout}
+            setInputtedFeelings={this.setInputtedFeelings}
             userId={this.state.userId}
           />
           <MainPage
@@ -60,6 +66,7 @@ class App extends Component {
             handleLogin={this.handleLogin}
             handleLogout={this.handleLogout}
             userId={this.state.userId}
+            feelings={this.state.feelings}
           />
           <NotFound default />
         </Router>

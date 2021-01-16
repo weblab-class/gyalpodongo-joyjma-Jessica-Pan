@@ -37,7 +37,7 @@ class MainPage extends Component {
             onFailure={(err) => console.log(err)}
           />
         )}
-        This is the main page.
+        You're feeling {this.props.feelings}
       </>
     );
   }

@@ -26,4 +26,10 @@
     font-size: 36px;
     padding: 10px;
     border-radius: 20px;
+    text-align: center;
+    background-color: #B33C86;
+    text-decoration: none;
+    display: flex;
+    justify-content: flex-end;
+    width: 100px;
 }

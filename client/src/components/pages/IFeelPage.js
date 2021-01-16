@@ -24,6 +24,7 @@ class IFeelPage extends Component {
       let finalString = event.target.value;
       finalString = finalString[0].toUpperCase() + finalString.substring(1).toLowerCase()
       event.target.value = "";
+      this.props.setInputtedFeelings(this.state.feelings.concat([finalString]));
       this.setState({
         feelings: this.state.feelings.concat([finalString])
       });
@@ -63,8 +64,8 @@ class IFeelPage extends Component {
         </span>
         <h2> You're feeling: </h2>
         {yourFeelings}
-        <div className="IFeelPage-done_button">
-          <Link to="/main/"> Done </Link>
+        <div>
+          <Link className="IFeelPage-done_button" to="/main/"> Done </Link>
         </div>
       </>
     );
