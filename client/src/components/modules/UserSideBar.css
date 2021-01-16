@@ -1,0 +1,15 @@
+.UserSideBar-main {
+  border-color: black;
+  border-style: solid;
+  border-radius: 10px;
+  padding: 0px 10px;
+  border-width: 1px;
+  margin: 20px;
+  width: 100px;
+  height: 90%;
+  text-align: center;
+}
+
+.UserSideBar-feelingsList {
+  text-align: left;
+}

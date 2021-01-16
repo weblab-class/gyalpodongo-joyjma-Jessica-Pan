@@ -10,7 +10,7 @@ class IFeelPage extends Component {
   constructor(props) {
     super(props);
     // Initialize Default State
-    this.state = {feelings: []};
+    this.state = { feelings: [] };
   }
 
   componentDidMount() {
@@ -19,22 +19,20 @@ class IFeelPage extends Component {
 
   handleTyping = (event) => {
     let key = event.keyCode || event.which;
-    if(key === 13){
+    if (key === 13) {
       event.preventDefault();
       let finalString = event.target.value;
-      finalString = finalString[0].toUpperCase() + finalString.substring(1).toLowerCase()
+      finalString = finalString[0].toUpperCase() + finalString.substring(1).toLowerCase();
       event.target.value = "";
       this.props.setInputtedFeelings(this.state.feelings.concat([finalString]));
       this.setState({
-        feelings: this.state.feelings.concat([finalString])
+        feelings: this.state.feelings.concat([finalString]),
       });
     }
-  }
+  };
 
   render() {
-    let yourFeelings = this.state.feelings.map((feeling) => 
-      <p> {feeling} </p>
-    );
+    let yourFeelings = this.state.feelings.map((feeling, i) => <p key={i}> {feeling} </p>);
     return (
       <>
         {this.props.userId ? (
@@ -54,18 +52,18 @@ class IFeelPage extends Component {
             onFailure={(err) => console.log(err)}
           />
         )}
+        {this.props.name === undefined ? <> </> : <> Hello, {this.props.name} </>}
         <span className="IFeelSpan">
           I feel
-          <input
-          className = "textbox"
-          type="text"
-          onKeyPress={this.handleTyping}
-          />
+          <input className="textbox" type="text" onKeyPress={this.handleTyping} />
         </span>
         <h2> You're feeling: </h2>
         {yourFeelings}
         <div>
-          <Link className="IFeelPage-done_button" to="/main/"> Done </Link>
+          <Link className="IFeelPage-done_button" to="/main/">
+            {" "}
+            Done{" "}
+          </Link>
         </div>
       </>
     );
