@@ -56,10 +56,10 @@ router.get("/user", (req, res) => {
 
 router.post("/feeling", auth.ensureLoggedIn, (req, res) => {
   console.log(
-    `received feeling input from  ${req.user.name} (${req.user.id}): ${req.feeling_name}`
+    `received feeling input from  ${req.user.name} (${req.user.id}): ${req.body.feeling_name}`
   );
   const newFeeling = new Feeling({
-    feeling_name: req.body,
+    feeling_name: req.body.feeling_name,
     user_id: req.user.id,
   });
   newFeeling.save();
@@ -67,13 +67,14 @@ router.post("/feeling", auth.ensureLoggedIn, (req, res) => {
 
 router.get("/feelings", auth.ensureLoggedIn, (req, res) => {
   Feeling.find({
-    googleid: req.user.id,
+    user_id: req.user.id,
   }).then((feelings) => {
     res.send(feelings);
   });
 });
 
 router.get("/tags", (req, res) => {
+  console.log(`getting tags with feeling ${req.query.feeling}`);
   Tag.find({
     feeling: req.query.feeling,
   }).then((feelings) => {

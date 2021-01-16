@@ -3,6 +3,9 @@ import { Link } from "@reach/router";
 import UserSideBar from "../modules/UserSideBar.js";
 import NavBar from "../modules/NavBar.js";
 import TagOthers from "./TagOthers.js";
+import YourTagsPage from "../modules/YourTagsPage.js";
+import FeelingsLog from "../modules/Feelingslog.js";
+
 import "../../utilities.css";
 import "./MainPage.css";
 
@@ -29,16 +32,24 @@ class MainPage extends Component {
     this.setState({ showing: "Tag Others" });
   };
 
+  showFeelingsLog = () => {
+    this.setState({ showing: "Feelings Log" });
+  };
+
   render() {
     let mainContent;
     if (this.state.showing === "Your Tags") {
-      mainContent = <p> YOUR TAGS </p>;
+      mainContent = <YourTagsPage feelings={this.props.feelings} />;
     } else if (this.state.showing === "Tag Others") {
       mainContent = (
         <p>
           {" "}
           <TagOthers />{" "}
         </p>
+      );
+    } else if (this.state.showing === "Feelings Log") {
+      mainContent = (
+        <FeelingsLog userid={this.props.userId} currentFeelings={this.props.feelings} />
       );
     }
 
@@ -50,6 +61,7 @@ class MainPage extends Component {
           userId={this.props.userId}
           showYourTags={this.showYourTags}
           showTagOthers={this.showTagOthers}
+          showFeelingsLog={this.showFeelingsLog}
         />
         <span className="MainPage-main">
           <UserSideBar name={this.props.name} feelings={this.props.feelings} />

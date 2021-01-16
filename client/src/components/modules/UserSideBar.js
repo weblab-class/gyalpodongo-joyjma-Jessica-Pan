@@ -20,7 +20,7 @@ class UserSiderBar extends Component {
         <p>Feelings:</p>
         <ul className="UserSideBar-feelingsList">
           {this.props.feelings.map((feeling, i) => (
-            <li key={i}> {feeling} </li>
+            <li key={`feelings-list-${i}`}> {feeling} </li>
           ))}
         </ul>
       </div>

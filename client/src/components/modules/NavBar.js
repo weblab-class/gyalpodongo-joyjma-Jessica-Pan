@@ -17,6 +17,15 @@ class NavBar extends Component {
   }
 
   render() {
+    let pastFeelingsSection;
+    if (this.props.userId) {
+      pastFeelingsSection = (
+        <span className="NavBar-section" onClick={this.props.showFeelingsLog}>
+          past feelings
+        </span>
+      );
+    }
+
     return (
       <div className="NavBar-main">
         {this.props.userId ? (
@@ -42,6 +51,7 @@ class NavBar extends Component {
         <span className="NavBar-section" onClick={this.props.showTagOthers}>
           tag others
         </span>
+        {pastFeelingsSection}
       </div>
     );
   }
