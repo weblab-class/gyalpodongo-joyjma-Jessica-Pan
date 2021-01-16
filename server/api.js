@@ -75,6 +75,10 @@ router.get("/feelings", auth.ensureLoggedIn, (req, res) => {
 
 router.get("/tags", (req, res) => {
   console.log(`getting tags with feeling ${req.query.feeling}`);
+  Tag.find({}).then((results) => {
+    console.log("ALL TAGS:");
+    console.log(results);
+  });
   Tag.find({
     feeling: req.query.feeling,
   }).then((feelings) => {
@@ -84,11 +88,12 @@ router.get("/tags", (req, res) => {
 
 router.post("/tag", auth.ensureLoggedIn, (req, res) => {
   const newTag = new Tag({
-    tag_id: `${req.user.id}${$timestamp}`, //each tag has a unique id: combo of user id and timestamp
+    tag_id: `${req.user.id}${Date.now}`, //each tag has a unique id: combo of user id and timestamp
     activity: req.body.activity,
     feeling: req.body.feeling, //Array of Strings, each String is a feeling
     original_poster: req.user.id,
   });
+  newTag.save();
 });
 
 // anything else falls to this "not found" case

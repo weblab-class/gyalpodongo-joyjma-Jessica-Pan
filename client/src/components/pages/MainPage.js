@@ -41,12 +41,7 @@ class MainPage extends Component {
     if (this.state.showing === "Your Tags") {
       mainContent = <YourTagsPage feelings={this.props.feelings} />;
     } else if (this.state.showing === "Tag Others") {
-      mainContent = (
-        <p>
-          {" "}
-          <TagOthers />{" "}
-        </p>
-      );
+      mainContent = <TagOthers id={this.props.userId} />;
     } else if (this.state.showing === "Feelings Log") {
       mainContent = (
         <FeelingsLog userid={this.props.userId} currentFeelings={this.props.feelings} />

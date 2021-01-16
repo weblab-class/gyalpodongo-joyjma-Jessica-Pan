@@ -1,11 +1,10 @@
 import React, { Component } from "react";
-import SingleTag from "./SingleTag.js";
 
-import "./UserSideBar.css";
+import "./SingleTag.css";
 
 import { get, post } from "../../utilities";
 
-class FeeelingSection extends Component {
+class SingleTag extends Component {
   constructor(props) {
     super(props);
     // Initialize Default State
@@ -18,19 +17,22 @@ class FeeelingSection extends Component {
     });
   }
 
+  taskComplete = () => {
+    console.log("You did a task!");
+  };
+
   render() {
     let taskDisplay = <p> No tasks found. </p>;
     if (this.state.tasks.length !== 0) {
       taskDisplay = <SingleTag activity={this.state.tasks[0].activity} />;
     }
     return (
-      <div>
-        <h2> {this.props.feeling} </h2>
-        <p> That's a valid feeling. </p>
-        {taskDisplay}
-      </div>
+      <span>
+        <p className="SingleTag-activity"> {this.props.activity} </p>
+        <div className="SingleTag-done" onClick={this.taskComplete}></div>
+      </span>
     );
   }
 }
 
-export default FeeelingSection;
+export default SingleTag;

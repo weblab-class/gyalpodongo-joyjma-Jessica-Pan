@@ -33,7 +33,7 @@ class TagOthers extends Component {
 
   render() {
     const createdTagsList = [];
-    get("/api/tag", { user_id: this.props.id }).then((tags) => {
+    get("/api/tags", { user_id: this.props.id }).then((tags) => {
       tags.map((tag) => createdTagsList.concat(tag));
     });
     if (this.state.creatingTag === false) {
@@ -42,7 +42,7 @@ class TagOthers extends Component {
           <button onClick={this.createTag}>Tag Someone!</button>
           {createdTagsList.map((tag) => (
             <div>
-              {`You tagged someone feeling ${tag.feeling} to do this activity: ${tag.activity}`}{" "}
+              {`You tagged someone feeling ${tag.feeling} to do this activity: ${tag.activity}`}
             </div>
           ))}
         </div>
