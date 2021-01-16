@@ -1,0 +1,10 @@
+.NewTagInput-input,
+.NewTagInput-button {
+  font-family: "Open Sans";
+  font-size: 24px;
+  padding: var(--s) var(--m);
+}
+
+.NewTagInput-container {
+  padding: 20px 35%;
+}

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "@reach/router";
 import UserSideBar from "../modules/UserSideBar.js";
 import NavBar from "../modules/NavBar.js";
-
+import TagOthers from "./TagOthers.js";
 import "../../utilities.css";
 import "./MainPage.css";
 
@@ -34,7 +34,12 @@ class MainPage extends Component {
     if (this.state.showing === "Your Tags") {
       mainContent = <p> YOUR TAGS </p>;
     } else if (this.state.showing === "Tag Others") {
-      mainContent = <p> TAG OTHERS </p>;
+      mainContent = (
+        <p>
+          {" "}
+          <TagOthers />{" "}
+        </p>
+      );
     }
 
     return (

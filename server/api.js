@@ -34,7 +34,8 @@ router.get("/whoami", (req, res) => {
 
 router.post("/initsocket", (req, res) => {
   // do nothing if user not logged in
-  if (req.user) socketManager.addUser(req.user, socketManager.getSocketFromSocketID(req.body.socketid));
+  if (req.user)
+    socketManager.addUser(req.user, socketManager.getSocketFromSocketID(req.body.socketid));
   res.send({});
 });
 
@@ -54,7 +55,9 @@ router.get("/user", (req, res) => {
 });
 
 router.post("/feeling", auth.ensureLoggedIn, (req, res) => {
-  console.log(`received feeling input from  ${req.user.name} (${req.user.id}): ${req.feeling_name}`)
+  console.log(
+    `received feeling input from  ${req.user.name} (${req.user.id}): ${req.feeling_name}`
+  );
   const newFeeling = new Feeling({
     feeling_name: req.body,
     user_id: req.user.id,
@@ -64,7 +67,7 @@ router.post("/feeling", auth.ensureLoggedIn, (req, res) => {
 
 router.get("/feelings", auth.ensureLoggedIn, (req, res) => {
   Feeling.find({
-    googleid: req.user.id
+    googleid: req.user.id,
   }).then((feelings) => {
     res.send(feelings);
   });
@@ -72,7 +75,7 @@ router.get("/feelings", auth.ensureLoggedIn, (req, res) => {
 
 router.get("/tags", (req, res) => {
   Tag.find({
-    feeling: req.query.feeling
+    feeling: req.query.feeling,
   }).then((feelings) => {
     res.send(feelings);
   });
@@ -82,8 +85,8 @@ router.post("/tag", auth.ensureLoggedIn, (req, res) => {
   const newTag = new Tag({
     tag_id: `${req.user.id}${$timestamp}`, //each tag has a unique id: combo of user id and timestamp
     activity: req.body.activity,
-    feelings: req.body.feelings, //Array of Strings, each String is a feeling
-    original_poster: req.user.id
+    feeling: req.body.feeling, //Array of Strings, each String is a feeling
+    original_poster: req.user.id,
   });
 });
 
@@ -91,7 +94,7 @@ router.post("/tag", auth.ensureLoggedIn, (req, res) => {
 router.all("*", (req, res) => {
   console.log(`API route not found: ${req.method} ${req.url}`);
   res.status(404).send({
-    msg: "API route not found"
+    msg: "API route not found",
   });
 });
 
