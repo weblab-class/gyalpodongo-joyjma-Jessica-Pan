@@ -5,6 +5,8 @@ import { Link } from "@reach/router";
 import "../../utilities.css";
 import "./IFeelPage.css";
 
+import { get, post } from "../../utilities.js";
+
 const GOOGLE_CLIENT_ID = "972905731956-ea88oeb11o2aso89a2mmoh18uhe6oupg.apps.googleusercontent.com";
 class IFeelPage extends Component {
   constructor(props) {
@@ -28,6 +30,13 @@ class IFeelPage extends Component {
       this.setState({
         feelings: this.state.feelings.concat([finalString]),
       });
+    }
+  };
+
+  submitFeelingsToAPI = () => {
+    for (let i = 0; i < this.state.feelings.length; i++) {
+      console.log(`I'm posting ${this.state.feelings[i]}`);
+      post("/api/feeling", { feeling_name: this.state.feelings[i] });
     }
   };
 
@@ -62,9 +71,8 @@ class IFeelPage extends Component {
         <h2> You're feeling: </h2>
         {yourFeelings}
         <div>
-          <Link className="IFeelPage-done_button" to="/main/">
-            {" "}
-            Done{" "}
+          <Link className="IFeelPage-done_button" onClick={this.submitFeelingsToAPI} to="/main/">
+            Done
           </Link>
         </div>
       </>
