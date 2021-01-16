@@ -1,45 +1,55 @@
 import React, { Component } from "react";
-import GoogleLogin, { GoogleLogout } from "react-google-login";
 import { Link } from "@reach/router";
+import UserSideBar from "../modules/UserSideBar.js";
+import NavBar from "../modules/NavBar.js";
 
 import "../../utilities.css";
-import "./IFeelPage.css";
+import "./MainPage.css";
 
-const GOOGLE_CLIENT_ID = "972905731956-ea88oeb11o2aso89a2mmoh18uhe6oupg.apps.googleusercontent.com";
+// props:
+// feelings: a list of strings
+// name: the name of the user
+// user id: the ID of the user
 class MainPage extends Component {
   constructor(props) {
     super(props);
     // Initialize Default State
-    this.state = {};
+    this.state = { showing: "Your Tags" };
   }
 
   componentDidMount() {
     // remember -- api calls go here!
   }
 
+  showYourTags = () => {
+    this.setState({ showing: "Your Tags" });
+  };
+
+  showTagOthers = () => {
+    this.setState({ showing: "Tag Others" });
+  };
+
   render() {
-    console.log(this.props.name);
+    let mainContent;
+    if (this.state.showing === "Your Tags") {
+      mainContent = <p> YOUR TAGS </p>;
+    } else if (this.state.showing === "Tag Others") {
+      mainContent = <p> TAG OTHERS </p>;
+    }
+
     return (
       <>
-        {this.props.userId ? (
-          <GoogleLogout
-            className="GoogleButton"
-            clientId={GOOGLE_CLIENT_ID}
-            buttonText="Logout"
-            onLogoutSuccess={this.props.handleLogout}
-            onFailure={(err) => console.log(err)}
-          />
-        ) : (
-          <GoogleLogin
-            className="GoogleButton"
-            clientId={GOOGLE_CLIENT_ID}
-            buttonText="Login"
-            onSuccess={this.props.handleLogin}
-            onFailure={(err) => console.log(err)}
-          />
-        )}
-        {this.props.name === undefined ? <> </> : <> Hello, {this.props.name} </>}
-        This is the main page. You're feeling {this.props.feelings}.
+        <NavBar
+          handleLogout={this.props.handleLogout}
+          handleLogin={this.props.handleLogin}
+          userId={this.props.userId}
+          showYourTags={this.showYourTags}
+          showTagOthers={this.showTagOthers}
+        />
+        <span className="MainPage-main">
+          <UserSideBar name={this.props.name} feelings={this.props.feelings} />
+          <div className="MainPage-mainContent">{mainContent}</div>
+        </span>
       </>
     );
   }

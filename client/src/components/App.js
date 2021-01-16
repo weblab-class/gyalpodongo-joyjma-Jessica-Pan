@@ -20,7 +20,7 @@ class App extends Component {
     this.state = {
       userId: undefined,
       name: undefined,
-      feelings: undefined,
+      feelings: [],
     };
   }
 
