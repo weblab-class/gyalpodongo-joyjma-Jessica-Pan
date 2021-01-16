@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Router } from "@reach/router";
 import NotFound from "./pages/NotFound.js";
 import IFeelPage from "./pages/IFeelPage.js";
+import MainPage from "./pages/MainPage.js";
 
 import "../utilities.css";
 
@@ -50,6 +51,12 @@ class App extends Component {
         <Router>
           <IFeelPage
             path="/"
+            handleLogin={this.handleLogin}
+            handleLogout={this.handleLogout}
+            userId={this.state.userId}
+          />
+          <MainPage
+            path="/main/"
             handleLogin={this.handleLogin}
             handleLogout={this.handleLogout}
             userId={this.state.userId}

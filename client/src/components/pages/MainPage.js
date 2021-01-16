@@ -6,34 +6,18 @@ import "../../utilities.css";
 import "./IFeelPage.css";
 
 const GOOGLE_CLIENT_ID = "972905731956-ea88oeb11o2aso89a2mmoh18uhe6oupg.apps.googleusercontent.com";
-class IFeelPage extends Component {
+class MainPage extends Component {
   constructor(props) {
     super(props);
     // Initialize Default State
-    this.state = {feelings: []};
+    this.state = {};
   }
 
   componentDidMount() {
     // remember -- api calls go here!
   }
 
-  handleTyping = (event) => {
-    let key = event.keyCode || event.which;
-    if(key === 13){
-      event.preventDefault();
-      let finalString = event.target.value;
-      finalString = finalString[0].toUpperCase() + finalString.substring(1).toLowerCase()
-      event.target.value = "";
-      this.setState({
-        feelings: this.state.feelings.concat([finalString])
-      });
-    }
-  }
-
   render() {
-    let yourFeelings = this.state.feelings.map((feeling) => 
-      <p> {feeling} </p>
-    );
     return (
       <>
         {this.props.userId ? (
@@ -53,22 +37,10 @@ class IFeelPage extends Component {
             onFailure={(err) => console.log(err)}
           />
         )}
-        <span className="IFeelSpan">
-          I feel
-          <input
-          className = "textbox"
-          type="text"
-          onKeyPress={this.handleTyping}
-          />
-        </span>
-        <h2> You're feeling: </h2>
-        {yourFeelings}
-        <div className="IFeelPage-done_button">
-          <Link to="/main/"> Done </Link>
-        </div>
+        This is the main page.
       </>
     );
   }
 }
 
-export default IFeelPage;
+export default MainPage;
