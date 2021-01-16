@@ -32,7 +32,9 @@ class IFeelPage extends Component {
   };
 
   render() {
-    let yourFeelings = this.state.feelings.map((feeling, i) => <p key={i}> {feeling} </p>);
+    let yourFeelings = this.state.feelings.map((feeling, i) => (
+      <p key={`feelings-prop-${i}`}> {feeling} </p>
+    ));
     return (
       <>
         {this.props.userId ? (
