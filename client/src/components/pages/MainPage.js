@@ -18,6 +18,7 @@ class MainPage extends Component {
   }
 
   render() {
+    console.log(this.props.name);
     return (
       <>
         {this.props.userId ? (
@@ -37,7 +38,8 @@ class MainPage extends Component {
             onFailure={(err) => console.log(err)}
           />
         )}
-        You're feeling {this.props.feelings}
+        {this.props.name === undefined ? <> </> : <> Hello, {this.props.name} </>}
+        This is the main page. You're feeling {this.props.feelings}.
       </>
     );
   }

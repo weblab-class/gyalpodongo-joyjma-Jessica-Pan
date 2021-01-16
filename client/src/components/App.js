@@ -19,6 +19,7 @@ class App extends Component {
     super(props);
     this.state = {
       userId: undefined,
+      name: undefined,
       feelings: undefined,
     };
   }
@@ -27,7 +28,7 @@ class App extends Component {
     get("/api/whoami").then((user) => {
       if (user._id) {
         // they are registed in the database, and currently logged in.
-        this.setState({ userId: user._id });
+        this.setState({ userId: user._id, name: user.name });
       }
     });
   }
@@ -36,7 +37,7 @@ class App extends Component {
     console.log(`Logged in as ${res.profileObj.name}`);
     const userToken = res.tokenObj.id_token;
     post("/api/login", { token: userToken }).then((user) => {
-      this.setState({ userId: user._id });
+      this.setState({ userId: user._id, name: user.name });
       post("/api/initsocket", { socketid: socket.id });
     });
   };
@@ -47,8 +48,8 @@ class App extends Component {
   };
 
   setInputtedFeelings = (feelings) => {
-    this.setState({feelings: feelings});
-  }
+    this.setState({ feelings: feelings });
+  };
 
   render() {
     return (
@@ -60,6 +61,7 @@ class App extends Component {
             handleLogout={this.handleLogout}
             setInputtedFeelings={this.setInputtedFeelings}
             userId={this.state.userId}
+            name={this.state.name}
           />
           <MainPage
             path="/main/"
@@ -67,6 +69,7 @@ class App extends Component {
             handleLogout={this.handleLogout}
             userId={this.state.userId}
             feelings={this.state.feelings}
+            name={this.state.name}
           />
           <NotFound default />
         </Router>
