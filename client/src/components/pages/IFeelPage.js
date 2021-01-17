@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import GoogleLogin, { GoogleLogout } from "react-google-login";
 import { Link } from "@reach/router";
 
+import FeelingBubble from "../modules/FeelingBubble.js";
+
 import "../../utilities.css";
 import "./IFeelPage.css";
 
@@ -12,7 +14,7 @@ class IFeelPage extends Component {
   constructor(props) {
     super(props);
     // Initialize Default State
-    this.state = { feelings: [] };
+    this.state = { feelings: [], bubbles: ["Happy", "Tired", "Anxious", "Sad"] };
   }
 
   componentDidMount() {
@@ -24,13 +26,17 @@ class IFeelPage extends Component {
     if (key === 13) {
       event.preventDefault();
       let finalString = event.target.value;
-      finalString = finalString[0].toUpperCase() + finalString.substring(1).toLowerCase();
+      finalString = finalString[0].toUpperCase() + finalString.substr(1).toLowerCase();
+      this.addFeeling(finalString);
       event.target.value = "";
       this.props.setInputtedFeelings(this.state.feelings.concat([finalString]));
-      this.setState({
-        feelings: this.state.feelings.concat([finalString]),
-      });
     }
+  };
+
+  addFeeling = (feeling) => {
+    this.setState({
+      feelings: this.state.feelings.concat([feeling]),
+    });
   };
 
   submitFeelingsToAPI = () => {
@@ -41,9 +47,20 @@ class IFeelPage extends Component {
   };
 
   render() {
+    console.log(this.state.feelings);
     let yourFeelings = this.state.feelings.map((feeling, i) => (
       <p key={`feelings-prop-${i}`}> {feeling} </p>
     ));
+    console.log(yourFeelings);
+    console.log(this.state.bubbles);
+    // let feelingBubbles = this.state.bubbles.map((feeling, i) => (
+    //   <p key={`feelings-prop-${i}`}> {feeling} </p>
+    // ));
+    // console.log(feelingBubbles);
+    let feelingBubbles = this.state.bubbles.map((feeling, i) => (
+      <FeelingBubble key={`feeling-bubble-${i}`} addFeeling={this.addFeeling} feeling={feeling} />
+    ));
+    console.log(feelingBubbles);
     return (
       <>
         {this.props.userId ? (
@@ -75,6 +92,7 @@ class IFeelPage extends Component {
             Done
           </Link>
         </div>
+        <div> {feelingBubbles}</div>
       </>
     );
   }
