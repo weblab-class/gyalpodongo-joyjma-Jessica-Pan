@@ -30,10 +30,14 @@ class NewTagInput extends Component {
   // called when the user hits "Submit" for a new post
   handleSubmit = (event) => {
     event.preventDefault();
-    post("/api/tag", {
+    let valueFeelingCamel = this.state.valueFeeling;
+    valueFeelingCamel =
+      valueFeelingCamel[0].toUpperCase() + valueFeelingCamel.substr(1).toLowerCase();
+    const newTag = {
       activity: this.state.value,
-      feeling: this.state.valueFeeling,
-    });
+      feeling: valueFeelingCamel,
+    };
+    post("/api/tag", newTag);
     this.props.onSubmit();
 
     // this.setState({

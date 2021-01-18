@@ -13,6 +13,12 @@ class TagOthers extends Component {
     };
   }
 
+  componentDidMount() {
+    get("/api/tags", { user_id: this.props.id }).then((tags) => {
+      this.setState({ createdTag: tags });
+    });
+  }
+
   createTag = () => {
     this.setState({
       creatingTag: true,
@@ -23,6 +29,9 @@ class TagOthers extends Component {
     this.setState({
       creatingTag: false,
     });
+    get("/api/tags", { user_id: this.props.id }).then((tags) => {
+      this.setState({ createdTag: tags });
+    });
   };
 
   showTag = (input) => {
@@ -32,15 +41,15 @@ class TagOthers extends Component {
   };
 
   render() {
-    const createdTagsList = [];
-    get("/api/tags", { user_id: this.props.id }).then((tags) => {
-      tags.map((tag) => createdTagsList.concat(tag));
-    });
+    console.log(this.state.createdTags);
+    if (this.props.userId) {
+      return <p> You need to be logged in to tag others! </p>;
+    }
     if (this.state.creatingTag === false) {
       return (
         <div>
           <button onClick={this.createTag}>Tag Someone!</button>
-          {createdTagsList.map((tag) => (
+          {this.state.createdTags.map((tag) => (
             <div>
               {`You tagged someone feeling ${tag.feeling} to do this activity: ${tag.activity}`}
             </div>
@@ -49,7 +58,7 @@ class TagOthers extends Component {
       );
     }
     if (this.state.creatingTag === true) {
-      return <NewTagInput onSubmit={() => this.submitTag()} />;
+      return <NewTagInput onSubmit={this.submitTag} />;
     }
   }
 }

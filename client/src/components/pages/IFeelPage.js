@@ -29,11 +29,11 @@ class IFeelPage extends Component {
       finalString = finalString[0].toUpperCase() + finalString.substr(1).toLowerCase();
       this.addFeeling(finalString);
       event.target.value = "";
-      this.props.setInputtedFeelings(this.state.feelings.concat([finalString]));
     }
   };
 
   addFeeling = (feeling) => {
+    this.props.setInputtedFeelings(this.state.feelings.concat([feeling]));
     this.setState({
       feelings: this.state.feelings.concat([feeling]),
     });

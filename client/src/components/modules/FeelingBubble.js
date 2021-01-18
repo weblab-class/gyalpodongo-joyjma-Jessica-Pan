@@ -6,16 +6,20 @@ class FeelingBubble extends Component {
   constructor(props) {
     super(props);
     // Initialize Default State
-    this.state = { tasks: [] };
+    this.state = { showing: true };
   }
 
   componentDidMount() {}
 
   handleClick = () => {
     this.props.addFeeling(this.props.feeling);
+    this.setState({ showing: false });
   };
 
   render() {
+    if (!this.state.showing) {
+      return <> </>;
+    }
     return (
       <div className="feelingBubble" onClick={this.handleClick}>
         {this.props.feeling}
