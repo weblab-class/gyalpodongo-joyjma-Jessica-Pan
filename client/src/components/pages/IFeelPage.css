@@ -32,6 +32,7 @@
   justify-content: center;
   background-color: #b33c86;
   text-decoration: none;
+  position: absolute;
   width: 150px;
   margin: 20px;
 }

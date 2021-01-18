@@ -20,39 +20,45 @@ class NavBar extends Component {
     let pastFeelingsSection;
     if (this.props.userId) {
       pastFeelingsSection = (
-        <span className="NavBar-section" onClick={this.props.showFeelingsLog}>
-          past feelings
+        <span className="NavBar-link u-inlineBlock" onClick={this.props.showFeelingsLog}>
+          Past Feelings
         </span>
       );
     }
 
     return (
-      <div className="NavBar-main">
+    <nav className="NavBar-container">   <nav/>
+      <div className="NavBar-container">
         {this.props.userId ? (
+          <div className="NavBar-link NavBar-login u-inlineBlock right">
           <GoogleLogout
-            className="GoogleButton"
             clientId={GOOGLE_CLIENT_ID}
             buttonText="Logout"
             onLogoutSuccess={this.props.handleLogout}
             onFailure={(err) => console.log(err)}
           />
+          </div>
         ) : (
+          <div className="NavBar-link NavBar-login u-inlineBlock right"> 
           <GoogleLogin
-            className="GoogleButton"
             clientId={GOOGLE_CLIENT_ID}
             buttonText="Login"
             onSuccess={this.props.handleLogin}
             onFailure={(err) => console.log(err)}
           />
+          </div>
         )}
-        <span className="NavBar-section" onClick={this.props.showYourTags}>
-          your tags
+
+        <span className="NavBar-link u-inlineBlock" onClick={this.props.showYourTags}>
+          Your tags
         </span>
-        <span className="NavBar-section" onClick={this.props.showTagOthers}>
-          tag others
+        <span className="NavBar-link u-inlineBlock" onClick={this.props.showTagOthers}>
+          Tag Others
         </span>
         {pastFeelingsSection}
       </div>
+      </nav>
+ 
     );
   }
 }

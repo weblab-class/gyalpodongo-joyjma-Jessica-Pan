@@ -14,7 +14,7 @@ class IFeelPage extends Component {
   constructor(props) {
     super(props);
     // Initialize Default State
-    this.state = { feelings: [], bubbles: ["Happy", "Tired", "Anxious", "Sad"] };
+    this.state = { feelings: [], bubbles: ["Happy", "Tired", "Anxious", "Sad","Excited","Adventorous",""] };
   }
 
   componentDidMount() {
@@ -87,12 +87,12 @@ class IFeelPage extends Component {
         </span>
         <h2> You're feeling: </h2>
         {yourFeelings}
-        <div>
+        <div> {feelingBubbles}</div>
+        <div text-align="center">
           <Link className="IFeelPage-done_button" onClick={this.submitFeelingsToAPI} to="/main/">
-            Done
+            Complete
           </Link>
         </div>
-        <div> {feelingBubbles}</div>
       </>
     );
   }
