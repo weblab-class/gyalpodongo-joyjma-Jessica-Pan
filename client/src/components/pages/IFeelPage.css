@@ -28,8 +28,10 @@
   border-radius: 20px;
   padding: 0px 20px;
   text-align: center;
+  display: flex;
+  justify-content: center;
   background-color: #b33c86;
   text-decoration: none;
   width: 150px;
-  margin-left: 20px;
+  margin: 20px;
 }

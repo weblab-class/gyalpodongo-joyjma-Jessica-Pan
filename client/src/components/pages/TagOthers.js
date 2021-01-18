@@ -14,8 +14,8 @@ class TagOthers extends Component {
   }
 
   componentDidMount() {
-    get("/api/tags", { user_id: this.props.id }).then((tags) => {
-      this.setState({ createdTag: tags });
+    get("/api/tagsFromID", { user_id: this.props.id }).then((tags) => {
+      this.setState({ createdTags: tags });
     });
   }
 
@@ -29,8 +29,8 @@ class TagOthers extends Component {
     this.setState({
       creatingTag: false,
     });
-    get("/api/tags", { user_id: this.props.id }).then((tags) => {
-      this.setState({ createdTag: tags });
+    get("/api/tagsFromID", { user_id: this.props.id }).then((tags) => {
+      this.setState({ createdTags: tags });
     });
   };
 
@@ -41,18 +41,20 @@ class TagOthers extends Component {
   };
 
   render() {
+    console.log("Should be showing:");
     console.log(this.state.createdTags);
-    if (this.props.userId) {
+    if (!this.props.id) {
       return <p> You need to be logged in to tag others! </p>;
     }
     if (this.state.creatingTag === false) {
       return (
         <div>
           <button onClick={this.createTag}>Tag Someone!</button>
-          {this.state.createdTags.map((tag) => (
-            <div>
-              {`You tagged someone feeling ${tag.feeling} to do this activity: ${tag.activity}`}
-            </div>
+          <p> Here's a list of tags you've made: </p>
+          {this.state.createdTags.map((tag, i) => (
+            <p key={`displayed-cTag-${i}`}>
+              You tagged someone feeling {tag.feeling} to do this activity: {tag.activity}
+            </p>
           ))}
         </div>
       );

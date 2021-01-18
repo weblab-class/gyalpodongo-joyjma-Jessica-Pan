@@ -1,12 +1,13 @@
 const mongoose = require("mongoose");
 
 const FeelingSchema = new mongoose.Schema({
-    feeling_name: String,
-    user_id: String,
-    timestamp: { //time user entered "i feel <emotion>"
-        type: Date,
-        default: Date.now
-    },
+  feeling_name: String,
+  user_id: String,
+  timestamp: {
+    //time user entered "i feel <emotion>"
+    type: String,
+    default: new Date().toLocaleString(),
+  },
 });
 
 // compile model from schema

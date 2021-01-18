@@ -20,8 +20,13 @@ class FeeelingSection extends Component {
 
   render() {
     let taskDisplay = <p> No tasks found. </p>;
+    console.log(this.state.tasks);
     if (this.state.tasks.length !== 0) {
-      taskDisplay = <SingleTag activity={this.state.tasks[0].activity} />;
+      taskDisplay = (
+        <SingleTag
+          activity={this.state.tasks[Math.floor(Math.random() * this.state.tasks.length)].activity}
+        />
+      );
     }
     return (
       <div>

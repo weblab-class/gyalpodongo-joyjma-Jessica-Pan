@@ -56,18 +56,18 @@ router.get("/user", (req, res) => {
 
 router.post("/feeling", auth.ensureLoggedIn, (req, res) => {
   console.log(
-    `received feeling input from  ${req.user.name} (${req.user.id}): ${req.body.feeling_name}`
+    `received feeling input from  ${req.user.name} (${req.user._id}): ${req.body.feeling_name}`
   );
   const newFeeling = new Feeling({
     feeling_name: req.body.feeling_name,
-    user_id: req.user.id,
+    user_id: req.user._id,
   });
   newFeeling.save();
 });
 
 router.get("/feelings", auth.ensureLoggedIn, (req, res) => {
   Feeling.find({
-    user_id: req.user.id,
+    user_id: req.user._id,
   }).then((feelings) => {
     res.send(feelings);
   });
@@ -81,18 +81,33 @@ router.get("/tags", (req, res) => {
   });
   Tag.find({
     feeling: req.query.feeling,
-  }).then((feelings) => {
-    res.send(feelings);
+  }).then((tags) => {
+    res.send(tags);
+  });
+});
+
+router.get("/tagsFromID", (req, res) => {
+  console.log(`getting tags from the ID ${req.query.user_id}`);
+  Tag.find({
+    original_poster: req.query.user_id,
+  }).then((tags) => {
+    console.log(tags);
+    res.send(tags);
   });
 });
 
 router.post("/tag", auth.ensureLoggedIn, (req, res) => {
+  console.log(req.user._id);
+  const currTime = new Date().toLocaleString();
+  console.log(currTime);
+
   const newTag = new Tag({
-    tag_id: `${req.user.id}${Date.now}`, //each tag has a unique id: combo of user id and timestamp
+    tag_id: `${req.user._id}+${currTime}`, //each tag has a unique id: combo of user id and timestamp
     activity: req.body.activity,
     feeling: req.body.feeling, //Array of Strings, each String is a feeling
-    original_poster: req.user.id,
+    original_poster: req.user._id,
   });
+  console.log(newTag);
   newTag.save();
 });
 
