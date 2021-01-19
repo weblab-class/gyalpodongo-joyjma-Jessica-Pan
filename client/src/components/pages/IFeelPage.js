@@ -14,7 +14,10 @@ class IFeelPage extends Component {
   constructor(props) {
     super(props);
     // Initialize Default State
-    this.state = { feelings: [], bubbles: ["Happy", "Tired", "Anxious", "Sad","Excited","Adventorous",""] };
+    this.state = {
+      feelings: [],
+      bubbles: ["Happy", "Tired", "Anxious", "Sad", "Excited", "Adventorous", ""],
+    };
   }
 
   componentDidMount() {
@@ -49,14 +52,10 @@ class IFeelPage extends Component {
   render() {
     console.log(this.state.feelings);
     let yourFeelings = this.state.feelings.map((feeling, i) => (
-      <p key={`feelings-prop-${i}`}> {feeling} </p>
+      <li key={`feelings-prop-${i}`}> {feeling} </li>
     ));
     console.log(yourFeelings);
     console.log(this.state.bubbles);
-    // let feelingBubbles = this.state.bubbles.map((feeling, i) => (
-    //   <p key={`feelings-prop-${i}`}> {feeling} </p>
-    // ));
-    // console.log(feelingBubbles);
     let feelingBubbles = this.state.bubbles.map((feeling, i) => (
       <FeelingBubble key={`feeling-bubble-${i}`} addFeeling={this.addFeeling} feeling={feeling} />
     ));
@@ -85,10 +84,12 @@ class IFeelPage extends Component {
           I feel
           <input className="textbox" type="text" onKeyPress={this.handleTyping} />
         </span>
-        <h2> You're feeling: </h2>
-        {yourFeelings}
+        <h2 className="center">You're feeling:</h2>
+        <div className="center">
+          <ul>{yourFeelings}</ul>
+        </div>
         <div> {feelingBubbles}</div>
-        <div text-align="center">
+        <div className="center">
           <Link className="IFeelPage-done_button" onClick={this.submitFeelingsToAPI} to="/main/">
             Complete
           </Link>

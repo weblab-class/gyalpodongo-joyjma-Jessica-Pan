@@ -17,7 +17,7 @@
   border-radius: 20px;
   font-style: "Catamaran", Sans-serif;
   font-size: 72px;
-  border-color: black;
+  border-color: white;
   color: white;
   background-color: #ff8c5a;
 }
@@ -28,11 +28,14 @@
   border-radius: 20px;
   padding: 0px 20px;
   text-align: center;
-  display: flex;
-  justify-content: center;
   background-color: #b33c86;
   text-decoration: none;
   position: absolute;
   width: 150px;
   margin: 20px;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
 }
