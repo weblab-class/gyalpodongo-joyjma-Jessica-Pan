@@ -32,7 +32,7 @@ const auth = require("./auth");
 const socketManager = require("./server-socket");
 
 // Server configuration below
-require('dotenv').config()
+require("dotenv").config();
 
 const mongoConnectionURL = process.env.MONGO_URL;
 
@@ -96,7 +96,7 @@ app.use((err, req, res, next) => {
 });
 
 // hardcode port to 3000 for now
-const port = 3000;
+const port = 3000 || process.env.PORT;
 const server = http.Server(app);
 socketManager.init(server);
 
