@@ -4,7 +4,7 @@ import UserSideBar from "../modules/UserSideBar.js";
 import NavBar from "../modules/NavBar.js";
 import TagOthers from "./TagOthers.js";
 import YourTagsPage from "../modules/YourTagsPage.js";
-import FeelingsLog from "../modules/Feelingslog.js";
+import FeelingsLog from "../modules/FeelingsLog.js";
 
 import "../../utilities.css";
 import "./MainPage.css";
