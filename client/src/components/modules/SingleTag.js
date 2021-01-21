@@ -4,6 +4,7 @@ import "./SingleTag.css";
 
 import { get, post } from "../../utilities";
 
+// props: tag, userId
 class SingleTag extends Component {
   constructor(props) {
     super(props);
@@ -18,18 +19,14 @@ class SingleTag extends Component {
   }
 
   taskComplete = () => {
-    console.log("You did a task!");
+    console.log("task complete");
   };
 
   render() {
-    let taskDisplay = <p> No tasks found. </p>;
-    if (this.state.tasks.length !== 0) {
-      taskDisplay = <SingleTag activity={this.state.tasks[0].activity} />;
-    }
     return (
       <span>
-        <p className="SingleTag-activity"> {this.props.activity} </p>
-        <div className="SingleTag-done" onClick={this.taskComplete}></div>
+        <span className="SingleTag-activity"> {this.props.tag.activity} </span>
+        <button className="SingleTag-done" onClick={this.taskComplete}></button>
       </span>
     );
   }

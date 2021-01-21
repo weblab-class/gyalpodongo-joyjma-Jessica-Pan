@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import GoogleLogin, { GoogleLogout } from "react-google-login";
+import { Link } from "@reach/router";
 
 import "./NavBar.css";
 
@@ -27,38 +28,42 @@ class NavBar extends Component {
     }
 
     return (
-    <nav className="NavBar-container">   <nav/>
-      <div className="NavBar-container">
-        {this.props.userId ? (
-          <div className="NavBar-link NavBar-login u-inlineBlock right">
-          <GoogleLogout
-            clientId={GOOGLE_CLIENT_ID}
-            buttonText="Logout"
-            onLogoutSuccess={this.props.handleLogout}
-            onFailure={(err) => console.log(err)}
-          />
-          </div>
-        ) : (
-          <div className="NavBar-link NavBar-login u-inlineBlock right"> 
-          <GoogleLogin
-            clientId={GOOGLE_CLIENT_ID}
-            buttonText="Login"
-            onSuccess={this.props.handleLogin}
-            onFailure={(err) => console.log(err)}
-          />
-          </div>
-        )}
+      <nav className="NavBar-container">
+        {" "}
+        <nav />
+        <div className="NavBar-container">
+          {this.props.userId ? (
+            <div className="NavBar-link NavBar-login u-inlineBlock right">
+              <GoogleLogout
+                clientId={GOOGLE_CLIENT_ID}
+                buttonText="Logout"
+                onLogoutSuccess={this.props.handleLogout}
+                onFailure={(err) => console.log(err)}
+              />
+            </div>
+          ) : (
+            <div className="NavBar-link NavBar-login u-inlineBlock right">
+              <GoogleLogin
+                clientId={GOOGLE_CLIENT_ID}
+                buttonText="Login"
+                onSuccess={this.props.handleLogin}
+                onFailure={(err) => console.log(err)}
+              />
+            </div>
+          )}
 
-        <span className="NavBar-link u-inlineBlock" onClick={this.props.showYourTags}>
-          Your tags
-        </span>
-        <span className="NavBar-link u-inlineBlock" onClick={this.props.showTagOthers}>
-          Tag Others
-        </span>
-        {pastFeelingsSection}
-      </div>
+          <span className="NavBar-link u-inlineBlock" onClick={this.props.showYourTags}>
+            Your tags
+          </span>
+          <span className="NavBar-link u-inlineBlock" onClick={this.props.showTagOthers}>
+            Tag Others
+          </span>
+          <Link className="NavBar-link u-inlineBlock" to="/">
+            Input Feelings
+          </Link>
+          {pastFeelingsSection}
+        </div>
       </nav>
- 
     );
   }
 }

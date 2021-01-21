@@ -9,6 +9,8 @@ import FeelingsLog from "../modules/FeelingsLog.js";
 import "../../utilities.css";
 import "./MainPage.css";
 
+import { get, post } from "../../utilities";
+
 // props:
 // feelings: a list of strings
 // name: the name of the user
@@ -17,11 +19,44 @@ class MainPage extends Component {
   constructor(props) {
     super(props);
     // Initialize Default State
-    this.state = { showing: "Your Tags" };
+    this.state = { showing: "Your Tags", feelings: this.props.feelings };
   }
 
   componentDidMount() {
-    // remember -- api calls go here!
+    if (this.props.feelings.length === 0) {
+      console.log("getting the feelings");
+
+      get("/api/feelings").then((response) => {
+        console.log("FOUND THE FEELINGS");
+        console.log(response);
+        const lastTimeStamp = Date.parse(response[response.length - 1].timestamp);
+        console.log(lastTimeStamp);
+        console.log(typeof lastTimeStamp);
+        console.log(typeof new Date());
+        console.log(new Date());
+        console.log(new Date() - lastTimeStamp);
+        let currentFeelings = [];
+        if (new Date() - lastTimeStamp < 3600000) {
+          console.log("HERE");
+          console.log(Date.parse(response[0].timestamp));
+          console.log(typeof Date.parse(response[0].timestamp));
+          console.log(lastTimeStamp);
+
+          console.log(typeof lastTimeStamp);
+          console.log(Date.parse(response[0].timestamp) === lastTimeStamp);
+          currentFeelings = response
+            .filter((singleFeeling) => {
+              return Date.parse(singleFeeling.timestamp) === lastTimeStamp;
+            })
+            .map((singleFeeling) => {
+              return singleFeeling.feeling_name;
+            });
+        }
+        console.log(currentFeelings);
+
+        this.setState({ allFeelings: response, feelings: currentFeelings });
+      });
+    }
   }
 
   showYourTags = () => {
@@ -39,12 +74,16 @@ class MainPage extends Component {
   render() {
     let mainContent;
     if (this.state.showing === "Your Tags") {
-      mainContent = <YourTagsPage feelings={this.props.feelings} />;
+      mainContent = <YourTagsPage feelings={this.state.feelings} userId={this.props.userId} />;
     } else if (this.state.showing === "Tag Others") {
       mainContent = <TagOthers id={this.props.userId} />;
     } else if (this.state.showing === "Feelings Log") {
       mainContent = (
-        <FeelingsLog userid={this.props.userId} currentFeelings={this.props.feelings} />
+        <FeelingsLog
+          userid={this.props.userId}
+          feelingsList={this.state.allFeelings}
+          currentFeelings={this.props.feelings}
+        />
       );
     }
 

@@ -24,7 +24,8 @@ class FeeelingSection extends Component {
     if (this.state.tasks.length !== 0) {
       taskDisplay = (
         <SingleTag
-          activity={this.state.tasks[Math.floor(Math.random() * this.state.tasks.length)].activity}
+          tag={this.state.tasks[Math.floor(Math.random() * this.state.tasks.length)]}
+          userId={this.props.userId}
         />
       );
     }

@@ -28,7 +28,7 @@ class YourTagsPage extends Component {
         <h1> This is the your tags page</h1>
         {noFeelingsText}
         {this.props.feelings.map((feeling, i) => (
-          <FeeelingSection key={`feeling-${i}`} feeling={feeling} />
+          <FeeelingSection key={`feeling-${i}`} feeling={feeling} userId={this.props.userId} />
         ))}
       </div>
     );
