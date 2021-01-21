@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import FeeelingSection from "./FeeelingSection.js";
 import { Link } from "@reach/router";
 
+import "./YourTagsPage.css";
+
 class YourTagsPage extends Component {
   constructor(props) {
     super(props);
@@ -24,8 +26,7 @@ class YourTagsPage extends Component {
       );
     }
     return (
-      <div>
-        <h1> This is the your tags page</h1>
+      <div className="YourTagsPage-container">
         {noFeelingsText}
         {this.props.feelings.map((feeling, i) => (
           <FeeelingSection key={`feeling-${i}`} feeling={feeling} userId={this.props.userId} />

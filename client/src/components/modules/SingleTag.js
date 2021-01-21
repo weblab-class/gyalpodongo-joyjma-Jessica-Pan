@@ -9,7 +9,7 @@ class SingleTag extends Component {
   constructor(props) {
     super(props);
     // Initialize Default State
-    this.state = { tasks: [] };
+    this.state = {};
   }
 
   componentDidMount() {
@@ -24,9 +24,21 @@ class SingleTag extends Component {
 
   render() {
     return (
-      <span>
+      <span className="SingleTag-container">
         <span className="SingleTag-activity"> {this.props.tag.activity} </span>
-        <button className="SingleTag-done" onClick={this.taskComplete}></button>
+        <span className="SingleTag-buttonSpan">
+          <button
+            className="SingleTag-button"
+            onClick={() => {
+              this.props.removeTag(this.props.tag);
+            }}
+          >
+            Get a new task
+          </button>
+          <button className="SingleTag-button" onClick={this.taskComplete}>
+            Complete
+          </button>
+        </span>
       </span>
     );
   }

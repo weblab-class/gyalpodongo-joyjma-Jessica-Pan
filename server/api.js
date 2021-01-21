@@ -78,10 +78,6 @@ router.get("/feelings", auth.ensureLoggedIn, (req, res) => {
 
 router.get("/tags", (req, res) => {
   console.log(`getting tags with feeling ${req.query.feeling}`);
-  Tag.find({}).then((results) => {
-    console.log("ALL TAGS:");
-    console.log(results);
-  });
   Tag.find({
     feeling: req.query.feeling,
   }).then((tags) => {
