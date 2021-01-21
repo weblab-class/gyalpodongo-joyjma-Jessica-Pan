@@ -28,7 +28,7 @@ class IFeelPage extends Component {
     let key = event.keyCode || event.which;
     if (key === 13) {
       event.preventDefault();
-      let finalString = event.target.value;
+      let finalString = event.target.value.trim();
       finalString = finalString[0].toUpperCase() + finalString.substr(1).toLowerCase();
       this.addFeeling(finalString);
       event.target.value = "";

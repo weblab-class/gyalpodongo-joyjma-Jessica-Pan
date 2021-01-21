@@ -58,9 +58,12 @@ router.post("/feeling", auth.ensureLoggedIn, (req, res) => {
   console.log(
     `received feeling input from  ${req.user.name} (${req.user._id}): ${req.body.feeling_name}`
   );
+  const currentTime = new Date().toLocaleString();
+  console.log(currentTime);
   const newFeeling = new Feeling({
     feeling_name: req.body.feeling_name,
     user_id: req.user._id,
+    timestamp: currentTime,
   });
   newFeeling.save();
 });

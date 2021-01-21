@@ -23,18 +23,18 @@ class MainPage extends Component {
   }
 
   componentDidMount() {
-    if (this.props.feelings.length === 0) {
-      console.log("getting the feelings");
+    console.log("getting the feelings");
 
-      get("/api/feelings").then((response) => {
-        console.log("FOUND THE FEELINGS");
-        console.log(response);
-        const lastTimeStamp = Date.parse(response[response.length - 1].timestamp);
-        console.log(lastTimeStamp);
-        console.log(typeof lastTimeStamp);
-        console.log(typeof new Date());
-        console.log(new Date());
-        console.log(new Date() - lastTimeStamp);
+    get("/api/feelings").then((response) => {
+      console.log("FOUND THE FEELINGS");
+      console.log(response);
+      const lastTimeStamp = Date.parse(response[response.length - 1].timestamp);
+      console.log(lastTimeStamp);
+      console.log(typeof lastTimeStamp);
+      console.log(new Date());
+      console.log(new Date() - lastTimeStamp);
+
+      if (this.props.feelings.length === 0) {
         let currentFeelings = [];
         if (new Date() - lastTimeStamp < 3600000) {
           console.log("HERE");
@@ -55,8 +55,10 @@ class MainPage extends Component {
         console.log(currentFeelings);
 
         this.setState({ allFeelings: response, feelings: currentFeelings });
-      });
-    }
+      } else {
+        this.setState({ allFeelings: response });
+      }
+    });
   }
 
   showYourTags = () => {

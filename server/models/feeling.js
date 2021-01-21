@@ -5,8 +5,8 @@ const FeelingSchema = new mongoose.Schema({
   user_id: String,
   timestamp: {
     //time user entered "i feel <emotion>"
-    type: Date,
-    default: new Date(),
+    type: String,
+    default: new Date().toLocaleString(),
   },
 });
 

@@ -42,7 +42,7 @@ class FeelingsLog extends Component {
         <h2> Past feelings: </h2>
         {this.state.feelings.map((feeling, i) => (
           <p key={`past-list-${i}`}>
-            You felt {feeling.feeling_name} on {feeling.timestamp.toLocaleString()}.
+            You felt {feeling.feeling_name} on {feeling.timestamp}.
           </p>
         ))}
       </div>
