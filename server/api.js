@@ -110,6 +110,45 @@ router.post("/tag", auth.ensureLoggedIn, (req, res) => {
   newTag.save();
 });
 
+// parameters: tagId and userId
+router.post("/task-complete", auth.ensureLoggedIn, (req, res) => {
+  console.log("HEREEEEE");
+  console.log(req.body.tagId);
+  User.findById(req.body.userId).then((user) => {
+    if (user.tags === undefined) {
+      user.tags = [req.body.tagId];
+    } else {
+      user.tags = user.tags.concat([req.body.tagId]);
+    }
+    console.log("here's the tag list");
+    console.log(user.tags);
+    user.save();
+  });
+});
+
+router.get("/tags-done", auth.ensureLoggedIn, (req, res) => {
+  User.findById(req.user._id).then((user) => {
+    console.log("THE TAGS:");
+    console.log(user.tags);
+    let tagList = [];
+    for (let i = 0; i < user.tags.length; i++) {
+      console.log("here");
+      tagList.push(Tag.findOne({ tag_id: user.tags[i] }));
+    }
+    console.log(tagList);
+    Promise.all(tagList).then((finalTagList) => {
+      console.log("final tag list");
+      console.log(finalTagList);
+      if (req.query.feeling !== undefined) {
+        finalTagList = finalTagList.filter((tag) => {
+          return tag.feeling === req.query.feeling;
+        });
+      }
+      res.send(finalTagList);
+    });
+  });
+});
+
 // anything else falls to this "not found" case
 router.all("*", (req, res) => {
   console.log(`API route not found: ${req.method} ${req.url}`);

@@ -37,16 +37,15 @@ class MainPage extends Component {
       if (this.props.feelings.length === 0) {
         let currentFeelings = [];
         if (new Date() - lastTimeStamp < 3600000) {
-          console.log("HERE");
-          console.log(Date.parse(response[0].timestamp));
-          console.log(typeof Date.parse(response[0].timestamp));
-          console.log(lastTimeStamp);
-
-          console.log(typeof lastTimeStamp);
-          console.log(Date.parse(response[0].timestamp) === lastTimeStamp);
+          // console.log("HERE");
+          // console.log(Date.parse(response[0].timestamp));
+          // console.log(typeof Date.parse(response[0].timestamp));
+          // console.log(lastTimeStamp);
+          // console.log(Date.parse(response[0].timestamp) === lastTimeStamp);
           currentFeelings = response
             .filter((singleFeeling) => {
-              return Date.parse(singleFeeling.timestamp) === lastTimeStamp;
+              console.log(Date.parse(singleFeeling.timestamp) - lastTimeStamp);
+              return lastTimeStamp - Date.parse(singleFeeling.timestamp) < 3000;
             })
             .map((singleFeeling) => {
               return singleFeeling.feeling_name;
@@ -84,7 +83,7 @@ class MainPage extends Component {
         <FeelingsLog
           userid={this.props.userId}
           feelingsList={this.state.allFeelings}
-          currentFeelings={this.props.feelings}
+          currentFeelings={this.state.feelings}
         />
       );
     }

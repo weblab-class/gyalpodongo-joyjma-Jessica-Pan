@@ -18,14 +18,25 @@ class FeeelingSection extends Component {
       const gotResults = response.length === 0;
       const indexToDisplay = Math.floor(Math.random() * this.state.tasks.length);
       this.setState({ tasks: response, seenTags: gotResults, indexToDisplay: indexToDisplay });
+      console.log("getting tags done");
+      get("/api/tags-done", { feeling: this.props.feeling }).then((tagsDone) => {
+        console.log(tagsDone);
+        this.removeTags(tagsDone);
+      });
     });
   }
 
   removeTag = (tag) => {
-    console.log("removing this tag:");
-    console.log(tag);
+    this.removeTags([tag]);
+  };
+
+  removeTags = (listOfTags) => {
+    console.log("removing these tags:");
+    console.log(listOfTags);
     let newTagsArray = this.state.tasks;
-    newTagsArray.splice(newTagsArray.indexOf(tag), 1);
+    for (let i = 0; i < listOfTags.length; i++) {
+      newTagsArray.splice(newTagsArray.indexOf(listOfTags[i]), 1);
+    }
     const indexToDisplay = Math.floor(Math.random() * (this.state.tasks.length - 1));
     this.setState({ tasks: newTagsArray, seenTags: true, indexToDisplay: indexToDisplay });
   };

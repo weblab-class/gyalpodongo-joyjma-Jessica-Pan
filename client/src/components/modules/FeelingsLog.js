@@ -10,14 +10,14 @@ class FeelingsLog extends Component {
   constructor(props) {
     super(props);
     // Initialize Default State
-    this.state = { feelings: this.props.feelingsList };
+    this.state = { allFeelings: this.props.feelingsList };
   }
 
   componentDidMount() {
     // remember -- api calls go here!
-    if (this.state.feelings === undefined) {
+    if (this.state.allFeelings === []) {
       get("/api/feelings").then((response) => {
-        this.setState({ feelings: response });
+        this.setState({ allFeelings: response });
       });
     }
   }
@@ -40,7 +40,7 @@ class FeelingsLog extends Component {
         <h2> Current Emotions: </h2>
         {currentFeelings}
         <h2> Past feelings: </h2>
-        {this.state.feelings.map((feeling, i) => (
+        {this.state.allFeelings.map((feeling, i) => (
           <p key={`past-list-${i}`}>
             You felt {feeling.feeling_name} on {feeling.timestamp}.
           </p>

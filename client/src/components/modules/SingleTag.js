@@ -12,14 +12,10 @@ class SingleTag extends Component {
     this.state = {};
   }
 
-  componentDidMount() {
-    get("/api/tags", { feeling: this.props.feeling }).then((response) => {
-      this.setState({ tasks: response });
-    });
-  }
-
   taskComplete = () => {
-    console.log("task complete");
+    console.log("HEREE ");
+    post("/api/task-complete", { tagId: this.props.tag.tag_id, userId: this.props.userId });
+    this.props.removeTag(this.props.tag);
   };
 
   render() {

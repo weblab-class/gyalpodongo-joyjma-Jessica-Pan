@@ -4,23 +4,26 @@
 }
 
 .SingleTag-button {
-  background-color: green;
+  background-color: #806d40;
+  border-color: #463f3a;
   height: 40px;
   margin-left: 10px;
 }
 
 .SingleTag-buttonSpan {
   margin-left: auto;
+  min-width: 200px;
+  height: 40px;
 }
 
 .SingleTag-container {
-  width: 100%;
+  width: 90%;
   display: flex;
   padding: 10px;
   align-items: center;
-  background-color: pink;
+  background-color: #eafdf8;
   border-style: solid;
-  border-color: black;
+  border-color: #463f3a;
   border-width: 2px;
   margin-right: 20px;
 }
