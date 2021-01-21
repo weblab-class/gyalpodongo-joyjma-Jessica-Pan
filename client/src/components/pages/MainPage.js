@@ -5,6 +5,7 @@ import NavBar from "../modules/NavBar.js";
 import TagOthers from "./TagOthers.js";
 import YourTagsPage from "../modules/YourTagsPage.js";
 import FeelingsLog from "../modules/FeelingsLog.js";
+import TagsLog from "../modules/TagsLog.js";
 
 import "../../utilities.css";
 import "./MainPage.css";
@@ -60,6 +61,12 @@ class MainPage extends Component {
     });
   }
 
+  handleLoginIntermediate = (res) => {
+    console.log("oooohohohohoh");
+    this.componentDidMount();
+    this.props.handleLogin(res);
+  };
+
   showYourTags = () => {
     this.setState({ showing: "Your Tags" });
   };
@@ -70,6 +77,10 @@ class MainPage extends Component {
 
   showFeelingsLog = () => {
     this.setState({ showing: "Feelings Log" });
+  };
+
+  showTagsLog = () => {
+    this.setState({ showing: "Tags Log" });
   };
 
   render() {
@@ -86,20 +97,23 @@ class MainPage extends Component {
           currentFeelings={this.state.feelings}
         />
       );
+    } else if (this.state.showing === "Tags Log") {
+      mainContent = <TagsLog userId={this.props.userId} currentFeelings={this.state.feelings} />;
     }
 
     return (
       <>
         <NavBar
           handleLogout={this.props.handleLogout}
-          handleLogin={this.props.handleLogin}
+          handleLogin={this.handleLoginIntermediate}
           userId={this.props.userId}
           showYourTags={this.showYourTags}
           showTagOthers={this.showTagOthers}
           showFeelingsLog={this.showFeelingsLog}
+          showTagsLog={this.showTagsLog}
         />
         <span className="MainPage-main">
-          <UserSideBar name={this.props.name} feelings={this.props.feelings} />
+          <UserSideBar name={this.props.name} feelings={this.state.feelings} />
           <div className="MainPage-mainContent">{mainContent}</div>
         </span>
       </>
