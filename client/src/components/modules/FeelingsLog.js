@@ -17,13 +17,15 @@ class FeelingsLog extends Component {
     // remember -- api calls go here!
     if (this.state.allFeelings === []) {
       get("/api/feelings").then((response) => {
-        this.setState({ allFeelings: response });
+        console.log(response);
+        console.log(response.reverse());
+        this.setState({ allFeelings: response.reverse() });
       });
     }
   }
 
   render() {
-    console.log(this.state.feelings);
+    console.log(this.state.allFeelings);
     let currentFeelings = this.props.currentFeelings.join(", ");
     if (this.props.currentFeelings.length === 0) {
       currentFeelings = (

@@ -40,10 +40,11 @@ class App extends Component {
       this.setState({ userId: user._id, name: user.name, feelings: [] });
       post("/api/initsocket", { socketid: socket.id });
     });
+    return "done";
   };
 
   handleLogout = () => {
-    this.setState({ userId: undefined });
+    this.setState({ userId: undefined, name: undefined });
     post("/api/logout");
   };
 

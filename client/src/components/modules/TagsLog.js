@@ -15,7 +15,7 @@ class TagsLog extends Component {
 
   componentDidMount() {
     get("/api/tags-done").then((response) => {
-      this.setState({ allTags: response });
+      this.setState({ allTags: response.reverse() });
     });
   }
 

@@ -20,12 +20,15 @@ class MainPage extends Component {
   constructor(props) {
     super(props);
     // Initialize Default State
-    this.state = { showing: "Your Tags", feelings: this.props.feelings };
+    this.state = { showing: "Your Tags", feelings: this.props.feelings, allFeelings: [] };
   }
 
   componentDidMount() {
     console.log("getting the feelings");
+    this.getAllPastFeelings();
+  }
 
+  getAllPastFeelings = () => {
     get("/api/feelings").then((response) => {
       console.log("FOUND THE FEELINGS");
       console.log(response);
@@ -38,11 +41,6 @@ class MainPage extends Component {
       if (this.props.feelings.length === 0) {
         let currentFeelings = [];
         if (new Date() - lastTimeStamp < 3600000) {
-          // console.log("HERE");
-          // console.log(Date.parse(response[0].timestamp));
-          // console.log(typeof Date.parse(response[0].timestamp));
-          // console.log(lastTimeStamp);
-          // console.log(Date.parse(response[0].timestamp) === lastTimeStamp);
           currentFeelings = response
             .filter((singleFeeling) => {
               console.log(Date.parse(singleFeeling.timestamp) - lastTimeStamp);
@@ -59,12 +57,19 @@ class MainPage extends Component {
         this.setState({ allFeelings: response });
       }
     });
-  }
+  };
 
   handleLoginIntermediate = (res) => {
-    console.log("oooohohohohoh");
-    this.componentDidMount();
-    this.props.handleLogin(res);
+    let x = this.props.handleLogin(res);
+    Promise.all([x]).then((results) => {
+      console.log("1");
+      for (let i = 0; i < this.state.feelings.length; i++) {
+        console.log(`I'm posting ${this.state.feelings[i]}`);
+        post("/api/feeling", { feeling_name: this.state.feelings[i] });
+      }
+      console.log("2");
+      this.getAllPastFeelings();
+    });
   };
 
   showYourTags = () => {
