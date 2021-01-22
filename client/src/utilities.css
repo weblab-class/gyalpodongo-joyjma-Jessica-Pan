@@ -36,7 +36,8 @@ body {
   padding: 0;
   font-family: "Catamaran", sans-serif;
   font-weight: 300;
-  background-color: #FF8C5A;
+  background-color: #ff8c5a;
+  height: 100%;
 }
 
 form {
@@ -88,4 +89,8 @@ form {
 
 .u-link:hover {
   color: var(--primary--dim);
+}
+
+.u-fullHeight {
+  height: 100%;
 }

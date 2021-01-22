@@ -56,7 +56,7 @@ class NavBar extends Component {
           )}
 
           <span className="NavBar-link u-inlineBlock" onClick={this.props.showYourTags}>
-            Your tags
+            Your Tags
           </span>
           <span className="NavBar-link u-inlineBlock" onClick={this.props.showTagOthers}>
             Tag Others

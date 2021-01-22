@@ -65,6 +65,7 @@ class App extends Component {
             name={this.state.name}
           />
           <MainPage
+            className="u-fullHeight"
             path="/main/"
             handleLogin={this.handleLogin}
             handleLogout={this.handleLogout}

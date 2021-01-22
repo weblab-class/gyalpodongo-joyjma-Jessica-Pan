@@ -107,7 +107,7 @@ class MainPage extends Component {
     }
 
     return (
-      <>
+      <div className="u-fullHeight">
         <NavBar
           handleLogout={this.props.handleLogout}
           handleLogin={this.handleLoginIntermediate}
@@ -121,7 +121,7 @@ class MainPage extends Component {
           <UserSideBar name={this.props.name} feelings={this.state.feelings} />
           <div className="MainPage-mainContent">{mainContent}</div>
         </span>
-      </>
+      </div>
     );
   }
 }

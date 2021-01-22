@@ -1,12 +1,12 @@
 .UserSideBar-main {
   border-color: black;
-  border-style: solid;
-  border-radius: 10px;
-  padding: 0px 10px;
+  background-color: pink;
+  border-right-style: solid;
+  padding: 10px 20px;
+  margin-right: 20px;
   border-width: 1px;
-  margin: 20px;
   width: 100px;
-  height: 90%;
+  height: 85vh;
   text-align: center;
 }
 

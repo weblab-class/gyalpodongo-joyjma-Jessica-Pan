@@ -3,6 +3,8 @@ import { Link } from "@reach/router";
 import NewTagInput from "./NewTagInput.js";
 import { get } from "../../utilities";
 
+import "./TagOthers.css";
+
 class TagOthers extends Component {
   constructor(props) {
     super(props);
@@ -49,8 +51,10 @@ class TagOthers extends Component {
     if (this.state.creatingTag === false) {
       return (
         <div>
-          <button onClick={this.createTag}>Tag Someone!</button>
-          <p> Here's a list of tags you've made: </p>
+          <button className="TagOthers-newTagButton" onClick={this.createTag}>
+            New Tag!
+          </button>
+          <h2> Here's are the tags you've made: </h2>
           {this.state.createdTags.map((tag, i) => (
             <p key={`displayed-cTag-${i}`}>
               You tagged someone feeling {tag.feeling} to do this activity: {tag.activity}
