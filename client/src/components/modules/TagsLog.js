@@ -39,6 +39,12 @@ class TagsLog extends Component {
   render() {
     console.log(this.state.allTags);
     let currentFeelings = this.props.currentFeelings.join(", ");
+    currentFeelings = this.props.currentFeelings.map((feeling, i) => (
+      <div key={`tag-section-${feeling}`}>
+        <h3> {feeling} </h3>
+        {this.getTagsForFeeling(feeling)}
+      </div>
+    ));
     if (this.props.currentFeelings.length === 0) {
       currentFeelings = (
         <>
@@ -51,12 +57,7 @@ class TagsLog extends Component {
     return (
       <div>
         <h2> Current Feelings: </h2>
-        {this.props.currentFeelings.map((feeling, i) => (
-          <div key={`tag-section-${feeling}`}>
-            <h3> {feeling} </h3>
-            {this.getTagsForFeeling(feeling)}
-          </div>
-        ))}
+        {currentFeelings}
         <h2> All past tags: </h2>
         {this.state.allTags.map((tag, i) => (
           <p key={`past-tag-${i}`}>

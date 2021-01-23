@@ -46,6 +46,7 @@ router.post("/initsocket", (req, res) => {
 //import models
 const Tag = require("./models/tag");
 const Feeling = require("./models/feeling");
+const Note = require("./models/note");
 
 //get user. copy pasted from api.js in catbook
 router.get("/user", (req, res) => {
@@ -146,6 +147,27 @@ router.get("/tags-done", auth.ensureLoggedIn, (req, res) => {
       }
       res.send(finalTagList);
     });
+  });
+});
+
+router.post("/new-note", auth.ensureLoggedIn, (req, res) => {
+  console.log("posting a note with this content: ");
+  console.log(req.body.content);
+  const newNote = new Note({
+    user_id: req.user._id,
+    feeling_id: req.body.feeling_id,
+    content: req.body.content,
+  });
+  newNote.save();
+});
+
+router.get("/notes", auth.ensureLoggedIn, (req, res) => {
+  console.log("getting notes");
+  Note.find({
+    user_id: req.user._id,
+  }).then((results) => {
+    console.log(res);
+    res.send(results);
   });
 });
 

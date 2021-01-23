@@ -21,7 +21,6 @@
 }
 
 .NavBar-link,
-
 .NavBar-link:visited {
   color: var(--white);
   opacity: 0.6;
@@ -37,6 +36,5 @@
 }
 .NavBar-link.NavBar-login {
   opacity: 1;
-  right:0;
+  right: 0;
 }
-

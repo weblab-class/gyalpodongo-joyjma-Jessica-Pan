@@ -16,13 +16,15 @@ class UserSiderBar extends Component {
   render() {
     return (
       <div className="UserSideBar-main">
-        Hello, <br /> {this.props.name}
-        <p>Feelings:</p>
-        <ul className="UserSideBar-feelingsList">
-          {this.props.feelings.map((feeling, i) => (
-            <li key={`feelings-list-${i}`}> {feeling} </li>
-          ))}
-        </ul>
+        <span className="UserSideBar-content">
+          Hello, <br /> {this.props.name}
+          <p>Feelings:</p>
+          <ul className="UserSideBar-feelingsList">
+            {this.props.feelings.map((feeling, i) => (
+              <li key={`feelings-list-${i}`}> {feeling} </li>
+            ))}
+          </ul>
+        </span>
       </div>
     );
   }

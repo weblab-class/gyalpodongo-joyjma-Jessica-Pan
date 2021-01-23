@@ -64,6 +64,9 @@ class NavBar extends Component {
           <Link className="NavBar-link u-inlineBlock" to="/">
             Input Feelings
           </Link>
+          <span className="NavBar-link u-inlineBlock" onClick={this.props.showJournaling}>
+            Journal
+          </span>
           {pastFeelingsSection}
         </div>
       </nav>

@@ -36,11 +36,14 @@ class App extends Component {
   handleLogin = (res) => {
     console.log(`Logged in as ${res.profileObj.name}`);
     const userToken = res.tokenObj.id_token;
-    post("/api/login", { token: userToken }).then((user) => {
+    let promise2;
+    const promise1 = post("/api/login", { token: userToken }).then((user) => {
       this.setState({ userId: user._id, name: user.name, feelings: [] });
-      post("/api/initsocket", { socketid: socket.id });
+      promise2 = post("/api/initsocket", { socketid: socket.id }).then((results) => {
+        console.log("finished logging in");
+      });
     });
-    return "done";
+    return [promise1, promise2];
   };
 
   handleLogout = () => {

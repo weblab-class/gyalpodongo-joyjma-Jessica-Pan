@@ -15,20 +15,20 @@ class FeeelingSection extends Component {
 
   componentDidMount() {
     get("/api/tags", { feeling: this.props.feeling }).then((response) => {
-      const gotResults = response.length === 0;
+      const gotResults = response.length !== 0;
+      // console.log("here are the tags that I found for the feeling " + this.props.feeling + ":");
+      // console.log(response);
       const indexToDisplay = Math.floor(Math.random() * this.state.tasks.length);
       this.setState({ tasks: response, seenTags: gotResults, indexToDisplay: indexToDisplay });
       console.log("getting tags done");
       get("/api/tags-done", { feeling: this.props.feeling }).then((tagsDone) => {
-        console.log(tagsDone);
-        this.removeTags(tagsDone);
+        if (tagsDone.length !== 0) {
+          console.log(tagsDone);
+          this.removeTags(tagsDone);
+        }
       });
     });
   }
-
-  removeTag = (tag) => {
-    this.removeTags([tag]);
-  };
 
   removeTags = (listOfTags) => {
     console.log("removing these tags:");
@@ -47,11 +47,17 @@ class FeeelingSection extends Component {
     ) : (
       <p> No tasks found. </p>
     );
-    console.log(this.state.tasks);
+    // console.log("Here's the seenTags for the emotion " + this.props.feeling);
+    // console.log(this.state.seenTags);
+    // console.log(this.state.tasks);
     if (this.state.tasks.length !== 0) {
       const tagToDisplay = this.state.tasks[Math.floor(Math.random() * this.state.tasks.length)];
       taskDisplay = (
-        <SingleTag tag={tagToDisplay} userId={this.props.userId} removeTag={this.removeTag} />
+        <SingleTag
+          tag={tagToDisplay}
+          userId={this.props.userId}
+          removeTag={(tag) => this.removeTags([tag])}
+        />
       );
     }
     return (

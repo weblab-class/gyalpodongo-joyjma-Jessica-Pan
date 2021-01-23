@@ -6,6 +6,7 @@ import TagOthers from "./TagOthers.js";
 import YourTagsPage from "../modules/YourTagsPage.js";
 import FeelingsLog from "../modules/FeelingsLog.js";
 import TagsLog from "../modules/TagsLog.js";
+import JournalingPage from "../modules/JournalingPage.js";
 
 import "../../utilities.css";
 import "./MainPage.css";
@@ -20,7 +21,7 @@ class MainPage extends Component {
   constructor(props) {
     super(props);
     // Initialize Default State
-    this.state = { showing: "Your Tags", feelings: this.props.feelings, allFeelings: [] };
+    this.state = { mainContent: "Loading...", feelings: this.props.feelings, allFeelings: [] };
   }
 
   componentDidMount() {
@@ -33,35 +34,38 @@ class MainPage extends Component {
       console.log("FOUND THE FEELINGS");
       console.log(response);
       const lastTimeStamp = Date.parse(response[response.length - 1].timestamp);
-      console.log(lastTimeStamp);
-      console.log(typeof lastTimeStamp);
-      console.log(new Date());
-      console.log(new Date() - lastTimeStamp);
 
       if (this.props.feelings.length === 0) {
-        let currentFeelings = [];
+        let currentFeelingNames = [];
+        let currentFeelingIDs;
         if (new Date() - lastTimeStamp < 3600000) {
-          currentFeelings = response
-            .filter((singleFeeling) => {
-              console.log(Date.parse(singleFeeling.timestamp) - lastTimeStamp);
-              return lastTimeStamp - Date.parse(singleFeeling.timestamp) < 3000;
-            })
-            .map((singleFeeling) => {
-              return singleFeeling.feeling_name;
-            });
+          const currentFeelings = response.filter((singleFeeling) => {
+            return lastTimeStamp - Date.parse(singleFeeling.timestamp) < 3000;
+          });
+          currentFeelingNames = currentFeelings.map((singleFeeling) => {
+            return singleFeeling.feeling_name;
+          });
+          currentFeelingIDs = currentFeelings.map((singleFeeling) => {
+            return singleFeeling._id;
+          });
         }
-        console.log(currentFeelings);
+        console.log(currentFeelingNames);
 
-        this.setState({ allFeelings: response, feelings: currentFeelings });
+        this.setState({
+          allFeelings: response,
+          feelings: currentFeelingNames,
+          feeling_ids: currentFeelingIDs,
+        });
       } else {
         this.setState({ allFeelings: response });
       }
+      this.showYourTags();
     });
   };
 
   handleLoginIntermediate = (res) => {
     let x = this.props.handleLogin(res);
-    Promise.all([x]).then((results) => {
+    Promise.all(x).then((results) => {
       console.log("1");
       for (let i = 0; i < this.state.feelings.length; i++) {
         console.log(`I'm posting ${this.state.feelings[i]}`);
@@ -73,39 +77,42 @@ class MainPage extends Component {
   };
 
   showYourTags = () => {
-    this.setState({ showing: "Your Tags" });
+    this.setState({
+      mainContent: <YourTagsPage feelings={this.state.feelings} userId={this.props.userId} />,
+    });
   };
 
   showTagOthers = () => {
-    this.setState({ showing: "Tag Others" });
+    this.setState({ mainContent: <TagOthers id={this.props.userId} /> });
   };
 
   showFeelingsLog = () => {
-    this.setState({ showing: "Feelings Log" });
-  };
-
-  showTagsLog = () => {
-    this.setState({ showing: "Tags Log" });
-  };
-
-  render() {
-    let mainContent;
-    if (this.state.showing === "Your Tags") {
-      mainContent = <YourTagsPage feelings={this.state.feelings} userId={this.props.userId} />;
-    } else if (this.state.showing === "Tag Others") {
-      mainContent = <TagOthers id={this.props.userId} />;
-    } else if (this.state.showing === "Feelings Log") {
-      mainContent = (
+    this.setState({
+      mainContent: (
         <FeelingsLog
           userid={this.props.userId}
           feelingsList={this.state.allFeelings}
           currentFeelings={this.state.feelings}
         />
-      );
-    } else if (this.state.showing === "Tags Log") {
-      mainContent = <TagsLog userId={this.props.userId} currentFeelings={this.state.feelings} />;
-    }
+      ),
+    });
+  };
 
+  showTagsLog = () => {
+    this.setState({
+      mainContent: <TagsLog userId={this.props.userId} currentFeelings={this.state.feelings} />,
+    });
+  };
+
+  showJournaling = () => {
+    this.setState({
+      mainContent: (
+        <JournalingPage feelings={this.state.feelings} feeling_ids={this.state.feeling_ids} />
+      ),
+    });
+  };
+
+  render() {
     return (
       <div className="u-fullHeight">
         <NavBar
@@ -116,10 +123,11 @@ class MainPage extends Component {
           showTagOthers={this.showTagOthers}
           showFeelingsLog={this.showFeelingsLog}
           showTagsLog={this.showTagsLog}
+          showJournaling={this.showJournaling}
         />
         <span className="MainPage-main">
           <UserSideBar name={this.props.name} feelings={this.state.feelings} />
-          <div className="MainPage-mainContent">{mainContent}</div>
+          <div className="MainPage-mainContent">{this.state.mainContent}</div>
         </span>
       </div>
     );

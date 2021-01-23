@@ -1,8 +1,9 @@
 .MainPage-mainContent {
-  margin-top: 20px;
-  margin-right: 10px;
+  margin: 10px 20px;
 }
 
 .MainPage-main {
-  display: flex;
+  display: table;
+  height: inherit;
+  min-height: 89vh;
 }
