@@ -61,10 +61,10 @@ class FeelingsLog extends Component {
 
     return (
       <div>
-        This is a log of all of your past feelings:
-        <h2> Current Emotions: </h2>
+        <h2> Here you can view a log of your past feelings. </h2>
+        <h1> Current Emotions: </h1>
         {currentFeelings}
-        <h2> Past feelings: </h2>
+        <h1> Past feelings: </h1>
         {this.state.allFeelings.map((feeling, i) => (
           <div key={`past-list-${i}`}>
             <h3>

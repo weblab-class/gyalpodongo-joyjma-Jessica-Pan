@@ -51,6 +51,7 @@ class TagOthers extends Component {
     if (this.state.creatingTag === false) {
       return (
         <div>
+          <h2> Here you can create a new tag for a specific feeling. </h2>
           <button className="TagOthers-newTagButton" onClick={this.createTag}>
             New Tag!
           </button>

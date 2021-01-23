@@ -33,8 +33,8 @@ class JournalingPage extends Component {
   render() {
     return (
       <div>
-        <h2> This is where you can journal about your feelings. </h2> Your emotions are valid.
-        Describe why you feel that way as comprehensively as you can.
+        <h2> Here you can journal about your feelings. </h2> Your emotions are valid. Describe why
+        you feel that way as comprehensively as you can.
         {this.props.feelings.map((feeling, i) => (
           <div key={`feeling-journal-section=${i}`}>
             <h3> You said you're feeling {feeling}. Talk about that. </h3>

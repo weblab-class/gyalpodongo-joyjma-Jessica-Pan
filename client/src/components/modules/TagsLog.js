@@ -53,17 +53,24 @@ class TagsLog extends Component {
         </>
       );
     }
-
-    return (
-      <div>
-        <h2> Current Feelings: </h2>
-        {currentFeelings}
-        <h2> All past tags: </h2>
-        {this.state.allTags.map((tag, i) => (
+    const allTagsDisplay =
+      this.state.allTags.length === 0 ? (
+        <p> You haven't done any tags </p>
+      ) : (
+        this.state.allTags.map((tag, i) => (
           <p key={`past-tag-${i}`}>
             When you were feeling {tag.feeling}, you did this activity: {tag.activity}
           </p>
-        ))}
+        ))
+      );
+
+    return (
+      <div>
+        <h2> Here you can see a list of tags that you've done. </h2>
+        <h1> Current Feelings: </h1>
+        {currentFeelings}
+        <h1> All past tags: </h1>
+        {allTagsDisplay}
       </div>
     );
   }

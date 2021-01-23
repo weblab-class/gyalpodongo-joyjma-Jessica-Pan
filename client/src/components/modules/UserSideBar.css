@@ -8,13 +8,21 @@
   width: 100px;
   display: table-cell;
   height: 100%;
+  text-align: center;
 }
 
 .UserSideBar-content {
   position: absolute;
-  top: 100px;
+  width: 100px;
+  top: 95px;
+  left: 20px;
+}
+
+.UserSideBar-otherText {
+  text-align: center;
 }
 
 .UserSideBar-feelingsList {
   text-align: left;
+  margin-left: -20px;
 }

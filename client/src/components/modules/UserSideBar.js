@@ -17,8 +17,10 @@ class UserSiderBar extends Component {
     return (
       <div className="UserSideBar-main">
         <span className="UserSideBar-content">
-          Hello, <br /> {this.props.name}
-          <p>Feelings:</p>
+          <span className="UserSideBar-otherText">
+            Hello, <br /> {this.props.name}
+            <p>Feelings:</p>
+          </span>
           <ul className="UserSideBar-feelingsList">
             {this.props.feelings.map((feeling, i) => (
               <li key={`feelings-list-${i}`}> {feeling} </li>
