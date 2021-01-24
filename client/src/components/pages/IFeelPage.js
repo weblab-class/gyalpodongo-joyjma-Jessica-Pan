@@ -16,6 +16,7 @@ class IFeelPage extends Component {
     // Initialize Default State
     this.state = {
       feelings: [],
+      currentInput: "",
       bubbles: ["Happy", "Tired", "Anxious", "Sad", "Excited", "Adventorous", ""],
     };
   }
@@ -43,6 +44,11 @@ class IFeelPage extends Component {
   };
 
   submitFeelingsToAPI = () => {
+    let currentInputString = this.state.currentInput;
+    currentInputString =
+      currentInputString[0].toUpperCase() + currentInputString.substr(1).toLowerCase();
+    this.addFeeling(currentInputString);
+
     for (let i = 0; i < this.state.feelings.length; i++) {
       console.log(`I'm posting ${this.state.feelings[i]}`);
       post("/api/feeling", { feeling_name: this.state.feelings[i] });
@@ -82,7 +88,12 @@ class IFeelPage extends Component {
         {this.props.name === undefined ? <> </> : <> Hello, {this.props.name} </>}
         <span className="IFeelSpan">
           I feel
-          <input className="textbox" type="text" onKeyPress={this.handleTyping} />
+          <input
+            className="textbox"
+            type="text"
+            onChange={(event) => this.setState({ currentInput: event.target.value })}
+            onKeyPress={this.handleTyping}
+          />
         </span>
         <h2 className="center">You're feeling:</h2>
         <div className="center">
