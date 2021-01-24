@@ -24,7 +24,7 @@ class TagsLog extends Component {
       .filter((tag) => {
         return tag.feeling === feeling;
       })
-      .map((tag, i) => <li key={`tag-${feeling}-${i}`}> {tag.activity} </li>);
+      .map((tag, i) => <li key={`tag-${feeling}-${i}`}> {this.props.tagToHTML(tag.activity)} </li>);
     if (tagsToDisplay.length === 0) {
       return <> You haven't done any tags with this feeling in the past. </>;
     }
@@ -59,7 +59,8 @@ class TagsLog extends Component {
       ) : (
         this.state.allTags.map((tag, i) => (
           <p key={`past-tag-${i}`}>
-            When you were feeling {tag.feeling}, you did this activity: {tag.activity}
+            When you were feeling {tag.feeling}, you did this activity:{" "}
+            {this.props.tagToHTML(tag.activity)}
           </p>
         ))
       );

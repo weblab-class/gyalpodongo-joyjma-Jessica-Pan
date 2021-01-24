@@ -27,6 +27,7 @@ class MainPage extends Component {
   componentDidMount() {
     console.log("getting the feelings");
     this.getAllPastFeelings();
+    this.showYourTags();
   }
 
   getAllPastFeelings = () => {
@@ -76,14 +77,33 @@ class MainPage extends Component {
     });
   };
 
+  tagToHTML = (tagActivityText) => {
+    // tagActivityText is in this form: activity|||link. This program puts in into this form: activity (link)
+    const parsedText = tagActivityText.split("|||");
+    if (parsedText.length === 1) {
+      return <> {parsedText[0]} </>;
+    }
+    return (
+      <>
+        {parsedText[0]} (<a href={parsedText[1]}>link</a>)
+      </>
+    );
+  };
+
   showYourTags = () => {
     this.setState({
-      mainContent: <YourTagsPage feelings={this.state.feelings} userId={this.props.userId} />,
+      mainContent: (
+        <YourTagsPage
+          feelings={this.state.feelings}
+          userId={this.props.userId}
+          tagToHTML={this.tagToHTML}
+        />
+      ),
     });
   };
 
   showTagOthers = () => {
-    this.setState({ mainContent: <TagOthers id={this.props.userId} /> });
+    this.setState({ mainContent: <TagOthers id={this.props.userId} tagToHTML={this.tagToHTML} /> });
   };
 
   showFeelingsLog = () => {
@@ -100,7 +120,13 @@ class MainPage extends Component {
 
   showTagsLog = () => {
     this.setState({
-      mainContent: <TagsLog userId={this.props.userId} currentFeelings={this.state.feelings} />,
+      mainContent: (
+        <TagsLog
+          userId={this.props.userId}
+          currentFeelings={this.state.feelings}
+          tagToHTML={this.tagToHTML}
+        />
+      ),
     });
   };
 

@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { get, post } from "../../utilities";
 
+import "./JournalingPage.css";
+
 // props:
 // feelings: current feeling names
 // feeling_ids: current feeling ids
@@ -22,12 +24,16 @@ class JournalingPage extends Component {
       "I'm posting this content " +
         this.state.currentEntries[index] +
         " for the feeling " +
-        this.props.feelings[index]
+        this.props.feelings[index] +
+        "(" +
+        this.props.feeling_ids +
+        ")"
     );
     post("/api/new-note", {
       feeling_id: this.props.feeling_ids[index],
       content: this.state.currentEntries[index],
     });
+    this.handleTyping(index, "");
   };
 
   render() {
@@ -38,12 +44,19 @@ class JournalingPage extends Component {
         {this.props.feelings.map((feeling, i) => (
           <div key={`feeling-journal-section=${i}`}>
             <h3> You said you're feeling {feeling}. Talk about that. </h3>
-            <input
-              className="JournalingPage-textBox"
-              type="text"
-              onKeyPress={(event) => this.handleTyping(i, event.target.value)}
+            <textarea
+              placeholder={'Why do you feel "' + feeling + '"?'}
+              rows={42}
+              cols={21}
+              onChange={(event) => this.handleTyping(i, event.target.value)}
+              value={this.state.currentEntries[i]}
+              className="JournalingPage-input"
             />
-            <button onClick={() => this.submit(i)}> Done </button>
+            <div className="JournalingPage-buttonDiv">
+              <button className="JournalingPage-button" onClick={() => this.submit(i)}>
+                Done
+              </button>
+            </div>
           </div>
         ))}
       </div>

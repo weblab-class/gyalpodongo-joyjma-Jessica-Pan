@@ -11,13 +11,16 @@
 }
 
 .textbox {
-  width: 288px;
-  height: 144px;
+  width: 278px;
+  height: 134px;
   margin-left: 20px;
   border-radius: 20px;
   font-style: "Catamaran", Sans-serif;
   font-size: 72px;
-  border-color: white;
+  padding: 5px;
+  border-style: solid;
+  border-width: 5px;
+  border-color: #fcd29f;
   color: white;
   background-color: #ff8c5a;
 }

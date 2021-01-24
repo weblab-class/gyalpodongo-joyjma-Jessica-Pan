@@ -56,6 +56,7 @@ class FeeelingSection extends Component {
         <SingleTag
           tag={tagToDisplay}
           userId={this.props.userId}
+          tagToHTML={this.props.tagToHTML}
           removeTag={(tag) => this.removeTags([tag])}
         />
       );

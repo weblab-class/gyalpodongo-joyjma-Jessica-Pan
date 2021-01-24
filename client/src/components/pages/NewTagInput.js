@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { post } from "../../utilities";
-import { Link } from "@reach/router";
 
 import "../../utilities.css";
 import "./NewTagInput.css";
@@ -12,6 +11,8 @@ class NewTagInput extends Component {
     this.state = {
       value: "",
       valueFeeling: "",
+      showLink: false,
+      linkInput: "",
     };
   }
 
@@ -26,6 +27,13 @@ class NewTagInput extends Component {
       valueFeeling: event.target.value,
     });
   };
+  handleChangeLink = (event) => {
+    this.setState({ linkInput: event.target.value });
+  };
+
+  showLink = () => {
+    this.setState({ showLink: !this.state.showLink });
+  };
 
   // called when the user hits "Submit" for a new post
   handleSubmit = (event) => {
@@ -33,44 +41,70 @@ class NewTagInput extends Component {
     let valueFeelingCamel = this.state.valueFeeling;
     valueFeelingCamel =
       valueFeelingCamel[0].toUpperCase() + valueFeelingCamel.substr(1).toLowerCase();
+    const activityText = this.state.value + "|||" + this.state.linkInput;
     const newTag = {
-      activity: this.state.value,
+      activity: activityText,
       feeling: valueFeelingCamel,
     };
     post("/api/tag", newTag);
     this.props.onSubmit();
 
-    // this.setState({
-    //   value: "",
-    //   valueFeeling: "",
-    // });
+    this.setState({
+      value: "",
+      valueFeeling: "",
+    });
   };
 
   render() {
+    let link_input = "";
+    let checked = "\u2610";
+    if (this.state.showLink) {
+      link_input = (
+        <input
+          type="text"
+          placeholder={"link"}
+          onChange={this.handleChangeLink}
+          className="NewTagInput-input"
+        />
+      );
+      checked = "\u2713";
+    }
     return (
-      <div className="u-flex NewTagInput-container">
+      <div className="NewTagInput-container">
+        <p> I suggest that someone feeling this way: </p>
         <input
           type="text"
-          placeholder={"Type activity here"}
-          value={this.state.value}
-          onChange={this.handleChange}
-          className="NewTagInput-input"
-        />
-        <input
-          type="text"
-          placeholder={"Type activity feeling"}
-          value={this.state.valueFeeling}
+          placeholder={"feeling"}
           onChange={this.handleChangeFeeling}
+          value={this.state.valueFeeling}
           className="NewTagInput-input"
         />
-        <button
-          type="submit"
-          className="NewTagInput-button u-pointer"
-          value="Submit"
-          onClick={this.handleSubmit}
-        >
-          Submit
-        </button>
+        <p> could do the following: </p>
+        <textarea
+          placeholder={"activity"}
+          rows={25}
+          cols={10}
+          onChange={this.handleChange}
+          value={this.state.value}
+          className="NewTagInput-activityInput"
+        />
+        <p>
+          <label className="NewTagInput-label">
+            <input type="checkbox" onChange={this.showLink} />
+            {checked} Include Link
+          </label>
+        </p>
+        {link_input}
+        <div className="NewTagInput-buttonDiv">
+          <button
+            type="submit"
+            className="NewTagInput-button u-pointer"
+            value="Submit"
+            onClick={this.handleSubmit}
+          >
+            Submit
+          </button>
+        </div>
       </div>
     );
   }

@@ -31,7 +31,12 @@ class YourTagsPage extends Component {
         <p> This includes both tags you've created and tags created by others. </p>
         {noFeelingsText}
         {this.props.feelings.map((feeling, i) => (
-          <FeeelingSection key={`feeling-${i}`} feeling={feeling} userId={this.props.userId} />
+          <FeeelingSection
+            key={`feeling-${i}`}
+            feeling={feeling}
+            userId={this.props.userId}
+            tagToHTML={this.props.tagToHTML}
+          />
         ))}
       </div>
     );

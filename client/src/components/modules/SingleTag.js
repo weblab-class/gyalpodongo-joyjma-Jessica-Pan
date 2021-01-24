@@ -21,7 +21,7 @@ class SingleTag extends Component {
   render() {
     return (
       <span className="SingleTag-container">
-        <span className="SingleTag-activity"> {this.props.tag.activity} </span>
+        <span className="SingleTag-activity">{this.props.tagToHTML(this.props.tag.activity)}</span>
         <span className="SingleTag-buttonSpan">
           <button
             className="SingleTag-button"

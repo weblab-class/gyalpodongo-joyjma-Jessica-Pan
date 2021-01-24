@@ -1,10 +1,78 @@
-.NewTagInput-input,
-.NewTagInput-button {
-  font-family: "Open Sans";
+.NewTagInput-input {
+  width: 360px;
+  height: 30px;
+  margin-left: 30px;
+  border-radius: 20px;
+  font-style: "Catamaran", Sans-serif;
   font-size: 24px;
+  padding: 5px;
+  border-style: solid;
+  border-width: 5px;
+  border-color: #fcd29f;
+  font-family: "Catamaran", sans-serif;
+  color: white;
+  background-color: #ff8c5a;
+}
+
+.NewTagInput-activityInput {
+  margin-left: 30px;
+  width: 360px;
+  height: 210px;
+  border-radius: 20px;
+  font-style: "Catamaran", Sans-serif;
+  font-size: 24px;
+  padding: 5px;
+  border-style: solid;
+  border-width: 5px;
+  border-color: #fcd29f;
+  font-family: "Catamaran", sans-serif;
+  color: white;
+  background-color: #ff8c5a;
+}
+
+.NewTagInput-buttonDiv {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.NewTagInput-button {
+  color: white;
+  border-radius: 10px;
+  text-align: center;
+  background-color: #806d40;
+  text-decoration: none;
+  width: 150px;
+  margin: 20px;
+  margin-top: 0px;
+  font-size: 24px;
+  /* border-style: solid; */
   padding: var(--s) var(--m);
 }
 
-.NewTagInput-container {
-  padding: 20px 35%;
+input[type="checkbox"] {
+  visibility: hidden;
 }
+
+/* .NewTagInput-checkbox {
+  /* position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: black;
+  border-radius: 5px;
+  border-color: #806d40;
+} */
+
+/* .NewTagInput-label input:checked ~ .NewTagInput-checkbox {
+  background-color: #806d40;
+} */
+
+.NewTagInput-label {
+  margin-left: -20px;
+}
+
+/* .NewTagInput-container {
+  padding: 20px 35%;
+} */

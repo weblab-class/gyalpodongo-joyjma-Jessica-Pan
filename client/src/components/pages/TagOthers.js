@@ -43,7 +43,7 @@ class TagOthers extends Component {
   };
 
   render() {
-    console.log("Should be showing:");
+    console.log("Created tags:");
     console.log(this.state.createdTags);
     if (!this.props.id) {
       return <p> You need to be logged in to tag others! </p>;
@@ -52,13 +52,16 @@ class TagOthers extends Component {
       return (
         <div>
           <h2> Here you can create a new tag for a specific feeling. </h2>
-          <button className="TagOthers-newTagButton" onClick={this.createTag}>
-            New Tag!
-          </button>
+          <div className="u-flex u-flex-justifyCenter">
+            <button className="TagOthers-newTagButton" onClick={this.createTag}>
+              New Tag!
+            </button>
+          </div>
           <h2> Here's are the tags you've made: </h2>
           {this.state.createdTags.map((tag, i) => (
             <p key={`displayed-cTag-${i}`}>
-              You tagged someone feeling {tag.feeling} to do this activity: {tag.activity}
+              You tagged someone feeling {tag.feeling} to do this activity:{" "}
+              {this.props.tagToHTML(tag.activity)}
             </p>
           ))}
         </div>

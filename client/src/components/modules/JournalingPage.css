@@ -1,0 +1,35 @@
+.JournalingPage-input {
+  margin-left: 30px;
+  width: 480px;
+  height: 320px;
+  border-radius: 20px;
+  font-style: "Catamaran", Sans-serif;
+  font-size: 24px;
+  padding: 5px;
+  border-style: solid;
+  border-width: 5px;
+  border-color: #fcd29f;
+  font-family: "Catamaran", sans-serif;
+  color: white;
+  background-color: #ff8c5a;
+}
+
+.JournalingPage-buttonDiv {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.JournalingPage-button {
+  color: white;
+  border-radius: 10px;
+  text-align: center;
+  background-color: #806d40;
+  text-decoration: none;
+  width: 150px;
+  margin: 20px;
+  margin-top: 0px;
+  font-size: 24px;
+  /* border-style: solid; */
+  padding: var(--s) var(--m);
+}
