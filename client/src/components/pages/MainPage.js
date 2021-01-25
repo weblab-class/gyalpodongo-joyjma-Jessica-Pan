@@ -100,6 +100,7 @@ class MainPage extends Component {
           feelings={this.state.feelings}
           userId={this.props.userId}
           tagToHTML={this.tagToHTML}
+          showTagOthers={this.showTagOthers}
         />
       ),
     });

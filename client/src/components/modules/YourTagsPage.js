@@ -36,6 +36,7 @@ class YourTagsPage extends Component {
             feeling={feeling}
             userId={this.props.userId}
             tagToHTML={this.props.tagToHTML}
+            showTagOthers={this.props.showTagOthers}
           />
         ))}
       </div>
