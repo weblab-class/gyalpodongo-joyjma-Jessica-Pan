@@ -41,7 +41,10 @@ class NewTagInput extends Component {
     let valueFeelingCamel = this.state.valueFeeling;
     valueFeelingCamel =
       valueFeelingCamel[0].toUpperCase() + valueFeelingCamel.substr(1).toLowerCase();
-    const activityText = this.state.value + "|||" + this.state.linkInput;
+    let activityText = this.state.value;
+    if (this.state.showLink && this.state.linkInput !== "") {
+      activityText += "|||" + this.state.linkInput;
+    }
     const newTag = {
       activity: activityText,
       feeling: valueFeelingCamel,

@@ -18,14 +18,13 @@ class IFeelPage extends Component {
     let offSetArray = [0];
     for (let i = 0; i < 11; i++) {
       const choices = [...Array(7).keys()];
-      choices.splice(offSetArray[-1], 1);
+      choices.splice(offSetArray.slice(-1)[0], 1);
       offSetArray.push(choices[Math.floor(Math.random() * choices.length)]);
     }
     console.log(offSetArray);
     this.state = {
       feelings: [],
       currentInput: "",
-      bubbles: ["Happy", "Tired", "Anxious", "Sad", "Excited", "Adventorous", "Overwhelmed"],
       offset: offSetArray,
     };
   }
@@ -46,7 +45,15 @@ class IFeelPage extends Component {
   };
 
   addFeeling = (feeling) => {
-    this.props.setInputtedFeelings(this.state.feelings.concat([feeling]));
+    console.log("I'm looking at " + feeling);
+    console.log(this.state.feelings);
+    console.log(this.state.feelings.includes(feeling));
+    console.log(typeof this.state.feelings[0]);
+    console.log(typeof feeling);
+    if (!this.state.feelings.includes(feeling)) {
+      console.log("I haven't seen it.");
+      this.props.setInputtedFeelings(this.state.feelings.concat([feeling]));
+    }
     this.setState({
       feelings: this.state.feelings.concat([feeling]),
     });
@@ -54,13 +61,15 @@ class IFeelPage extends Component {
 
   submitFeelingsToAPI = () => {
     let currentInputString = this.state.currentInput;
-    currentInputString =
-      currentInputString[0].toUpperCase() + currentInputString.substr(1).toLowerCase();
-    this.addFeeling(currentInputString);
+    if (currentInputString !== "") {
+      currentInputString =
+        currentInputString[0].toUpperCase() + currentInputString.substr(1).toLowerCase();
+      this.addFeeling(currentInputString);
+    }
 
-    for (let i = 0; i < this.state.feelings.length; i++) {
-      console.log(`I'm posting ${this.state.feelings[i]}`);
-      post("/api/feeling", { feeling_name: this.state.feelings[i] });
+    for (let i = 0; i < this.props.feelings.length; i++) {
+      console.log(`I'm posting ${this.props.feelings[i]}`);
+      post("/api/feeling", { feeling_name: this.props.feelings[i] });
     }
   };
 
@@ -113,7 +122,9 @@ class IFeelPage extends Component {
           />
         </span>
         {this.state.feelings.length === 0 ? (
-          <div> </div>
+          <>
+            <h2 className="center"> How are you feeling? </h2>
+          </>
         ) : (
           <>
             <h2 className="center">You're feeling:</h2>

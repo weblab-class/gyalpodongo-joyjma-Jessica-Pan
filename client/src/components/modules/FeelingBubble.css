@@ -1,14 +1,32 @@
 .feelingBubble-main {
-  background-color: #a1fcdf;
+  left: -100vw;
   border-radius: 20px;
   padding: 0px 10px;
   display: inline-block;
   position: absolute;
-  animation: moving 15s infinite;
-  animation-delay: 1s;
-  animation-timing-function: ease-in-out;
   white-space: nowrap;
   cursor: pointer;
+}
+
+.feelingBubble-animated {
+  animation: moving 15s 1;
+  animation-timing-function: ease-in-out;
+}
+
+.color1 {
+  background-color: #a1fcdf;
+}
+
+.color2 {
+  background-color: #eafdf8;
+}
+
+.color3 {
+  background-color: #e5e9ec;
+}
+
+.hidden {
+  left: -100vw;
 }
 
 /* .feelingBubble-overviewDiv {

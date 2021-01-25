@@ -64,6 +64,7 @@ class App extends Component {
             handleLogin={this.handleLogin}
             handleLogout={this.handleLogout}
             setInputtedFeelings={this.setInputtedFeelings}
+            feelings={this.state.feelings}
             userId={this.state.userId}
             name={this.state.name}
           />

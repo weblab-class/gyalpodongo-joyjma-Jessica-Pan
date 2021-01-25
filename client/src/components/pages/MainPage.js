@@ -80,6 +80,8 @@ class MainPage extends Component {
 
   tagToHTML = (tagActivityText) => {
     // tagActivityText is in this form: activity|||link. This program puts in into this form: activity (link)
+    console.log("here's the tag: ");
+    console.log(tagActivityText);
     const parsedText = tagActivityText.split("|||");
     if (parsedText.length === 1) {
       return <> {parsedText[0]} </>;
