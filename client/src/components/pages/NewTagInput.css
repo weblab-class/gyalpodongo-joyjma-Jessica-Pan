@@ -12,6 +12,7 @@
   font-family: "Catamaran", sans-serif;
   color: white;
   background-color: #ff8c5a;
+  outline: none;
 }
 
 .NewTagInput-activityInput {
@@ -28,6 +29,7 @@
   font-family: "Catamaran", sans-serif;
   color: white;
   background-color: #ff8c5a;
+  outline: none;
 }
 
 .NewTagInput-buttonDiv {
