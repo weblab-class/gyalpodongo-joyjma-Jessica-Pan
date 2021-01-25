@@ -72,6 +72,7 @@ class App extends Component {
             path="/main/"
             handleLogin={this.handleLogin}
             handleLogout={this.handleLogout}
+            setInputtedFeelings={this.setInputtedFeelings}
             userId={this.state.userId}
             feelings={this.state.feelings}
             name={this.state.name}

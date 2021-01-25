@@ -57,6 +57,7 @@ class MainPage extends Component {
           feelings: currentFeelingNames,
           feeling_ids: currentFeelingIDs,
         });
+        this.props.setInputtedFeelings(currentFeelingNames);
       } else {
         this.setState({ allFeelings: response });
       }
