@@ -21,7 +21,12 @@ class MainPage extends Component {
   constructor(props) {
     super(props);
     // Initialize Default State
-    this.state = { mainContent: "Loading...", feelings: this.props.feelings, allFeelings: [] };
+    this.state = {
+      mainContent: "Loading...",
+      feelings: this.props.feelings,
+      allFeelings: [],
+      feeling_ids: [],
+    };
   }
 
   componentDidMount() {
