@@ -33,7 +33,6 @@
   text-align: center;
   background-color: #806d40;
   text-decoration: none;
-  position: absolute;
   width: 150px;
   margin: 20px;
 }
@@ -41,4 +40,14 @@
 .center {
   display: flex;
   justify-content: center;
+}
+
+.yourFeelingsBubblesDiv {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.margin2 {
+  margin: 2px;
 }

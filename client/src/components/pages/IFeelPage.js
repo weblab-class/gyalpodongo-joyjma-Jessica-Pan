@@ -6,6 +6,7 @@ import FeelingBubble from "../modules/FeelingBubble.js";
 
 import "../../utilities.css";
 import "./IFeelPage.css";
+import "../modules/FeelingBubble.css";
 
 import { get, post } from "../../utilities.js";
 
@@ -17,7 +18,7 @@ class IFeelPage extends Component {
     this.state = {
       feelings: [],
       currentInput: "",
-      bubbles: ["Happy", "Tired", "Anxious", "Sad", "Excited", "Adventorous", ""],
+      bubbles: ["Happy", "Tired", "Anxious", "Sad", "Excited", "Adventorous", "Overwhelmed"],
     };
   }
 
@@ -56,16 +57,20 @@ class IFeelPage extends Component {
   };
 
   render() {
-    console.log(this.state.feelings);
+    // console.log(this.state.feelings);
     let yourFeelings = this.state.feelings.map((feeling, i) => (
-      <li key={`feelings-prop-${i}`}> {feeling} </li>
+      <div key={`feelings-prop-${i}`} className="feelingBubble margin2">
+        {" "}
+        {feeling}{" "}
+      </div>
     ));
-    console.log(yourFeelings);
-    console.log(this.state.bubbles);
-    let feelingBubbles = this.state.bubbles.map((feeling, i) => (
-      <FeelingBubble key={`feeling-bubble-${i}`} addFeeling={this.addFeeling} feeling={feeling} />
-    ));
-    console.log(feelingBubbles);
+    // console.log(yourFeelings);
+    let feelingBubbles = new Array(20)
+      .fill(0)
+      .map((feeling, i) => (
+        <FeelingBubble key={`feeling-bubble-${i}`} addFeeling={this.addFeeling} index={i} />
+      ));
+    // console.log(feelingBubbles);
     return (
       <>
         {this.props.userId ? (
@@ -95,16 +100,20 @@ class IFeelPage extends Component {
             onKeyPress={this.handleTyping}
           />
         </span>
-        <h2 className="center">You're feeling:</h2>
-        <div className="center">
-          <ul>{yourFeelings}</ul>
-        </div>
-        <div> {feelingBubbles}</div>
+        {this.state.feelings.length === 0 ? (
+          <div> </div>
+        ) : (
+          <>
+            <h2 className="center">You're feeling:</h2>
+            <div className="yourFeelingsBubblesDiv">{yourFeelings}</div>
+          </>
+        )}
         <div className="center">
           <Link className="IFeelPage-done_button" onClick={this.submitFeelingsToAPI} to="/main/">
             Complete
           </Link>
         </div>
+        <div> {feelingBubbles}</div>
       </>
     );
   }

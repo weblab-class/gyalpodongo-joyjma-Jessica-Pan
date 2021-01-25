@@ -1,18 +1,32 @@
 import React, { Component } from "react";
 
 import "./FeelingBubble.css";
+import { get, post } from "../../utilities.js";
 
 class FeelingBubble extends Component {
   constructor(props) {
     super(props);
     // Initialize Default State
-    this.state = { showing: true };
+    const tempFeeling = [
+      "Happy",
+      "Tired",
+      "Anxious",
+      "Sad",
+      "Excited",
+      "Adventorous",
+      "Overwhelmed",
+    ][this.props.index % 7];
+    this.state = { showing: true, feeling: tempFeeling };
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    get("/api/random_feeling_name").then((result) => {
+      this.setState({ feeling: result.feeling });
+    });
+  }
 
   handleClick = () => {
-    this.props.addFeeling(this.props.feeling);
+    this.props.addFeeling(this.state.feeling);
     this.setState({ showing: false });
   };
 
@@ -22,7 +36,7 @@ class FeelingBubble extends Component {
     }
     return (
       <div className="feelingBubble" onClick={this.handleClick}>
-        {this.props.feeling}
+        {this.state.feeling}
       </div>
     );
   }

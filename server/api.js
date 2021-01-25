@@ -171,6 +171,17 @@ router.get("/notes", auth.ensureLoggedIn, (req, res) => {
   });
 });
 
+router.get("/random_feeling_name", (req, res) => {
+  Feeling.count().exec(function (err, count) {
+    var random = Math.floor(Math.random() * count);
+    Feeling.findOne()
+      .skip(random)
+      .exec(function (err, result) {
+        res.send({ feeling: result.feeling_name });
+      });
+  });
+});
+
 // anything else falls to this "not found" case
 router.all("*", (req, res) => {
   console.log(`API route not found: ${req.method} ${req.url}`);
