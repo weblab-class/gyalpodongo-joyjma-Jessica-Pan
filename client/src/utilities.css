@@ -54,6 +54,7 @@ form {
 }
 
 .u-flex-justifyCenter {
+  display: flex;
   justify-content: center;
 }
 
@@ -93,4 +94,8 @@ form {
 
 .u-fullHeight {
   height: 100%;
+}
+
+.u-fullWidth {
+  width: 100%;
 }

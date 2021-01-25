@@ -15,10 +15,18 @@ class IFeelPage extends Component {
   constructor(props) {
     super(props);
     // Initialize Default State
+    let offSetArray = [0];
+    for (let i = 0; i < 11; i++) {
+      const choices = [...Array(7).keys()];
+      choices.splice(offSetArray[-1], 1);
+      offSetArray.push(choices[Math.floor(Math.random() * choices.length)]);
+    }
+    console.log(offSetArray);
     this.state = {
       feelings: [],
       currentInput: "",
       bubbles: ["Happy", "Tired", "Anxious", "Sad", "Excited", "Adventorous", "Overwhelmed"],
+      offset: offSetArray,
     };
   }
 
@@ -59,16 +67,20 @@ class IFeelPage extends Component {
   render() {
     // console.log(this.state.feelings);
     let yourFeelings = this.state.feelings.map((feeling, i) => (
-      <div key={`feelings-prop-${i}`} className="feelingBubble margin2">
-        {" "}
-        {feeling}{" "}
+      <div key={`feelings-prop-${i}`} className="yourFeelings">
+        {feeling}
       </div>
     ));
     // console.log(yourFeelings);
-    let feelingBubbles = new Array(20)
+    let feelingBubbles = new Array(12)
       .fill(0)
       .map((feeling, i) => (
-        <FeelingBubble key={`feeling-bubble-${i}`} addFeeling={this.addFeeling} index={i} />
+        <FeelingBubble
+          key={`feeling-bubble-${i}`}
+          addFeeling={this.addFeeling}
+          index={i}
+          offset={this.state.offset[i]}
+        />
       ));
     // console.log(feelingBubbles);
     return (
@@ -113,7 +125,7 @@ class IFeelPage extends Component {
             Complete
           </Link>
         </div>
-        <div> {feelingBubbles}</div>
+        <div className="u-fullWidth test"> {feelingBubbles}</div>
       </>
     );
   }

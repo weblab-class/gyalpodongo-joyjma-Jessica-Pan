@@ -48,6 +48,14 @@
   flex-wrap: wrap;
 }
 
-.margin2 {
+.yourFeelings {
+  background-color: #a1fcdf;
+  border-radius: 20px;
+  padding: 0px 10px;
+  display: inline-block;
   margin: 2px;
+}
+
+.test {
+  background-color: blue;
 }
