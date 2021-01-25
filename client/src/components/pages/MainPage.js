@@ -93,7 +93,11 @@ class MainPage extends Component {
     }
     return (
       <>
-        {parsedText[0]} (<a href={parsedText[1]}>link</a>)
+        {parsedText[0]} (
+        <a href={parsedText[1]} target="_blank">
+          link
+        </a>
+        )
       </>
     );
   };
