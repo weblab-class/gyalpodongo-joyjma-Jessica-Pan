@@ -10,6 +10,10 @@
   margin-left: 10px;
 }
 
+.SingleTag-button:hover {
+  background-color: #806d409d;
+}
+
 .SingleTag-buttonSpan {
   margin-left: auto;
   min-width: 200px;
