@@ -62,7 +62,8 @@ class NavBar extends Component {
             Tag Others
           </span>
           <Link className="NavBar-link u-inlineBlock" to="/">
-            Input Feelings
+            I feel
+            <div className="NavBar-iFeelBox" />
           </Link>
           <span className="NavBar-link u-inlineBlock" onClick={this.props.showJournaling}>
             Journal
