@@ -11,3 +11,8 @@
   border-width: 2px; */
   margin: 20px;
 }
+
+.TagOthers-newTagButton:hover {
+  background-color: white;
+  color: #806d40;
+}
