@@ -3,6 +3,7 @@ import { Link } from "@reach/router";
 import NewTagInput from "./NewTagInput.js";
 import { get } from "../../utilities";
 
+import "../../utilities";
 import "./TagOthers.css";
 
 class TagOthers extends Component {
@@ -53,7 +54,7 @@ class TagOthers extends Component {
         <div>
           <h2> Here you can create a new tag for a specific feeling. </h2>
           <div className="u-flex u-flex-justifyCenter">
-            <button className="TagOthers-newTagButton" onClick={this.createTag}>
+            <button className="TagOthers-newTagButton u-pointer" onClick={this.createTag}>
               New Tag!
             </button>
           </div>
