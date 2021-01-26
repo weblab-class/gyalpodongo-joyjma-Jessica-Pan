@@ -45,11 +45,11 @@ class IFeelPage extends Component {
   };
 
   addFeeling = (feeling) => {
-    console.log("I'm looking at " + feeling);
-    console.log(this.state.feelings);
-    console.log(this.state.feelings.includes(feeling));
-    console.log(typeof this.state.feelings[0]);
-    console.log(typeof feeling);
+    // console.log("I'm looking at " + feeling);
+    // console.log(this.state.feelings);
+    // console.log(this.state.feelings.includes(feeling));
+    // console.log(typeof this.state.feelings[0]);
+    // console.log(typeof feeling);
     if (!this.state.feelings.includes(feeling)) {
       console.log("I haven't seen it.");
       this.props.setInputtedFeelings(this.state.feelings.concat([feeling]));
@@ -73,10 +73,26 @@ class IFeelPage extends Component {
     }
   };
 
+  removeFeeling = (feelingName) => {
+    let currentFeelings = this.state.feelings;
+    const index = currentFeelings.indexOf(feelingName);
+    if (index === currentFeelings.lastIndexOf(feelingName)) {
+      this.props.removeFeeling(feelingName);
+    }
+    currentFeelings.splice(index, 1);
+    this.setState({
+      feelings: currentFeelings,
+    });
+  };
+
   render() {
     // console.log(this.state.feelings);
     let yourFeelings = this.state.feelings.map((feeling, i) => (
-      <div key={`feelings-prop-${i}`} className="yourFeelings">
+      <div
+        key={`feelings-prop-${i}`}
+        className="yourFeelings"
+        onClick={() => this.removeFeeling(feeling)}
+      >
         {feeling}
       </div>
     ));

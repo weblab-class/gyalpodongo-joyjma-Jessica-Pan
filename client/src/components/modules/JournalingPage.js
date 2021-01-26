@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { get, post } from "../../utilities";
+import { Link } from "@reach/router";
 
 import "./JournalingPage.css";
 
@@ -37,28 +38,44 @@ class JournalingPage extends Component {
   };
 
   render() {
+    let notLoggedInText = <p> You can view past entries on the "Past Feelings" page. </p>;
+    if (!this.props.userId) {
+      notLoggedInText = (
+        <p> Since you're not logged in, your entries won't be saved, but you can still journal! </p>
+      );
+    }
+    let journalingSections = this.props.feelings.map((feeling, i) => (
+      <div key={`feeling-journal-section=${i}`}>
+        <h3> You said you're feeling {feeling}. Talk about that. </h3>
+        <textarea
+          placeholder={'Why do you feel "' + feeling + '"?'}
+          rows={42}
+          cols={21}
+          onChange={(event) => this.handleTyping(i, event.target.value)}
+          value={this.state.currentEntries[i]}
+          className="JournalingPage-input"
+        />
+        <div className="JournalingPage-buttonDiv">
+          <button className="JournalingPage-button" onClick={() => this.submit(i)}>
+            Done
+          </button>
+        </div>
+      </div>
+    ));
+    if (this.props.feelings.length === 0) {
+      journalingSections = (
+        <>
+          You don't have any feelings recorded right now. Click <Link to="/"> here </Link> to list
+          some feelings.
+        </>
+      );
+    }
     return (
       <div>
         <h2> Here you can journal about your feelings. </h2> Your emotions are valid. Describe why
         you feel that way as comprehensively as you can.
-        {this.props.feelings.map((feeling, i) => (
-          <div key={`feeling-journal-section=${i}`}>
-            <h3> You said you're feeling {feeling}. Talk about that. </h3>
-            <textarea
-              placeholder={'Why do you feel "' + feeling + '"?'}
-              rows={42}
-              cols={21}
-              onChange={(event) => this.handleTyping(i, event.target.value)}
-              value={this.state.currentEntries[i]}
-              className="JournalingPage-input"
-            />
-            <div className="JournalingPage-buttonDiv">
-              <button className="JournalingPage-button" onClick={() => this.submit(i)}>
-                Done
-              </button>
-            </div>
-          </div>
-        ))}
+        {notLoggedInText}
+        {journalingSections}
       </div>
     );
   }

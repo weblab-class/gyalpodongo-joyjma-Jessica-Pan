@@ -146,7 +146,11 @@ class MainPage extends Component {
   showJournaling = () => {
     this.setState({
       mainContent: (
-        <JournalingPage feelings={this.state.feelings} feeling_ids={this.state.feeling_ids} />
+        <JournalingPage
+          feelings={this.state.feelings}
+          feeling_ids={this.state.feeling_ids}
+          userId={this.props.userId}
+        />
       ),
     });
   };

@@ -55,6 +55,14 @@ class App extends Component {
     this.setState({ feelings: feelings });
   };
 
+  removeFeeling = (feelingName) => {
+    let currentFeelings = this.state.feelings;
+    currentFeelings.splice(currentFeelings.indexOf(feelingName), 1);
+    this.setState({
+      feelings: currentFeelings,
+    });
+  };
+
   render() {
     return (
       <>
@@ -64,6 +72,7 @@ class App extends Component {
             handleLogin={this.handleLogin}
             handleLogout={this.handleLogout}
             setInputtedFeelings={this.setInputtedFeelings}
+            removeFeeling={this.removeFeeling}
             feelings={this.state.feelings}
             userId={this.state.userId}
             name={this.state.name}
