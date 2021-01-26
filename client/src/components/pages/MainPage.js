@@ -7,7 +7,7 @@ import YourTagsPage from "../modules/YourTagsPage.js";
 import FeelingsLog from "../modules/FeelingsLog.js";
 import TagsLog from "../modules/TagsLog.js";
 import JournalingPage from "../modules/JournalingPage.js";
-import {motion} from 'framer-motion';
+import { motion } from "framer-motion";
 
 import "../../utilities.css";
 import "./MainPage.css";
@@ -170,7 +170,7 @@ class MainPage extends Component {
           showJournaling={this.showJournaling}
         />
         <span className="MainPage-main">
-          <UserSideBar name={this.props.name} feelings={this.state.feelings} />
+          {/* <UserSideBar name={this.props.name} feelings={this.state.feelings} /> */}
           <div className="MainPage-mainContent">{this.state.mainContent}</div>
         </span>
       </div>
