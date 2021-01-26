@@ -80,7 +80,7 @@ class FeelingBubble extends Component {
   render() {
     return (
       <div
-        style={{ position: "absolute", top: 420 + this.state.yOffset + "px" }}
+        style={{ position: "absolute", top: 470 + this.state.yOffset + "px" }}
         className="u-flex-justifyCenter"
       >
         <div className="feelingBubble-overviewDiv">

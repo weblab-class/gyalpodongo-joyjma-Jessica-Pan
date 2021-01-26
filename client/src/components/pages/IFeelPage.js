@@ -128,6 +128,7 @@ class IFeelPage extends Component {
           />
         )}
         {this.props.name === undefined ? <> </> : <> Hello, {this.props.name} </>}
+        <div className="cloud x2"></div>
         <motion.div initial="hidden" animate="visible" variants={{
             hidden: {
               scale: .8,
@@ -150,7 +151,7 @@ class IFeelPage extends Component {
               onKeyPress={this.handleTyping}
             />
           </span>
-        </motion.div>
+        
         {this.state.feelings.length === 0 ? (
           <>
             <h2 className="center"> How are you feeling? </h2>
@@ -161,6 +162,7 @@ class IFeelPage extends Component {
             <div className="yourFeelingsBubblesDiv">{yourFeelings}</div>
           </>
         )}
+        </motion.div>
         <motion.div className="center" whileHover={{
           scale: 1.2,
           transition: {
@@ -171,8 +173,12 @@ class IFeelPage extends Component {
             Complete
           </Link>
         </motion.div>
-        <div className="u-fullWidth test"> {feelingBubbles}</div>
-      </>
+        <div className="cloud x5"></div>
+        <div className="cloud x2"></div>
+        <div className="cloud x4"></div>
+        <div className="u-fullWidth"> {feelingBubbles}</div>
+        </>
+      
     );
   }
 }
