@@ -47,6 +47,7 @@ router.post("/initsocket", (req, res) => {
 const Tag = require("./models/tag");
 const Feeling = require("./models/feeling");
 const Note = require("./models/note");
+const tag = require("./models/tag");
 
 //get user. copy pasted from api.js in catbook
 router.get("/user", (req, res) => {
@@ -106,6 +107,7 @@ router.post("/tag", auth.ensureLoggedIn, (req, res) => {
     activity: req.body.activity,
     feeling: req.body.feeling, //Array of Strings, each String is a feeling
     original_poster: req.user._id,
+    // ratings: [0, 0, 0, 0, 0],
   });
   console.log(newTag);
   newTag.save();
@@ -133,10 +135,10 @@ router.get("/tags-done", auth.ensureLoggedIn, (req, res) => {
     console.log(user.tags);
     let tagList = [];
     for (let i = 0; i < user.tags.length; i++) {
-      console.log("here");
+      // console.log("here");
       tagList.push(Tag.findOne({ tag_id: user.tags[i] }));
     }
-    console.log(tagList);
+    // console.log(tagList);
     Promise.all(tagList).then((finalTagList) => {
       console.log("final tag list");
       console.log(finalTagList);
@@ -179,6 +181,24 @@ router.get("/random_feeling_name", (req, res) => {
       .exec(function (err, result) {
         res.send({ feeling: result.feeling_name });
       });
+  });
+});
+
+router.post("/rating", (req, res) => {
+  console.log("Here's the tag ID: " + req.body.tagId);
+  Tag.findOne({
+    tag_id: req.body.tagId,
+  }).then((tag) => {
+    console.log("adding a " + req.body.rating + " star rating to this tag: " + tag.activity);
+    let newRatings = tag.ratings;
+    if (tag.ratings === undefined) {
+      newRatings = [0, 0, 0, 0, 0];
+    }
+    newRatings[req.body.rating - 1] += 1;
+    console.log(newRatings);
+    tag.ratings = newRatings;
+    tag.markModified("ratings");
+    tag.save();
   });
 });
 

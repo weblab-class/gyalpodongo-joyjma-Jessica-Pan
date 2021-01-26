@@ -17,6 +17,7 @@ class TagOthers extends Component {
   }
 
   componentDidMount() {
+    console.log("getting the tags for the ID " + this.props.id);
     get("/api/tagsFromID", { user_id: this.props.id }).then((tags) => {
       this.setState({ createdTags: tags });
     });
@@ -62,7 +63,7 @@ class TagOthers extends Component {
           {this.state.createdTags.map((tag, i) => (
             <p key={`displayed-cTag-${i}`}>
               You tagged someone feeling {tag.feeling} to do this activity:{" "}
-              {this.props.tagToHTML(tag.activity)}
+              {this.props.tagToHTML(tag.activity)}. Ratings: {tag.ratings.join(", ")}
             </p>
           ))}
         </div>

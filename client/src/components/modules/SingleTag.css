@@ -8,16 +8,29 @@
   border-color: #463f3a;
   height: 40px;
   margin-left: 10px;
+  cursor: pointer;
 }
 
 .SingleTag-button:hover {
-  background-color: #a57c01;
+  background-color: #f6d56d;
 }
 
 .SingleTag-buttonSpan {
   margin-left: auto;
   min-width: 200px;
   height: 40px;
+}
+
+.SingleTag-starsSpan {
+  margin-left: auto;
+  min-width: 200px;
+  height: 40px;
+  color: #a57c01;
+  text-align: center;
+  font-size: 36px;
+  position: relative;
+  top: -10px;
+  cursor: pointer;
 }
 
 .SingleTag-container {
@@ -31,4 +44,41 @@
   border-width: 2px;
   margin-right: 20px;
   border-radius: 10px;
+}
+
+.SingleTag-complete {
+  width: 90%;
+  display: flex;
+  padding: 10px;
+  align-items: center;
+  background-color: #a9ceff;
+  margin-right: 30px;
+  border-radius: 10px;
+  align-items: center;
+}
+
+.SingleTag-buttonHolder {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.SingleTag-taskCompleteButton {
+  background-color: #8fbfff;
+  /* color: #fcefef; */
+  border-width: 0;
+  padding: 0px 20px;
+  border-radius: 10px;
+  height: 32px;
+  margin-right: 24px;
+}
+
+.SingleTag-taskCompleteButton:hover {
+  background-color: #001f54;
+  color: #fcefef;
+}
+
+.SingleTag-completeText {
+  min-width: 100px;
+  margin-left: 24px;
 }

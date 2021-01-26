@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const UserSchema = new mongoose.Schema({
   name: String,
   googleid: String,
-  score: Number,
+  points: [Number],
   tags: [String], //Array of task ids [Number]
 });
 

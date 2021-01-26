@@ -41,9 +41,9 @@ class FeelingBubble extends Component {
   }
 
   startAnimation = () => {
-    this.getRandomFeeling();
-    this.setState({ showing: true });
     if (this._isMounted) {
+      this.getRandomFeeling();
+      this.setState({ showing: true });
       this.interval = window.setInterval(this.getRandomFeeling, 24000);
     }
   };
