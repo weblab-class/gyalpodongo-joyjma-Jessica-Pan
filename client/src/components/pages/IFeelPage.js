@@ -161,11 +161,16 @@ class IFeelPage extends Component {
             <div className="yourFeelingsBubblesDiv">{yourFeelings}</div>
           </>
         )}
-        <div className="center">
+        <motion.div className="center" whileHover={{
+          scale: 1.2,
+          transition: {
+            duration: .2
+          }
+        }}>
           <Link className="IFeelPage-done_button" onClick={this.submitFeelingsToAPI} to="/main/">
             Complete
           </Link>
-        </div>
+        </motion.div>
         <div className="u-fullWidth test"> {feelingBubbles}</div>
       </>
     );
