@@ -2,15 +2,22 @@
   left: -100vw;
   border-radius: 20px;
   padding: 0px 10px;
-  display: inline-block;
-  position: absolute;
   white-space: nowrap;
+  display: inline-block;
+}
+
+.feelingBubble-clickable {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  width: 20vw;
+  height: 30px;
   cursor: pointer;
 }
 
 .feelingBubble-animated {
-  animation: moving 15s 1;
-  animation-timing-function: ease-in-out;
+  animation: moving 18s 1;
+  animation-timing-function: cubic-bezier(0, 0.42, 1, 0.58);
 }
 
 .color1 {

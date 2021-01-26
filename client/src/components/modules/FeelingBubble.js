@@ -27,7 +27,8 @@ class FeelingBubble extends Component {
       showing: false,
       feeling: tempFeeling,
       yOffset: this.props.offset * 30,
-      classNames: "feelingBubble-main " + color + " hidden",
+      classNames: "feelingBubble-clickable hidden",
+      color: color,
     };
     this.interval = "";
     this._isMounted = false;
@@ -93,7 +94,7 @@ class FeelingBubble extends Component {
             onAnimationEnd={this.onAnimationEnd}
             onClick={this.handleClick}
           >
-            {this.state.feeling}
+            <div className={"feelingBubble-main " + this.state.color}>{this.state.feeling}</div>
           </div>
         </div>
       </div>
