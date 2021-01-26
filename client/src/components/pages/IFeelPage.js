@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import GoogleLogin, { GoogleLogout } from "react-google-login";
 import { Link } from "@reach/router";
-import {motion} from "framer-motion";
+import { motion } from "framer-motion";
 import FeelingBubble from "../modules/FeelingBubble.js";
 
 import "../../utilities.css";
@@ -129,56 +129,64 @@ class IFeelPage extends Component {
         )}
         {this.props.name === undefined ? <> </> : <> Hello, {this.props.name} </>}
         <div className="cloud x2"></div>
-        <motion.div initial="hidden" animate="visible" variants={{
-            hidden: {
-              scale: .8,
-              opacity: 0
-            },
-            visible: {
-              scale: 1,
-              opacity: 1,
+        <div className="IFeelPage-moveUp">
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: {
+                scale: 0.8,
+                opacity: 0,
+              },
+              visible: {
+                scale: 1,
+                opacity: 1,
+                transition: {
+                  delay: 0.5,
+                },
+              },
+            }}
+          >
+            <span className="IFeelSpan">
+              I feel
+              <input
+                className="textbox"
+                type="text"
+                onChange={(event) => this.setState({ currentInput: event.target.value })}
+                onKeyPress={this.handleTyping}
+              />
+            </span>
+
+            {this.state.feelings.length === 0 ? (
+              <>
+                <h2 className="center"> How are you feeling? </h2>
+              </>
+            ) : (
+              <>
+                <h2 className="center">You're feeling:</h2>
+                <div className="yourFeelingsBubblesDiv">{yourFeelings}</div>
+              </>
+            )}
+          </motion.div>
+          <motion.div
+            className="center"
+            whileHover={{
+              scale: 1.2,
               transition: {
-                delay: .5
-              }
-            },
-          }}>
-          <span className="IFeelSpan">
-            I feel
-            <input
-              className="textbox"
-              type="text"
-              onChange={(event) => this.setState({ currentInput: event.target.value })}
-              onKeyPress={this.handleTyping}
-            />
-          </span>
-        
-        {this.state.feelings.length === 0 ? (
-          <>
-            <h2 className="center"> How are you feeling? </h2>
-          </>
-        ) : (
-          <>
-            <h2 className="center">You're feeling:</h2>
-            <div className="yourFeelingsBubblesDiv">{yourFeelings}</div>
-          </>
-        )}
-        </motion.div>
-        <motion.div className="center" whileHover={{
-          scale: 1.2,
-          transition: {
-            duration: .2
-          }
-        }}>
-          <Link className="IFeelPage-done_button" onClick={this.submitFeelingsToAPI} to="/main/">
-            Complete
-          </Link>
-        </motion.div>
+                duration: 0.2,
+              },
+            }}
+          >
+            <Link className="IFeelPage-done_button" onClick={this.submitFeelingsToAPI} to="/main/">
+              Done
+            </Link>
+          </motion.div>
+        </div>
         <div className="cloud x5"></div>
         <div className="cloud x2"></div>
         <div className="cloud x4"></div>
         <div className="u-fullWidth"> {feelingBubbles}</div>
-        </>
-      
+      </>
     );
   }
 }
