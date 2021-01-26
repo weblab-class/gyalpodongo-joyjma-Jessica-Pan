@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import GoogleLogin, { GoogleLogout } from "react-google-login";
 import { Link } from "@reach/router";
-
+import {motion} from "framer-motion";
 import FeelingBubble from "../modules/FeelingBubble.js";
 
 import "../../utilities.css";
@@ -128,15 +128,29 @@ class IFeelPage extends Component {
           />
         )}
         {this.props.name === undefined ? <> </> : <> Hello, {this.props.name} </>}
-        <span className="IFeelSpan">
-          I feel
-          <input
-            className="textbox"
-            type="text"
-            onChange={(event) => this.setState({ currentInput: event.target.value })}
-            onKeyPress={this.handleTyping}
-          />
-        </span>
+        <motion.div initial="hidden" animate="visible" variants={{
+            hidden: {
+              scale: .8,
+              opacity: 0
+            },
+            visible: {
+              scale: 1,
+              opacity: 1,
+              transition: {
+                delay: .5
+              }
+            },
+          }}>
+          <span className="IFeelSpan">
+            I feel
+            <input
+              className="textbox"
+              type="text"
+              onChange={(event) => this.setState({ currentInput: event.target.value })}
+              onKeyPress={this.handleTyping}
+            />
+          </span>
+        </motion.div>
         {this.state.feelings.length === 0 ? (
           <>
             <h2 className="center"> How are you feeling? </h2>

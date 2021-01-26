@@ -7,6 +7,7 @@ import YourTagsPage from "../modules/YourTagsPage.js";
 import FeelingsLog from "../modules/FeelingsLog.js";
 import TagsLog from "../modules/TagsLog.js";
 import JournalingPage from "../modules/JournalingPage.js";
+import {motion} from 'framer-motion';
 
 import "../../utilities.css";
 import "./MainPage.css";

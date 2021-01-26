@@ -3,7 +3,7 @@ import { Router } from "@reach/router";
 import NotFound from "./pages/NotFound.js";
 import IFeelPage from "./pages/IFeelPage.js";
 import MainPage from "./pages/MainPage.js";
-
+import {motion} from "framer-motion";
 import "../utilities.css";
 
 import { socket } from "../client-socket.js";
