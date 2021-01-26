@@ -6,4 +6,7 @@
   display: table;
   height: inherit;
   min-height: 89vh;
+  display: flex;
+  justify-content: center;
+  text-align: center;
 }
