@@ -129,7 +129,6 @@ class IFeelPage extends Component {
         )}
         {this.props.name === undefined ? <> </> : <> Hello, {this.props.name} </>}
         <div className="cloud x2"></div>
-
         <div className="IFeelPage-moveUp">
           <motion.div
             initial="hidden"
@@ -179,7 +178,7 @@ class IFeelPage extends Component {
             }}
           >
             <Link className="IFeelPage-done_button" onClick={this.submitFeelingsToAPI} to="/main/">
-              Complete
+              Done
             </Link>
           </motion.div>
         </div>
