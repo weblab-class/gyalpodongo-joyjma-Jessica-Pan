@@ -53,7 +53,7 @@ class CreatedTag extends Component {
       <>
         <div className="CreatedTag-container">
           <p className="CreatedTag-feelingName"> {tag.feeling} </p>
-          <span> {this.props.tagToHTML(tag.activity)} </span>
+          <span className="u-textCenter"> {this.props.tagToHTML(tag.activity)} </span>
           <button className="CreatedTag-button " onClick={this.showRatings}>
             Ratings: {total}{" "}
           </button>
