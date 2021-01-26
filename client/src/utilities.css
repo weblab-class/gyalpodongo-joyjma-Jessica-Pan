@@ -100,12 +100,6 @@ form {
   width: 100%;
 }
 
-
-body {
-	
-	overflow: hidden;
-}
-
 .cloud {
 	width: 200px; height: 60px;
 	background: #fff;

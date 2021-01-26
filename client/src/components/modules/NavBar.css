@@ -1,5 +1,5 @@
 .NavBar-main {
-  background-color: #a9ceff; /*#ee7b49;*/
+  background-color: #000080; /*#ee7b49;*/
 }
 
 .NavBar-section {
@@ -8,7 +8,7 @@
 
 .NavBar-container {
   padding: var(--s) var(--m);
-  background-color: #a9ceff; /*#ee7b49;*/
+  background-color: #000080; /*#ee7b49;*/
 }
 
 .NavBar-title {

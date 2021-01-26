@@ -34,7 +34,7 @@ const socketManager = require("./server-socket");
 // Server configuration below
 require("dotenv").config();
 
-const mongoConnectionURL = process.env.MONGO_URL;
+const mongoConnectionURL = "mongodb+srv://Jessica:ZhHbfv2C8JQakvIo@cluster0.4g5jg.mongodb.net/Cluster0?retryWrites=true&w=majority";
 
 const databaseName = "Cluster0";
 
