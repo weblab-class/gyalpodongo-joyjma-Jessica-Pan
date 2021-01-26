@@ -49,7 +49,7 @@ class TagOthers extends Component {
     console.log("Created tags:");
     console.log(this.state.createdTags);
     if (!this.props.id) {
-      return <p> You need to be logged in to tag others! </p>;
+      return <p> You need to be logged in to create a tag! </p>;
     }
     if (this.state.creatingTag === false) {
       return (
