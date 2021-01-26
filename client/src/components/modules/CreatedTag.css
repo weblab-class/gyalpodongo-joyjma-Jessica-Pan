@@ -1,0 +1,55 @@
+.CreatedTag-container {
+  width: 90%;
+  display: flex;
+  padding: 0px 10px;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fcefef;
+  border-style: solid;
+  border-color: #463f3a;
+  border-width: 2px;
+  margin-right: 20px;
+  border-radius: 10px;
+  margin: 12px;
+  z-index: 2;
+}
+
+.CreatedTag-button {
+  background-color: #a57c01;
+  border-color: #463f3a;
+  border-radius: 10px;
+  height: 40px;
+  margin-left: 10px;
+  cursor: pointer;
+  min-width: 100px;
+}
+
+.CreatedTag-button:hover {
+  background-color: #dfb22d;
+}
+
+.CreatedTag-feelingName {
+  color: #001f54;
+  font-size: 36px;
+  position: relative;
+  top: -40px;
+  height: 20px;
+  margin-right: 24px;
+}
+
+.CreatedTag-ratings {
+  width: 90%;
+  display: flex;
+  padding: 10px;
+  align-items: center;
+
+  flex-direction: column;
+  background-color: #a9ceff;
+  margin-right: 30px;
+  border-radius: 10px;
+  align-items: center;
+  position: relative;
+  bottom: 12px;
+  left: 16px;
+  z-index: 1;
+}

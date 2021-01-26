@@ -19,10 +19,10 @@ class SingleTag extends Component {
   taskComplete = () => {
     console.log("HEREE ");
     this.setState({ showingComplete: true });
-    // post("/api/task-complete", {
-    //   tagId: this.props.tag.tag_id,
-    //   userId: this.props.userId,
-    // });
+    post("/api/task-complete", {
+      tagId: this.props.tag.tag_id,
+      userId: this.props.userId,
+    });
   };
 
   submitRating = () => {

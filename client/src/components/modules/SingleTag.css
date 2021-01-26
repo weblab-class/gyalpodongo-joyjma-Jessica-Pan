@@ -6,13 +6,14 @@
 .SingleTag-button {
   background-color: #a57c01;
   border-color: #463f3a;
+  border-radius: 10px;
   height: 40px;
   margin-left: 10px;
   cursor: pointer;
 }
 
 .SingleTag-button:hover {
-  background-color: #f6d56d;
+  background-color: #dfb22d;
 }
 
 .SingleTag-buttonSpan {
