@@ -1,5 +1,5 @@
 .NavBar-main {
-  background-color: #ee7b49;
+  background-color: #a9ceff; /*#ee7b49;*/
 }
 
 .NavBar-section {
@@ -8,7 +8,7 @@
 
 .NavBar-container {
   padding: var(--s) var(--m);
-  background-color: #ee7b49;
+  background-color: #a9ceff; /*#ee7b49;*/
 }
 
 .NavBar-title {
@@ -23,13 +23,14 @@
 .NavBar-link,
 .NavBar-link:visited {
   color: var(--white);
-  opacity: 0.6;
+  opacity: 0.8;
   text-decoration: none;
 }
 
 .NavBar-link:hover {
-  opacity: 0.8;
+  opacity: 0.95;
   cursor: pointer;
+  text-decoration: underline;
 }
 
 .NavBar-iFeelBox {
