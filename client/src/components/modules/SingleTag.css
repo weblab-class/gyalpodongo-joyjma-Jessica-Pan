@@ -4,14 +4,14 @@
 }
 
 .SingleTag-button {
-  background-color: #806d40;
+  background-color: #a57c01;
   border-color: #463f3a;
   height: 40px;
   margin-left: 10px;
 }
 
 .SingleTag-button:hover {
-  background-color: #806d409d;
+  background-color: #a57c01;
 }
 
 .SingleTag-buttonSpan {
@@ -25,7 +25,7 @@
   display: flex;
   padding: 10px;
   align-items: center;
-  background-color: #eafdf8;
+  background-color: #fcefef;
   border-style: solid;
   border-color: #463f3a;
   border-width: 2px;

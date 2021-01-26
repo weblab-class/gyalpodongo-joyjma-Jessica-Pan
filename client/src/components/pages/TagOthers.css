@@ -1,10 +1,12 @@
 .TagOthers-newTagButton {
   font-size: 36px;
-  color: white;
+  color: #001f54;
   border-radius: 20px;
   padding: 10px 30px;
   text-align: center;
-  background-color: #806d40;
+  background-color: #fcefef;
+  background-color: #001f54;
+  color: #fcefef;
   text-decoration: none;
   /* border-style: solid;
   border-color: black;
@@ -13,6 +15,6 @@
 }
 
 .TagOthers-newTagButton:hover {
-  background-color: white;
-  color: #806d40;
+  background-color: #fcefef;
+  color: #001f54;
 }
