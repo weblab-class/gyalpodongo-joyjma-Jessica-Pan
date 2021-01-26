@@ -26,7 +26,7 @@ class FeelingBubble extends Component {
     this.state = {
       showing: false,
       feeling: tempFeeling,
-      yOffset: this.props.offset * 30,
+      yOffset: this.props.offset * 35,
       classNames: "feelingBubble-clickable hidden",
       color: color,
     };
@@ -54,21 +54,19 @@ class FeelingBubble extends Component {
       get("/api/random_feeling_name").then((result) => {
         this.setState({ feeling: result.feeling });
       });
-      const steadyNames = this.state.classNames.substr(0, this.state.classNames.lastIndexOf(" "));
-      this.setState({ classNames: steadyNames + " feelingBubble-animated" });
+      this.setState({ classNames: "feelingBubble-clickable feelingBubble-animated" });
     }
   };
 
   onAnimationEnd = () => {
     if (this._isMounted) {
-      const steadyNames = this.state.classNames.substr(0, this.state.classNames.lastIndexOf(" "));
-      this.setState({ classNames: steadyNames + " hidden" });
+      this.setState({ classNames: "feelingBubble-clickable hidden" });
     }
   };
 
   handleClick = () => {
     this.props.addFeeling(this.state.feeling);
-    this.setState({ showing: false });
+    this.setState({ classNames: "feelingBubble-clickable hidden" });
   };
 
   componentWillUnmount() {
@@ -80,9 +78,6 @@ class FeelingBubble extends Component {
   }
 
   render() {
-    if (!this.state.showing) {
-      return <> </>;
-    }
     return (
       <div
         style={{ position: "absolute", top: 420 + this.state.yOffset + "px" }}

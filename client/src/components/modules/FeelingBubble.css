@@ -17,7 +17,7 @@
 
 .feelingBubble-animated {
   animation: moving 18s 1;
-  animation-timing-function: cubic-bezier(0, 0.42, 1, 0.58);
+  animation-timing-function: cubic-bezier(0, 0.6, 1, 0.5);
 }
 
 .color1 {
