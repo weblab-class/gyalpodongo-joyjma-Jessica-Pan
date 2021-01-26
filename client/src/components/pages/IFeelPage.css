@@ -22,6 +22,7 @@
   border-width: 5px;
   border-color: #fcd29f;
   color: white;
+  /* background-color: #cee3ff; */
   background-color: #ff8c5a;
   outline: none;
 }
@@ -32,10 +33,14 @@
   border-radius: 20px;
   padding: 0px 20px;
   text-align: center;
-  background-color: #806d40;
   text-decoration: none;
   width: 150px;
   margin: 20px;
+  background-color: #ffffff3b;
+}
+
+.IFeelPage-done_button:hover {
+  background-color: #ffffff6b;
 }
 
 .center {
