@@ -39,15 +39,20 @@ class CreatedTag extends Component {
     }
     let ratingsView;
     if (this.state.showingRatings) {
-      ratingsView = (
-        <div className="CreatedTag-ratings">
-          {tag.ratings.map((value, i) => (
-            <p key={`ratings-view-${i}`}>
-              {this.getStars(i + 1)}: {value}
-            </p>
-          ))}
-        </div>
-      );
+      ratingsView =
+        tag.ratings.length === 0 ? (
+          <div className="CreatedTag-ratings">
+            This tag doesn't have any ratings yet. Invite your friends to log their feelings!
+          </div>
+        ) : (
+          <div className="CreatedTag-ratings">
+            {tag.ratings.map((value, i) => (
+              <p key={`ratings-view-${i}`}>
+                {this.getStars(i + 1)}: {value}
+              </p>
+            ))}
+          </div>
+        );
     }
     return (
       <>
@@ -55,7 +60,7 @@ class CreatedTag extends Component {
           <p className="CreatedTag-feelingName"> {tag.feeling} </p>
           <span className="u-textCenter"> {this.props.tagToHTML(tag.activity)} </span>
           <button className="CreatedTag-button " onClick={this.showRatings}>
-            Ratings: {total}{" "}
+            Ratings: {total}
           </button>
         </div>
         {ratingsView}
