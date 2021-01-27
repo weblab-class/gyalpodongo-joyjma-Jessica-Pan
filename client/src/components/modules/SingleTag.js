@@ -13,7 +13,7 @@ class SingleTag extends Component {
     const completeMessage =
       completeMessages[Math.floor(Math.random() * completeMessages.length)] +
       punctuation[Math.floor(Math.random() * punctuation.length)];
-    this.state = { showingComplete: false, stars: 3, completeMessage: completeMessage };
+    this.state = { showingComplete: false, stars: 0, completeMessage: completeMessage };
   }
 
   taskComplete = () => {
@@ -26,6 +26,10 @@ class SingleTag extends Component {
   };
 
   submitRating = () => {
+    let rating = this.state.stars;
+    if (rating === 0) {
+      rating = 1;
+    }
     this.setState({ showingComplete: false });
     this.props.removeTag(this.props.tag);
     post("/api/rating", { tagId: this.props.tag.tag_id, rating: this.state.stars });

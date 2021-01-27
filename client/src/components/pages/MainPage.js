@@ -8,6 +8,7 @@ import FeelingsLog from "../modules/FeelingsLog.js";
 import TagsLog from "../modules/TagsLog.js";
 import JournalingPage from "../modules/JournalingPage.js";
 import { motion } from "framer-motion";
+import ProfilePage from "../modules/ProfilePage.js";
 
 import "../../utilities.css";
 import "./MainPage.css";
@@ -134,14 +135,15 @@ class MainPage extends Component {
     });
   };
 
-  showTagsLog = () => {
+  showTagsLog = (allTags) => {
     this.setState({
       mainContent: (
-          <TagsLog
-            userId={this.props.userId}
-            currentFeelings={this.state.feelings}
-            tagToHTML={this.tagToHTML}
-          />
+        <TagsLog
+          userId={this.props.userId}
+          currentFeelings={this.state.feelings}
+          tagToHTML={this.tagToHTML}
+          allTags={allTags}
+        />
       ),
     });
   };
@@ -158,6 +160,22 @@ class MainPage extends Component {
     });
   };
 
+  showProfilePage = () => {
+    this.setState({
+      mainContent: (
+        <ProfilePage
+          showFeelingsLog={this.showFeelingsLog}
+          showTagsLog={this.showTagsLog}
+          showTagOthers={this.showTagOthers}
+          userId={this.props.userId}
+          name={this.props.name}
+          feelings={this.state.feelings}
+          numLoggedFeelings={this.state.allFeelings.length}
+        />
+      ),
+    });
+  };
+
   render() {
     return (
       <div className="u-fullHeight">
@@ -165,10 +183,10 @@ class MainPage extends Component {
           handleLogout={this.props.handleLogout}
           handleLogin={this.handleLoginIntermediate}
           userId={this.props.userId}
+          name={this.props.name}
           showYourTags={this.showYourTags}
           showTagOthers={this.showTagOthers}
-          showFeelingsLog={this.showFeelingsLog}
-          showTagsLog={this.showTagsLog}
+          showProfilePage={this.showProfilePage}
           showJournaling={this.showJournaling}
         />
         <span className="MainPage-main">

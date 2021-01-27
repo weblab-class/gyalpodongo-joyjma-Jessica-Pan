@@ -19,17 +19,20 @@ class NavBar extends Component {
 
   render() {
     let pastFeelingsSection;
+    let hello = "Hello.";
+    let tagOthersSection;
     if (this.props.userId) {
       pastFeelingsSection = (
-        <>
-          <span className="NavBar-link u-inlineBlock" onClick={this.props.showFeelingsLog}>
-            Past Feelings
-          </span>
-          <span className="NavBar-link u-inlineBlock" onClick={this.props.showTagsLog}>
-            Past Tags
-          </span>
-        </>
+        <span className="NavBar-link u-inlineBlock" onClick={this.props.showProfilePage}>
+          Your Profile
+        </span>
       );
+      tagOthersSection = (
+        <span className="NavBar-link u-inlineBlock" onClick={this.props.showTagOthers}>
+          Tag Others
+        </span>
+      );
+      hello = "Hello, " + this.props.name;
     }
 
     return (
@@ -54,21 +57,19 @@ class NavBar extends Component {
               />
             </div>
           )}
-
           <Link className="NavBar-link u-inlineBlock" to="/">
             I feel <div className="NavBar-iFeelBox" />
           </Link>
           <span className="NavBar-link u-inlineBlock" onClick={this.props.showYourTags}>
             Your Tags
           </span>
-          <span className="NavBar-link u-inlineBlock" onClick={this.props.showTagOthers}>
-            Tag Others
-          </span>
+          {tagOthersSection}
           <span className="NavBar-link u-inlineBlock" onClick={this.props.showJournaling}>
             Journal
           </span>
           {pastFeelingsSection}
         </div>
+        <span className="NavBar-hello">{hello}</span>
       </nav>
     );
   }

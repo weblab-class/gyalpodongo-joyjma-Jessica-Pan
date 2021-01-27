@@ -68,9 +68,10 @@ class FeelingsLog extends Component {
         {this.state.allFeelings.map((feeling, i) => (
           <div key={`past-list-${i}`}>
             <h3>
-              You felt {feeling.feeling_name} on {feeling.timestamp}.
+              You felt {this.state.allFeelings[this.state.allFeelings.length - i - 1].feeling_name}{" "}
+              on {this.state.allFeelings[this.state.allFeelings.length - i - 1].timestamp}.
             </h3>
-            {this.getNotesFor(feeling._id)}
+            {this.getNotesFor(this.state.allFeelings[this.state.allFeelings.length - i - 1]._id)}
           </div>
         ))}
       </div>

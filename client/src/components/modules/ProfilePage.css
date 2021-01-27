@@ -1,0 +1,79 @@
+.ProfilePage-button {
+  color: #e5e9ec;
+  border-radius: 10px;
+  text-align: center;
+  background-color: #0f52ba;
+  text-decoration: none;
+  width: 240px;
+  margin: 20px;
+  margin-top: 10px;
+  font-size: 24px;
+  /* border-style: solid; */
+  padding: var(--s) var(--m);
+}
+
+.ProfilePage-button:hover {
+  background-color: #0e4d92;
+}
+
+.ProfilePage-userScoreDiv {
+  background-color: #e5e9ec;
+  border-style: solid;
+  border-color: #001f54;
+  display: inline-block;
+  padding: 10px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px;
+}
+
+.ProfilePage-mainInfoBox {
+  width: 90%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.ProfilePage-infoSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.ProfilePage-PointsSpan {
+  padding-right: 20px;
+  border-right: solid #001f54 2px;
+  width: 148px;
+}
+
+.ProfilePage-smallStats {
+  font-size: 14px;
+  display: flex;
+  width: 148px;
+  flex-direction: column;
+  padding-left: 20px;
+  border-left: solid #001f54 2px;
+  /* position: relative;
+  left: 12px; */
+}
+
+.ProfilePage-subScore {
+  font-size: 14px;
+  position: relative;
+  bottom: 30px;
+  width: 142px;
+  word-wrap: break-word;
+}
+
+@media only screen and (max-width: 900px) {
+  .ProfilePage-hidesWhenThin {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 900px) {
+  .ProfilePage-showsWhenThin {
+    display: none;
+  }
+}

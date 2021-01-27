@@ -19,6 +19,9 @@ class IFeelPage extends Component {
     for (let i = 0; i < 11; i++) {
       const choices = [...Array(7).keys()];
       choices.splice(offSetArray.slice(-1)[0], 1);
+      if (i === 10) {
+        choices.splice(0, 1);
+      }
       offSetArray.push(choices[Math.floor(Math.random() * choices.length)]);
     }
     console.log(offSetArray);

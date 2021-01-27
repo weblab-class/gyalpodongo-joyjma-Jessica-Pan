@@ -1,12 +1,10 @@
 .TagOthers-newTagButton {
   font-size: 36px;
-  color: #001f54;
   border-radius: 20px;
   padding: 10px 30px;
   text-align: center;
-  background-color: #fcefef;
-  background-color: #001f54;
-  color: #fcefef;
+  background-color: #0f52ba;
+  color: white;
   text-decoration: none;
   /* border-style: solid;
   border-color: black;
@@ -15,6 +13,18 @@
 }
 
 .TagOthers-newTagButton:hover {
-  background-color: #fcefef;
-  color: #001f54;
+  background-color: #0e4d92;
+}
+
+.test-center {
+  width: 80vw;
+  max-width: 600px;
+  background-color: green;
+  height: 50px;
+}
+
+.TagOthers-maindiv {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }

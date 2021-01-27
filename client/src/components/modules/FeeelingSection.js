@@ -9,8 +9,17 @@ import { get, post } from "../../utilities";
 class FeeelingSection extends Component {
   constructor(props) {
     super(props);
-    // Initialize Default State
-    this.state = { tasks: [], seenTags: false, indexToDisplay: 0 };
+    const phraseOptions = [
+      "That's a valid feeling.",
+      "Glad you're here!",
+      "Everyone feels that way sometimes.",
+      "It makes sense that you feel that way.",
+      "It's good that you're aware of your emotions.",
+      "That's valid.",
+      "You're justified in feeling that way.",
+    ];
+    const phrase = phraseOptions[Math.floor(Math.random() * phraseOptions.length)];
+    this.state = { tasks: [], seenTags: false, indexToDisplay: 0, phrase: phrase };
   }
 
   componentDidMount() {
@@ -44,11 +53,10 @@ class FeeelingSection extends Component {
   render() {
     let taskDisplay = this.state.seenTags ? (
       <p>
-        {" "}
         You have seen all tags for this emotion. Click{" "}
         <span className="FeelingSection-link" onClick={this.props.showTagOthers}>
           here
-        </span>{" "}
+        </span>
         to create new tag.
       </p>
     ) : (
@@ -71,7 +79,7 @@ class FeeelingSection extends Component {
     return (
       <div className="FeelingSection-section">
         <h1> {this.props.feeling} </h1>
-        <p> That's a valid feeling. </p>
+        <p> {this.state.phrase} </p>
         {taskDisplay}
       </div>
     );

@@ -1,21 +1,21 @@
 .CreatedTag-container {
-  width: 90%;
+  width: 80vw;
+  max-width: 600px;
   display: flex;
   padding: 0px 10px;
   align-items: center;
   justify-content: space-between;
-  background-color: #fcefef;
+  background-color: #e5e9ec;
   border-style: solid;
   border-color: #463f3a;
   border-width: 2px;
-  margin-right: 20px;
   border-radius: 10px;
   margin: 12px;
   z-index: 2;
 }
 
 .CreatedTag-button {
-  background-color: #a57c01;
+  background-color: #a0dde6;
   border-color: #463f3a;
   border-radius: 10px;
   height: 40px;
@@ -25,7 +25,7 @@
 }
 
 .CreatedTag-button:hover {
-  background-color: #dfb22d;
+  background-color: #caf7e2;
 }
 
 .CreatedTag-feelingName {
@@ -38,7 +38,8 @@
 }
 
 .CreatedTag-ratings {
-  width: 90%;
+  width: 80vw;
+  max-width: 600px;
   display: flex;
   padding: 10px;
   align-items: center;
