@@ -35,16 +35,18 @@
 
 .NavBar-iFeelBox {
   width: 25px;
-  height: 15px;
+  height: 12px;
   float: right;
   margin-top: 3.5px;
   margin-left: 4px;
   border-radius: 2px;
   border-style: solid;
   border-width: 1px;
-  border-color: #fcefef;
-  background-color: white;
+  border-color: white;
+  background-color: #1052ba;
   cursor: pointer;
+  position: relative;
+  top: 2px;
 }
 
 .NavBar-link + .NavBar-link {
