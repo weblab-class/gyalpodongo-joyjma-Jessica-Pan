@@ -127,25 +127,6 @@ form {
 	-moz-transform: rotate(30deg);
 }
 
-.cloud:before,
-.cloud:after {
-  content: "";
-  position: absolute;
-  background: #fff;
-  width: 100px;
-  height: 80px;
-  position: absolute;
-  top: -15px;
-  left: 10px;
-
-  border-radius: 100px;
-  -moz-border-radius: 100px;
-  -webkit-border-radius: 100px;
-
-  -webkit-transform: rotate(30deg);
-  transform: rotate(30deg);
-  -moz-transform: rotate(30deg);
-}
 
 .cloud:after {
   width: 120px;
@@ -156,7 +137,7 @@ form {
 }
 
 .x1 {
-  -webkit-animation: moveclouds 15s linear infinite;
+  -webkit-animation: moveclouds 30s linear infinite;
   -moz-animation: moveclouds 15s linear infinite;
   -o-animation: moveclouds 15s linear infinite;
 }

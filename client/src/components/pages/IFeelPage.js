@@ -171,7 +171,7 @@ class IFeelPage extends Component {
           <motion.div
             className="center"
             whileHover={{
-              scale: 1.2,
+              scale: 1.1,
               transition: {
                 duration: 0.2,
               },

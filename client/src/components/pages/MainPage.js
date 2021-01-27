@@ -106,12 +106,14 @@ class MainPage extends Component {
   showYourTags = () => {
     this.setState({
       mainContent: (
-        <YourTagsPage
-          feelings={this.state.feelings}
-          userId={this.props.userId}
-          tagToHTML={this.tagToHTML}
-          showTagOthers={this.showTagOthers}
-        />
+        <>
+          <YourTagsPage
+            feelings={this.state.feelings}
+            userId={this.props.userId}
+            tagToHTML={this.tagToHTML}
+            showTagOthers={this.showTagOthers}
+          />
+        </>
       ),
     });
   };
@@ -135,11 +137,11 @@ class MainPage extends Component {
   showTagsLog = () => {
     this.setState({
       mainContent: (
-        <TagsLog
-          userId={this.props.userId}
-          currentFeelings={this.state.feelings}
-          tagToHTML={this.tagToHTML}
-        />
+          <TagsLog
+            userId={this.props.userId}
+            currentFeelings={this.state.feelings}
+            tagToHTML={this.tagToHTML}
+          />
       ),
     });
   };
