@@ -8,6 +8,7 @@ import FeelingsLog from "../modules/FeelingsLog.js";
 import TagsLog from "../modules/TagsLog.js";
 import JournalingPage from "../modules/JournalingPage.js";
 import { motion } from "framer-motion";
+import ProfilePage from "../modules/ProfilePage.js";
 
 import "../../utilities.css";
 import "./MainPage.css";
@@ -156,6 +157,21 @@ class MainPage extends Component {
     });
   };
 
+  showProfilePage = () => {
+    this.setState({
+      mainContent: (
+        <ProfilePage
+          showFeelingsLog={this.showFeelingsLog}
+          showTagsLog={this.showTagsLog}
+          showTagOthers={this.showTagOthers}
+          userId={this.props.userId}
+          name={this.props.name}
+          feelings={this.state.feelings}
+        />
+      ),
+    });
+  };
+
   render() {
     return (
       <div className="u-fullHeight">
@@ -165,8 +181,7 @@ class MainPage extends Component {
           userId={this.props.userId}
           showYourTags={this.showYourTags}
           showTagOthers={this.showTagOthers}
-          showFeelingsLog={this.showFeelingsLog}
-          showTagsLog={this.showTagsLog}
+          showProfilePage={this.showProfilePage}
           showJournaling={this.showJournaling}
         />
         <span className="MainPage-main">

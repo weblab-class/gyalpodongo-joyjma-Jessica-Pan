@@ -21,14 +21,9 @@ class NavBar extends Component {
     let pastFeelingsSection;
     if (this.props.userId) {
       pastFeelingsSection = (
-        <>
-          <span className="NavBar-link u-inlineBlock" onClick={this.props.showFeelingsLog}>
-            Past Feelings
-          </span>
-          <span className="NavBar-link u-inlineBlock" onClick={this.props.showTagsLog}>
-            Past Tags
-          </span>
-        </>
+        <span className="NavBar-link u-inlineBlock" onClick={this.props.showProfilePage}>
+          Your Profile
+        </span>
       );
     }
 

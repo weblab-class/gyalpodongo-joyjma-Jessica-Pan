@@ -50,7 +50,7 @@ class FeelingBubble extends Component {
 
   getRandomFeeling = () => {
     console.log("starting the animation " + this.props.index);
-    if (this._isMounted) {
+    if (this._isMounted && !document.hidden) {
       get("/api/random_feeling_name").then((result) => {
         this.setState({ feeling: result.feeling });
       });
