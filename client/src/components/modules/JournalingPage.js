@@ -38,7 +38,7 @@ class JournalingPage extends Component {
   };
 
   render() {
-    let notLoggedInText = <p> You can view past entries on the "Past Feelings" page. </p>;
+    let notLoggedInText = <p> You can view past entries in your profile. </p>;
     if (!this.props.userId) {
       notLoggedInText = (
         <p> Since you're not logged in, your entries won't be saved, but you can still journal! </p>
