@@ -184,8 +184,8 @@ router.get("/random_feeling_name", (req, res) => {
   });
 });
 
-router.post("/rating", (req, res) => {
-  console.log("Here's the tag ID: " + req.body.tagId);
+router.post("/rating", auth.ensureLoggedIn, (req, res) => {
+  // console.log("Here's the tag ID: " + req.body.tagId);
   Tag.findOne({
     tag_id: req.body.tagId,
   }).then((tag) => {

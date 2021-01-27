@@ -56,6 +56,10 @@ form {
   flex-grow: 1;
 }
 
+.u-clickable {
+  cursor: pointer;
+}
+
 .u-flex {
   display: flex;
 }
@@ -113,32 +117,36 @@ form {
 }
 
 .cloud {
-	width: 200px; height: 60px;
-	background: #fff;
-	
-	border-radius: 200px;
-	-moz-border-radius: 200px;
-	-webkit-border-radius: 200px;
-	
-	position: relative; 
+  width: 200px;
+  height: 60px;
+  background: #fff;
+
+  border-radius: 200px;
+  -moz-border-radius: 200px;
+  -webkit-border-radius: 200px;
+
+  position: relative;
 }
 
-.cloud:before, .cloud:after {
-	content: '';
-	position: absolute; 
-	background: #fff;
-	width: 100px; height: 80px;
-	position: absolute; top: -15px; left: 10px;
-	
-	border-radius: 100px;
-	-moz-border-radius: 100px;
-	-webkit-border-radius: 100px;
-	
-	-webkit-transform: rotate(30deg);
-	transform: rotate(30deg);
-	-moz-transform: rotate(30deg);
-}
+.cloud:before,
+.cloud:after {
+  content: "";
+  position: absolute;
+  background: #fff;
+  width: 100px;
+  height: 80px;
+  position: absolute;
+  top: -15px;
+  left: 10px;
 
+  border-radius: 100px;
+  -moz-border-radius: 100px;
+  -webkit-border-radius: 100px;
+
+  -webkit-transform: rotate(30deg);
+  transform: rotate(30deg);
+  -moz-transform: rotate(30deg);
+}
 
 .cloud:after {
   width: 120px;
