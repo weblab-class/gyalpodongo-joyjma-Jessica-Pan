@@ -4,7 +4,12 @@
   flex-direction: column;
 }
 
-/* .FeelingSection-link {
+.FeelingSection-link {
   text-decoration: underline;
-  color: #0000ee;
-} */
+  color: #1c5bc0;
+}
+
+.FeelingSection-link:hover {
+  cursor: pointer;
+  opacity: 0;
+}

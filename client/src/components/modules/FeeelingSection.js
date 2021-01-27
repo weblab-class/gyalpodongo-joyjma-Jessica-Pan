@@ -56,7 +56,7 @@ class FeeelingSection extends Component {
         You have seen all tags for this emotion. Click{" "}
         <span className="FeelingSection-link" onClick={this.props.showTagOthers}>
           here
-        </span>
+        </span>{" "}
         to create new tag.
       </p>
     ) : (
