@@ -134,22 +134,24 @@ class ProfilePage extends Component {
       );
     }
     return (
-      <div className="ProfilePage-wholeDiv">
-        <h2> Hello, {this.props.name} </h2>
-        {currentFeelings}
-        <div className="ProfilePage-userScoreDiv">{userInfo}</div>
-        <button className="ProfilePage-button" onClick={this.props.showFeelingsLog}>
-          Past Feelings
-        </button>
-        <button
-          className="ProfilePage-button"
-          onClick={() => this.props.showTagsLog(this.state.allTags)}
-        >
-          Past Tags Done
-        </button>
-        <button className="ProfilePage-button" onClick={this.props.showTagOthers}>
-          Past Tags Created
-        </button>
+      <div>
+        <div className="ProfilePage-wholeDiv">
+          <h2> Hello, {this.props.name} </h2>
+          {currentFeelings}
+          <div className="ProfilePage-userScoreDiv">{userInfo}</div>
+          <button className="ProfilePage-button" onClick={this.props.showFeelingsLog}>
+            Past Feelings
+          </button>
+          <button
+            className="ProfilePage-button"
+            onClick={() => this.props.showTagsLog(this.state.allTags)}
+          >
+            Past Tags Done
+          </button>
+          <button className="ProfilePage-button" onClick={this.props.showTagOthers}>
+            Past Tags Created
+          </button>
+        </div>
       </div>
     );
   }

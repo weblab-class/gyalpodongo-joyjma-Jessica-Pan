@@ -131,7 +131,6 @@ class IFeelPage extends Component {
           />
         )}
         {this.props.name === undefined ? <> </> : <> Hello, {this.props.name} </>}
-        <div className="cloud x2"></div>
         <div className="IFeelPage-moveUp">
           <motion.div
             initial="hidden"
@@ -185,9 +184,12 @@ class IFeelPage extends Component {
             </Link>
           </motion.div>
         </div>
-        <div className="cloud x5"></div>
-        <div className="cloud x2"></div>
-        <div className="cloud x4"></div>
+        <div>
+          <div className="cloudabsolute x2"></div>
+          <div className="cloudabsolute x3"></div>
+          <div className="cloud x4"></div>
+          <div className="cloud x5"></div>
+        </div>
         <div className="u-fullWidth"> {feelingBubbles}</div>
       </>
     );

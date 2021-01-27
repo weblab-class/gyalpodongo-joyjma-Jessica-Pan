@@ -46,6 +46,7 @@ class JournalingPage extends Component {
     }
     let journalingSections = this.props.feelings.map((feeling, i) => (
       <div key={`feeling-journal-section=${i}`}>
+        <div className="cloud x2"></div>
         <h3> You said you're feeling {feeling}. Talk about that. </h3>
         <textarea
           placeholder={'Why do you feel "' + feeling + '"?'}
@@ -60,6 +61,7 @@ class JournalingPage extends Component {
             Done
           </button>
         </div>
+        <div className="cloud x5"></div>
       </div>
     ));
     if (this.props.feelings.length === 0) {
@@ -67,6 +69,12 @@ class JournalingPage extends Component {
         <>
           You don't have any feelings recorded right now. Click <Link to="/"> here </Link> to list
           some feelings.
+          <div>
+            <div className="cloudabsolute x2"></div>
+            <div className="cloudabsolute x3"></div>
+            <div className="cloudabsolute x4"></div>
+            <div className="cloudabsolute x5"></div>
+          </div>
         </>
       );
     }
@@ -76,6 +84,10 @@ class JournalingPage extends Component {
         you feel that way as comprehensively as you can.
         {notLoggedInText}
         {journalingSections}
+        <div>
+          <div className="cloudabsolute x2"></div>
+          <div className="cloud x3"></div>
+        </div>
       </div>
     );
   }

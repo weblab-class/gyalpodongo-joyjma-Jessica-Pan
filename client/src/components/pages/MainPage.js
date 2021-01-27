@@ -114,6 +114,7 @@ class MainPage extends Component {
             tagToHTML={this.tagToHTML}
             showTagOthers={this.showTagOthers}
           />
+          
         </>
       ),
     });
@@ -151,11 +152,12 @@ class MainPage extends Component {
   showJournaling = () => {
     this.setState({
       mainContent: (
-        <JournalingPage
-          feelings={this.state.feelings}
-          feeling_ids={this.state.feeling_ids}
-          userId={this.props.userId}
-        />
+
+          <JournalingPage
+            feelings={this.state.feelings}
+            feeling_ids={this.state.feeling_ids}
+            userId={this.props.userId}
+          />
       ),
     });
   };
