@@ -174,7 +174,7 @@ router.get("/notes", auth.ensureLoggedIn, (req, res) => {
 });
 
 router.get("/random_feeling_name", (req, res) => {
-  Feeling.count().exec(function (err, count) {
+  Feeling.countDoucments().exec(function (err, count) {
     var random = Math.floor(Math.random() * count);
     Feeling.findOne()
       .skip(random)
@@ -184,14 +184,14 @@ router.get("/random_feeling_name", (req, res) => {
   });
 });
 
-router.post("/rating", auth.ensureLoggedIn, (req, res) => {
-  // console.log("Here's the tag ID: " + req.body.tagId);
+router.post("/rating", (req, res) => {
+  console.log("Here's the tag ID: " + req.body.tagId);
   Tag.findOne({
     tag_id: req.body.tagId,
   }).then((tag) => {
     console.log("adding a " + req.body.rating + " star rating to this tag: " + tag.activity);
     let newRatings = tag.ratings;
-    if (tag.ratings === undefined) {
+    if (tag.ratings === undefined || tag.ratings.length === 0 || tag.ratings[0] === null) {
       newRatings = [0, 0, 0, 0, 0];
     }
     newRatings[req.body.rating - 1] += 1;
