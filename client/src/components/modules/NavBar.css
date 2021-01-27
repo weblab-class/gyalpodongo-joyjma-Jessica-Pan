@@ -61,3 +61,9 @@
   right: 20px;
   top: 25px;
 }
+
+@media only screen and (max-width: 700px) {
+  .NavBar-hello {
+    display: none;
+  }
+}

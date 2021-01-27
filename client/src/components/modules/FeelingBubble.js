@@ -37,31 +37,36 @@ class FeelingBubble extends Component {
   componentDidMount() {
     // console.log("I'm going to wait for " + this.props.index + "seconds.");
     this._isMounted = true;
-    window.setTimeout(this.startAnimation, 2000 * this.props.index);
+    this.getRandomFeeling();
+    window.setTimeout(this.startAnimationCycle, 2000 * this.props.index);
   }
 
-  startAnimation = () => {
+  startAnimationCycle = () => {
     if (this._isMounted) {
-      this.getRandomFeeling();
+      this.startAnimation();
       this.setState({ showing: true });
-      this.interval = window.setInterval(this.getRandomFeeling, 24000);
+      this.interval = window.setInterval(this.startAnimation, 24000);
     }
   };
 
-  getRandomFeeling = () => {
+  startAnimation = () => {
     console.log("starting the animation " + this.props.index);
     if (this._isMounted && !document.hidden) {
-      get("/api/random_feeling_name").then((result) => {
-        this.setState({ feeling: result.feeling });
-      });
       this.setState({ classNames: "feelingBubble-clickable feelingBubble-animated" });
     }
   };
 
   onAnimationEnd = () => {
     if (this._isMounted) {
+      this.getRandomFeeling();
       this.setState({ classNames: "feelingBubble-clickable hidden" });
     }
+  };
+
+  getRandomFeeling = () => {
+    get("/api/random_feeling_name").then((result) => {
+      this.setState({ feeling: result.feeling });
+    });
   };
 
   handleClick = () => {
