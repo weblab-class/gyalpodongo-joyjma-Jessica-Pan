@@ -1,10 +1,13 @@
 .MainPage-mainContent {
   margin: 10px 20px;
+  /* background-color: red; */
+  display: flex;
+  justify-content: center;
 }
 
 .MainPage-main {
-  display: table;
-  height: inherit;
+  /* display: table;
+  height: inherit; */
   min-height: 89vh;
   display: flex;
   justify-content: center;

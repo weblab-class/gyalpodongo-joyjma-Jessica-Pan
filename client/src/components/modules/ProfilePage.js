@@ -3,6 +3,8 @@ import { Link } from "@reach/router";
 
 import { get, post } from "../../utilities";
 
+import "./ProfilePage.css";
+
 // props:
 // userId: the user id
 // name: the user's name
@@ -32,9 +34,15 @@ class ProfilePage extends Component {
       <div>
         <h2> Hello, {this.props.name} </h2>
         {currentFeelings}
-        <button onClick={this.props.showFeelingsLog}> Past Feelings </button>
-        <button onClick={this.props.showTagsLog}> Past Tags Done </button>
-        <button onClick={this.props.showTagOthers}> Past Tags Created</button>
+        <button className="ProfilePage-button" onClick={this.props.showFeelingsLog}>
+          Past Feelings
+        </button>
+        <button className="ProfilePage-button" onClick={this.props.showTagsLog}>
+          Past Tags Done
+        </button>
+        <button className="ProfilePage-button" onClick={this.props.showTagOthers}>
+          Past Tags Created
+        </button>
       </div>
     );
   }

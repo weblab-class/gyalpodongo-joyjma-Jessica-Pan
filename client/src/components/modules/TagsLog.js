@@ -3,6 +3,9 @@ import { Link } from "@reach/router";
 
 import { get, post } from "../../utilities";
 
+import "./TagsLog.css";
+import "../../utilities.css";
+
 // props:
 // userId: the user id
 // currentFeelings: the current feelings
@@ -24,14 +27,16 @@ class TagsLog extends Component {
       .filter((tag) => {
         return tag.feeling === feeling;
       })
-      .map((tag, i) => <li key={`tag-${feeling}-${i}`}> {this.props.tagToHTML(tag.activity)} </li>);
+      .map((tag, i) => (
+        <div key={`tag-${feeling}-${i}`}> {this.props.tagToHTML(tag.activity)} </div>
+      ));
     if (tagsToDisplay.length === 0) {
       return <> You haven't done any tags with this feeling in the past. </>;
     }
     return (
       <>
         <p> In the past, when you felt that way, you've done the following tasks: </p>
-        <ul>{tagsToDisplay}</ul>
+        <div className="TagsLog-feelingTagContainer">{tagsToDisplay}</div>
       </>
     );
   };
@@ -58,15 +63,15 @@ class TagsLog extends Component {
         <p> You haven't done any tags </p>
       ) : (
         this.state.allTags.map((tag, i) => (
-          <p key={`past-tag-${i}`}>
-            When you were feeling {tag.feeling}, you did this activity:{" "}
-            {this.props.tagToHTML(tag.activity)}
-          </p>
+          <span key={`past-tag-${i}`} className="TagsLog-container">
+            <p className="TagsLog-feelingName"> {tag.feeling} </p>
+            <span className=" u-fullWidth">{this.props.tagToHTML(tag.activity)}</span>
+          </span>
         ))
       );
 
     return (
-      <div>
+      <div className="TagsLog-wholeDiv">
         <h2> Here you can see a list of tags that you've done. </h2>
         <h1> Current Feelings: </h1>
         {currentFeelings}

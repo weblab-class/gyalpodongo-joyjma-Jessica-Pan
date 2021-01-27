@@ -55,7 +55,7 @@ class TagOthers extends Component {
     }
     if (this.state.creatingTag === false) {
       return (
-        <div>
+        <div className="TagOthers-maindiv">
           <h2> Here you can create a new tag for a specific feeling. </h2>
           <div className="u-flex u-flex-justifyCenter">
             <button className="TagOthers-newTagButton u-pointer" onClick={this.createTag}>
@@ -66,6 +66,7 @@ class TagOthers extends Component {
           {this.state.createdTags.map((tag, i) => (
             <CreatedTag key={`displayed-cTag-${i}`} tag={tag} tagToHTML={this.props.tagToHTML} />
           ))}
+          {/* <div className="test-center" /> */}
         </div>
       );
     }
