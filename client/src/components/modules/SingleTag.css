@@ -35,7 +35,8 @@
 }
 
 .SingleTag-container {
-  width: 90%;
+  width: 80vw;
+  max-width: 600px;
   display: flex;
   padding: 10px;
   align-items: center;
@@ -48,7 +49,10 @@
 }
 
 .SingleTag-complete {
-  width: 90%;
+  width: 80vw;
+  max-width: 600px;
+  position: relative;
+  left: 2px;
   display: flex;
   padding: 10px;
   align-items: center;

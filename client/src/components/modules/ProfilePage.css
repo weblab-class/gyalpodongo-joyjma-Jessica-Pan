@@ -44,13 +44,13 @@
 .ProfilePage-PointsSpan {
   padding-right: 20px;
   border-right: solid #001f54 2px;
-  width: 142px;
+  width: 148px;
 }
 
 .ProfilePage-smallStats {
   font-size: 14px;
   display: flex;
-  width: 142px;
+  width: 148px;
   flex-direction: column;
   padding-left: 20px;
   border-left: solid #001f54 2px;
@@ -62,6 +62,8 @@
   font-size: 14px;
   position: relative;
   bottom: 30px;
+  width: 142px;
+  word-wrap: break-word;
 }
 
 @media only screen and (max-width: 900px) {

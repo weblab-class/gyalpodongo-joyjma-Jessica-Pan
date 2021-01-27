@@ -1,5 +1,6 @@
 .TagsLog-container {
-  width: 90%;
+  width: 80vw;
+  max-width: 600px;
   display: flex;
   padding: 0px 10px;
   align-items: center;
@@ -25,6 +26,7 @@
 .TagsLog-feelingTagContainer {
   background-color: #e5e9ec;
   border-style: solid;
+  min-width: 100px;
   border-color: #001f54;
   display: inline-block;
   padding: 10px;

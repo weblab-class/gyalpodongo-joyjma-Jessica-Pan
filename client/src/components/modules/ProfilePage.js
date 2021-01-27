@@ -17,16 +17,41 @@ class ProfilePage extends Component {
     super(props);
     // Initialize Default State
     this.state = {
-      feelingsLogged: 3,
-      tagsDone: 4,
-      tagsCreated: 4,
-      ratings: [0, 0, 1, 3, 4],
+      feelingsLogged: this.props.numLoggedFeelings,
+      tagsDone: 0,
+      tagsCreated: 0,
+      allTags: [],
+      ratings: [0, 0, 0, 0, 0],
       loaded: false,
     };
   }
 
   componentDidMount() {
-    this.setState({ loaded: true });
+    let promise1 = get("/api/user", { userid: this.props.userId });
+    console.log(this.props.userId);
+    let promise2 = get("/api/tagsFromID", { user_id: this.props.userId });
+    Promise.all([promise1, promise2]).then((results) => {
+      let totalRatings = [0, 0, 0, 0, 0];
+      console.log(results[1]);
+      for (let i = 0; i < results[1].length; i++) {
+        let ratings = results[1][i].ratings;
+        if (ratings.length !== 0) {
+          console.log(ratings);
+          console.log(totalRatings);
+          for (let j = 0; j < 5; j++) {
+            totalRatings[j] += ratings[j];
+          }
+        }
+      }
+      this.setState({
+        feelingsLogged: this.state.feelingsLogged,
+        tagsDone: results[0].tags.length,
+        tagsCreated: results[1].length,
+        allTags: results[1],
+        ratings: totalRatings,
+        loaded: true,
+      });
+    });
   }
 
   getAverage = (ratings) => {
@@ -64,7 +89,7 @@ class ProfilePage extends Component {
 
     let currentFeelings;
     if (this.props.feelings.length !== 0) {
-      currentFeelings = <p> Right now you're feeling {this.props.feelings} </p>;
+      currentFeelings = <p> Right now you're feeling {this.props.feelings.join(", ")} </p>;
     }
 
     let userInfo = <> Loading... </>;
@@ -116,7 +141,10 @@ class ProfilePage extends Component {
         <button className="ProfilePage-button" onClick={this.props.showFeelingsLog}>
           Past Feelings
         </button>
-        <button className="ProfilePage-button" onClick={this.props.showTagsLog}>
+        <button
+          className="ProfilePage-button"
+          onClick={() => this.props.showTagsLog(this.state.allTags)}
+        >
           Past Tags Done
         </button>
         <button className="ProfilePage-button" onClick={this.props.showTagOthers}>

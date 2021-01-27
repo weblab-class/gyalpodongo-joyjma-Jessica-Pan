@@ -20,10 +20,16 @@ class NavBar extends Component {
   render() {
     let pastFeelingsSection;
     let hello = "Hello.";
+    let tagOthersSection;
     if (this.props.userId) {
       pastFeelingsSection = (
         <span className="NavBar-link u-inlineBlock" onClick={this.props.showProfilePage}>
           Your Profile
+        </span>
+      );
+      tagOthersSection = (
+        <span className="NavBar-link u-inlineBlock" onClick={this.props.showTagOthers}>
+          Tag Others
         </span>
       );
       hello = "Hello, " + this.props.name;
@@ -57,9 +63,7 @@ class NavBar extends Component {
           <span className="NavBar-link u-inlineBlock" onClick={this.props.showYourTags}>
             Your Tags
           </span>
-          <span className="NavBar-link u-inlineBlock" onClick={this.props.showTagOthers}>
-            Tag Others
-          </span>
+          {tagOthersSection}
           <span className="NavBar-link u-inlineBlock" onClick={this.props.showJournaling}>
             Journal
           </span>

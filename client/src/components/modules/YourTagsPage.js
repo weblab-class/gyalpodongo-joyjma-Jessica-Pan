@@ -19,10 +19,10 @@ class YourTagsPage extends Component {
     let noFeelingsText;
     if (this.props.feelings.length === 0) {
       noFeelingsText = (
-        <>
+        <span>
           You don't have any feelings recorded right now. Click <Link to="/"> here </Link> to list
           some feelings.
-        </>
+        </span>
       );
     }
     return (

@@ -115,16 +115,16 @@ router.post("/tag", auth.ensureLoggedIn, (req, res) => {
 
 // parameters: tagId and userId
 router.post("/task-complete", auth.ensureLoggedIn, (req, res) => {
-  console.log("HEREEEEE");
-  console.log(req.body.tagId);
+  // console.log("HEREEEEE");
+  // console.log(req.body.tagId);
   User.findById(req.user._id).then((user) => {
     if (user.tags === undefined) {
       user.tags = [req.body.tagId];
     } else {
       user.tags = user.tags.concat([req.body.tagId]);
     }
-    console.log("here's the tag list");
-    console.log(user.tags);
+    // console.log("here's the tag list");
+    // console.log(user.tags);
     user.save();
   });
 });

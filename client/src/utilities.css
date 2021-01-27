@@ -48,6 +48,10 @@ a {
   color: #0f52ba;
 }
 
+a:hover {
+  color: #8fbfff;
+}
+
 form {
   flex-grow: 1;
 }

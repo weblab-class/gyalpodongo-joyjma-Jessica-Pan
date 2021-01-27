@@ -1,11 +1,10 @@
 .FeelingSection-section {
-  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
-.FeelingSection-link {
+/* .FeelingSection-link {
   text-decoration: underline;
   color: #0000ee;
-}
-.FeelingSection-link:hover {
-  cursor: pointer;
-}
+} */

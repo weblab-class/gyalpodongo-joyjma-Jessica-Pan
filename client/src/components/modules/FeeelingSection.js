@@ -44,11 +44,10 @@ class FeeelingSection extends Component {
   render() {
     let taskDisplay = this.state.seenTags ? (
       <p>
-        {" "}
         You have seen all tags for this emotion. Click{" "}
         <span className="FeelingSection-link" onClick={this.props.showTagOthers}>
           here
-        </span>{" "}
+        </span>
         to create new tag.
       </p>
     ) : (

@@ -133,13 +133,14 @@ class MainPage extends Component {
     });
   };
 
-  showTagsLog = () => {
+  showTagsLog = (allTags) => {
     this.setState({
       mainContent: (
         <TagsLog
           userId={this.props.userId}
           currentFeelings={this.state.feelings}
           tagToHTML={this.tagToHTML}
+          allTags={allTags}
         />
       ),
     });
@@ -167,6 +168,7 @@ class MainPage extends Component {
           userId={this.props.userId}
           name={this.props.name}
           feelings={this.state.feelings}
+          numLoggedFeelings={this.state.allFeelings.length}
         />
       ),
     });
