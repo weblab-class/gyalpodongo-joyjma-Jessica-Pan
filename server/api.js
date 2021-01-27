@@ -174,7 +174,7 @@ router.get("/notes", auth.ensureLoggedIn, (req, res) => {
 });
 
 router.get("/random_feeling_name", (req, res) => {
-  Feeling.countDoucments().exec(function (err, count) {
+  Feeling.countDocuments().exec(function (err, count) {
     var random = Math.floor(Math.random() * count);
     Feeling.findOne()
       .skip(random)
