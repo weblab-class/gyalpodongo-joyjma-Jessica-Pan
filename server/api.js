@@ -107,7 +107,7 @@ router.post("/tag", auth.ensureLoggedIn, (req, res) => {
     activity: req.body.activity,
     feeling: req.body.feeling, //Array of Strings, each String is a feeling
     original_poster: req.user._id,
-    // ratings: [0, 0, 0, 0, 0],
+    ratings: [0, 0, 0, 0, 0],
   });
   console.log(newTag);
   newTag.save();
@@ -117,7 +117,7 @@ router.post("/tag", auth.ensureLoggedIn, (req, res) => {
 router.post("/task-complete", auth.ensureLoggedIn, (req, res) => {
   console.log("HEREEEEE");
   console.log(req.body.tagId);
-  User.findById(req.body.userId).then((user) => {
+  User.findById(req.user._id).then((user) => {
     if (user.tags === undefined) {
       user.tags = [req.body.tagId];
     } else {

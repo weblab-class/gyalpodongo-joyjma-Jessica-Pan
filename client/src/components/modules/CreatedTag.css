@@ -4,7 +4,7 @@
   padding: 0px 10px;
   align-items: center;
   justify-content: space-between;
-  background-color: #fcefef;
+  background-color: #e5e9ec;
   border-style: solid;
   border-color: #463f3a;
   border-width: 2px;
@@ -15,7 +15,7 @@
 }
 
 .CreatedTag-button {
-  background-color: #a57c01;
+  background-color: #a0dde6;
   border-color: #463f3a;
   border-radius: 10px;
   height: 40px;
@@ -25,7 +25,7 @@
 }
 
 .CreatedTag-button:hover {
-  background-color: #dfb22d;
+  background-color: #caf7e2;
 }
 
 .CreatedTag-feelingName {

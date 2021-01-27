@@ -49,8 +49,8 @@ class NewTagInput extends Component {
       activity: activityText,
       feeling: valueFeelingCamel,
     };
-    post("/api/tag", newTag);
-    this.props.onSubmit();
+    let promise = post("/api/tag", newTag);
+    this.props.onSubmit(promise);
 
     this.setState({
       value: "",

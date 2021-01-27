@@ -30,12 +30,14 @@ class TagOthers extends Component {
     });
   };
 
-  submitTag = () => {
+  submitTag = (promise) => {
     this.setState({
       creatingTag: false,
     });
-    get("/api/tagsFromID", { user_id: this.props.id }).then((tags) => {
-      this.setState({ createdTags: tags });
+    Promise.all([promise]).then(() => {
+      get("/api/tagsFromID", { user_id: this.props.id }).then((tags) => {
+        this.setState({ createdTags: tags });
+      });
     });
   };
 
