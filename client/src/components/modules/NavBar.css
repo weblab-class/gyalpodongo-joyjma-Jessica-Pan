@@ -1,5 +1,5 @@
 .NavBar-main {
-  background-color: #000080; /*#ee7b49;*/
+  background-color: #1052ba; /*#ee7b49;*/
 }
 
 .NavBar-section {
@@ -8,7 +8,7 @@
 
 .NavBar-container {
   padding: var(--s) var(--m);
-  background-color: #000080; /*#ee7b49;*/
+  background-color: #1052ba; /*#ee7b49;*/
 }
 
 .NavBar-title {
@@ -35,16 +35,18 @@
 
 .NavBar-iFeelBox {
   width: 25px;
-  height: 15px;
+  height: 12px;
   float: right;
   margin-top: 3.5px;
   margin-left: 4px;
   border-radius: 2px;
   border-style: solid;
   border-width: 1px;
-  border-color: #fcefef;
-  background-color: white;
+  border-color: white;
+  background-color: #bed6ff;
   cursor: pointer;
+  position: relative;
+  top: 2px;
 }
 
 .NavBar-link + .NavBar-link {
@@ -60,6 +62,10 @@
   color: white;
   right: 20px;
   top: 25px;
+}
+
+.NavBar-underlined {
+  text-decoration: underline;
 }
 
 @media only screen and (max-width: 700px) {

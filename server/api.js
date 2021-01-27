@@ -174,7 +174,7 @@ router.get("/notes", auth.ensureLoggedIn, (req, res) => {
 });
 
 router.get("/random_feeling_name", (req, res) => {
-  Feeling.count().exec(function (err, count) {
+  Feeling.countDocuments().exec(function (err, count) {
     var random = Math.floor(Math.random() * count);
     Feeling.findOne()
       .skip(random)
@@ -191,7 +191,7 @@ router.post("/rating", (req, res) => {
   }).then((tag) => {
     console.log("adding a " + req.body.rating + " star rating to this tag: " + tag.activity);
     let newRatings = tag.ratings;
-    if (tag.ratings === undefined) {
+    if (tag.ratings === undefined || tag.ratings.length === 0 || tag.ratings[0] === null) {
       newRatings = [0, 0, 0, 0, 0];
     }
     newRatings[req.body.rating - 1] += 1;

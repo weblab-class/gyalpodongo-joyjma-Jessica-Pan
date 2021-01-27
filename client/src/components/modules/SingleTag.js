@@ -30,9 +30,13 @@ class SingleTag extends Component {
     if (rating === 0) {
       rating = 1;
     }
+    this.nextTag();
+    post("/api/rating", { tagId: this.props.tag.tag_id, rating: this.state.stars });
+  };
+
+  nextTag = () => {
     this.setState({ showingComplete: false });
     this.props.removeTag(this.props.tag);
-    post("/api/rating", { tagId: this.props.tag.tag_id, rating: this.state.stars });
   };
 
   setStars = (number) => {
@@ -41,7 +45,7 @@ class SingleTag extends Component {
 
   render() {
     let completeView;
-    if (this.state.showingComplete) {
+    if (this.state.showingComplete && this.props.userId) {
       completeView = (
         <div className="SingleTag-complete">
           <span className="SingleTag-completeText"> {this.state.completeMessage} </span>
@@ -68,15 +72,16 @@ class SingleTag extends Component {
         </button>
       </span>
     );
-    let stars = [];
-    for (let i = 0; i < this.state.stars; i++) {
-      stars.push("\u2605");
-    }
-    for (let i = 0; i < 5 - this.state.stars; i++) {
-      stars.push("\u2606");
-    }
+
     if (this.state.showingComplete) {
-      endOfBar = (
+      let stars = [];
+      for (let i = 0; i < this.state.stars; i++) {
+        stars.push("\u2605");
+      }
+      for (let i = 0; i < 5 - this.state.stars; i++) {
+        stars.push("\u2606");
+      }
+      endOfBar = this.props.userId ? (
         <span className="SingleTag-starsSpan">
           {[...Array(5).keys()].map((i) => (
             <span key={`tag-${this.props.tag.tag_id}-${i}`} onClick={() => this.setStars(i + 1)}>
@@ -84,7 +89,22 @@ class SingleTag extends Component {
             </span>
           ))}
         </span>
+      ) : (
+        <span className="SingleTag-starsSpan"> {this.state.completeMessage} </span>
       );
+      if (!this.props.userId) {
+        return (
+          <>
+            <span className="SingleTag-container u-clickable" onClick={this.nextTag}>
+              <span className="SingleTag-activity">
+                {this.props.tagToHTML(this.props.tag.activity)}
+              </span>
+              {endOfBar}
+            </span>
+            {completeView}
+          </>
+        );
+      }
     }
     return (
       <>
