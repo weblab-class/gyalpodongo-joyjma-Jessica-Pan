@@ -19,7 +19,7 @@ class FeeelingSection extends Component {
       "You're justified in feeling that way.",
     ];
     const phrase = phraseOptions[Math.floor(Math.random() * phraseOptions.length)];
-    this.state = { tasks: [], seenTags: false, indexToDisplay: 0, phrase: phrase };
+    this.state = { tasks: [], seenTags: false, indexToDisplay: 0, phrase: phrase, ready: false };
   }
 
   componentDidMount() {
@@ -71,6 +71,8 @@ class FeeelingSection extends Component {
   };
 
   render() {
+    console.log("RENDERING");
+    console.log(this.state.ready);
     let taskDisplay = <> Loading... </>;
     if (this.state.ready) {
       taskDisplay = this.state.seenTags ? (
@@ -84,20 +86,20 @@ class FeeelingSection extends Component {
       ) : (
         <p> No tasks found. </p>
       );
-    }
-    // console.log("Here's the seenTags for the emotion " + this.props.feeling);
-    // console.log(this.state.seenTags);
-    // console.log(this.state.tasks);
-    if (this.state.tasks.length !== 0 && this.state.tasks[0].activity !== undefined) {
-      const tagToDisplay = this.state.tasks[Math.floor(Math.random() * this.state.tasks.length)];
-      taskDisplay = (
-        <SingleTag
-          tag={tagToDisplay}
-          userId={this.props.userId}
-          tagToHTML={this.props.tagToHTML}
-          removeTag={(tag) => this.removeTags([tag])}
-        />
-      );
+      if (this.state.tasks.length !== 0 && this.state.tasks[0].activity !== undefined) {
+        const tagToDisplay = this.state.tasks[Math.floor(Math.random() * this.state.tasks.length)];
+        taskDisplay = (
+          <SingleTag
+            tag={tagToDisplay}
+            userId={this.props.userId}
+            tagToHTML={this.props.tagToHTML}
+            removeTag={(tag) => this.removeTags([tag])}
+          />
+        );
+      }
+      // console.log("Here's the seenTags for the emotion " + this.props.feeling);
+      // console.log(this.state.seenTags);
+      // console.log(this.state.tasks);
     }
     return (
       <div className="FeelingSection-section">

@@ -64,6 +64,10 @@ form {
   display: flex;
 }
 
+.u-underlined {
+  text-decoration: underline;
+}
+
 .u-flexColumn {
   display: flex;
   flex-direction: column;

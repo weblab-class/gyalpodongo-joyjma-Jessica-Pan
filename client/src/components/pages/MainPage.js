@@ -25,6 +25,7 @@ class MainPage extends Component {
     // Initialize Default State
     this.state = {
       mainContent: "Loading...",
+      showingIndex: 1,
       feelings: this.props.feelings,
       allFeelings: [],
       feeling_ids: [],
@@ -116,11 +117,15 @@ class MainPage extends Component {
           />
         </>
       ),
+      showingIndex: 1,
     });
   };
 
   showTagOthers = () => {
-    this.setState({ mainContent: <TagOthers id={this.props.userId} tagToHTML={this.tagToHTML} /> });
+    this.setState({
+      mainContent: <TagOthers id={this.props.userId} tagToHTML={this.tagToHTML} />,
+      showingIndex: 2,
+    });
   };
 
   showFeelingsLog = () => {
@@ -132,6 +137,7 @@ class MainPage extends Component {
           currentFeelings={this.state.feelings}
         />
       ),
+      showingIndex: 4,
     });
   };
 
@@ -145,6 +151,7 @@ class MainPage extends Component {
           allTags={allTags}
         />
       ),
+      showingIndex: 4,
     });
   };
 
@@ -157,6 +164,7 @@ class MainPage extends Component {
           userId={this.props.userId}
         />
       ),
+      showingIndex: 3,
     });
   };
 
@@ -173,6 +181,7 @@ class MainPage extends Component {
           numLoggedFeelings={this.state.allFeelings.length}
         />
       ),
+      showingIndex: 4,
     });
   };
 
@@ -188,6 +197,7 @@ class MainPage extends Component {
           showTagOthers={this.showTagOthers}
           showProfilePage={this.showProfilePage}
           showJournaling={this.showJournaling}
+          showingIndex={this.state.showingIndex}
         />
         <span className="MainPage-main">
           {/* <UserSideBar name={this.props.name} feelings={this.state.feelings} /> */}

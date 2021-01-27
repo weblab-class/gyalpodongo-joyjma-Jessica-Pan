@@ -17,18 +17,34 @@ class NavBar extends Component {
     // remember -- api calls go here!
   }
 
+  shouldBeUnderlined(classNames, index) {
+    console.log(this.props.showingIndex);
+    if (index === this.props.showingIndex) {
+      console.log("here");
+      return classNames + " NavBar-underlined";
+    } else {
+      return classNames;
+    }
+  }
+
   render() {
     let pastFeelingsSection;
     let hello = "Hello.";
     let tagOthersSection;
     if (this.props.userId) {
       pastFeelingsSection = (
-        <span className="NavBar-link u-inlineBlock" onClick={this.props.showProfilePage}>
+        <span
+          className={this.shouldBeUnderlined("NavBar-link u-inlineBlock", 4)}
+          onClick={this.props.showProfilePage}
+        >
           Your Profile
         </span>
       );
       tagOthersSection = (
-        <span className="NavBar-link u-inlineBlock" onClick={this.props.showTagOthers}>
+        <span
+          className={this.shouldBeUnderlined("NavBar-link u-inlineBlock", 2)}
+          onClick={this.props.showTagOthers}
+        >
           Tag Others
         </span>
       );
@@ -60,11 +76,17 @@ class NavBar extends Component {
           <Link className="NavBar-link u-inlineBlock" to="/">
             I feel <div className="NavBar-iFeelBox" />
           </Link>
-          <span className="NavBar-link u-inlineBlock" onClick={this.props.showYourTags}>
+          <span
+            className={this.shouldBeUnderlined("NavBar-link u-inlineBlock", 1)}
+            onClick={this.props.showYourTags}
+          >
             Your Tags
           </span>
           {tagOthersSection}
-          <span className="NavBar-link u-inlineBlock" onClick={this.props.showJournaling}>
+          <span
+            className={this.shouldBeUnderlined("NavBar-link u-inlineBlock", 3)}
+            onClick={this.props.showJournaling}
+          >
             Journal
           </span>
           {pastFeelingsSection}
