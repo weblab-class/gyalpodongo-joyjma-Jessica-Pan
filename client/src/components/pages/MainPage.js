@@ -179,6 +179,7 @@ class MainPage extends Component {
           handleLogout={this.props.handleLogout}
           handleLogin={this.handleLoginIntermediate}
           userId={this.props.userId}
+          name={this.props.name}
           showYourTags={this.showYourTags}
           showTagOthers={this.showTagOthers}
           showProfilePage={this.showProfilePage}

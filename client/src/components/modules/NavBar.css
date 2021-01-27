@@ -54,3 +54,10 @@
   opacity: 1;
   right: 0;
 }
+
+.NavBar-hello {
+  position: absolute;
+  color: white;
+  right: 20px;
+  top: 25px;
+}

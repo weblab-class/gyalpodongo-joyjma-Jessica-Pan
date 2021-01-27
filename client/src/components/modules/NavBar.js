@@ -19,12 +19,14 @@ class NavBar extends Component {
 
   render() {
     let pastFeelingsSection;
+    let hello = "Hello.";
     if (this.props.userId) {
       pastFeelingsSection = (
         <span className="NavBar-link u-inlineBlock" onClick={this.props.showProfilePage}>
           Your Profile
         </span>
       );
+      hello = "Hello, " + this.props.name;
     }
 
     return (
@@ -49,7 +51,6 @@ class NavBar extends Component {
               />
             </div>
           )}
-
           <Link className="NavBar-link u-inlineBlock" to="/">
             I feel <div className="NavBar-iFeelBox" />
           </Link>
@@ -64,6 +65,7 @@ class NavBar extends Component {
           </span>
           {pastFeelingsSection}
         </div>
+        <span className="NavBar-hello">{hello}</span>
       </nav>
     );
   }
