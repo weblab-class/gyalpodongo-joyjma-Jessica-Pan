@@ -37,14 +37,18 @@ class FeeelingSection extends Component {
       console.log("here's all the tags: ");
       console.log(response);
       console.log("getting tags done");
-      get("/api/tags-done", { feeling: this.props.feeling }).then((tagsDone) => {
-        if (tagsDone.length !== 0) {
-          console.log(tagsDone);
-          this.removeTags(tagsDone);
-        } else {
-          this.setState({ ready: true });
-        }
-      });
+      if (this.props.userId) {
+        get("/api/tags-done", { feeling: this.props.feeling }).then((tagsDone) => {
+          if (tagsDone.length !== 0) {
+            console.log(tagsDone);
+            this.removeTags(tagsDone);
+          } else {
+            this.setState({ ready: true });
+          }
+        });
+      } else {
+        this.setState({ ready: true });
+      }
     });
   }
 
@@ -98,8 +102,10 @@ class FeeelingSection extends Component {
     return (
       <div className="FeelingSection-section">
         <h1> {this.props.feeling} </h1>
-        <p> {this.state.phrase} </p>
-        {taskDisplay}
+        <span className="FeelingSection-moveUp">
+          <p> {this.state.phrase} </p>
+          {taskDisplay}
+        </span>
       </div>
     );
   }

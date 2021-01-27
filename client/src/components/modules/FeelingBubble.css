@@ -47,6 +47,11 @@
   width: 100vw;
 }
 
+.FeelingSection-moveUp {
+  position: relative;
+  bottom: 20px;
+}
+
 @keyframes moving {
   0% {
     left: -20vw;
